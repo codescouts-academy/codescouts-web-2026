@@ -89,10 +89,6 @@ const Header = () => {
                   {locale.toUpperCase()}
                 </button>
               ))}
-
-            <Button asChild variant="default" size="sm" className="glow">
-              <Link href="/contact">{t("common.contact")}</Link>
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}

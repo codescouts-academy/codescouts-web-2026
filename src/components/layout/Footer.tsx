@@ -151,7 +151,7 @@ const Footer = () => {
             © {new Date().getFullYear()} CodeScouts. {t("footer.rights")}.
           </p>
           <p className="text-muted-foreground text-xs font-mono">
-            {"// Built with ♥ and clean code"}
+            {"// Built with ♥ from Galicia"}
           </p>
         </div>
       </div>

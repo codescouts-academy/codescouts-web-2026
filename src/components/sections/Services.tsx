@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   ArrowRight,
   Users,
@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const Services = () => {
+  const locale = useLocale();
   const t = useTranslations();
 
   const services = [
@@ -21,31 +22,31 @@ const Services = () => {
       icon: Users,
       title: t("services.technicalCoaching.title"),
       description: t("services.technicalCoaching.description"),
-      href: "/services/technical-coaching",
+      href: `/${locale}/services/#technical-coaching`,
     },
     {
       icon: Rocket,
       title: t("services.acceleratedProgram.title"),
       description: t("services.acceleratedProgram.description"),
-      href: "/services/accelerated-program",
+      href: `/${locale}/services/#accelerated-program`,
     },
     {
       icon: Crown,
       title: t("services.ctoAsService.title"),
       description: t("services.ctoAsService.description"),
-      href: "/services/cto-as-service",
+      href: `/${locale}/services/#cto-as-service`,
     },
     {
       icon: Code2,
       title: t("services.softwareConsulting.title"),
       description: t("services.softwareConsulting.description"),
-      href: "/services/software-consulting",
+      href: `/${locale}/services/#software-consulting`,
     },
     {
       icon: GraduationCap,
       title: t("services.training.title"),
       description: t("services.training.description"),
-      href: "/courses",
+      href: `/${locale}/courses`,
     },
   ];
 
@@ -79,7 +80,6 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`glass-card p-8 service-card group ${
                 index === 4 ? "md:col-span-2 lg:col-span-1" : ""
               }`}

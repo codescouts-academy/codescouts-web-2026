@@ -1,4 +1,5 @@
-import matter from 'gray-matter';
+import { Language } from "@/i18n";
+import matter from "gray-matter";
 
 export interface BlogPost {
   slug: string;
@@ -10,22 +11,24 @@ export interface BlogPost {
   coverImage?: string;
   tags?: string[];
   readingTime?: number;
-  lang?: 'es' | 'en';
+  lang?: "es" | "en";
 }
 
 // Static blog posts - in a real app, these would be loaded from .md files
 // For a static site, you can add your markdown content here
 const rawPosts: BlogPost[] = [
   {
-    slug: 'introduccion-tdd',
-    title: 'Introducción a Test-Driven Development',
-    excerpt: 'Aprende los fundamentos de TDD y cómo puede transformar tu forma de escribir código más limpio y mantenible.',
-    date: '2024-01-15',
-    author: 'CodeScouts',
-    coverImage: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&auto=format&fit=crop',
-    tags: ['TDD', 'Testing', 'Best Practices'],
+    slug: "introduccion-tdd",
+    title: "Introducción a Test-Driven Development",
+    excerpt:
+      "Aprende los fundamentos de TDD y cómo puede transformar tu forma de escribir código más limpio y mantenible.",
+    date: "2024-01-15",
+    author: "CodeScouts",
+    coverImage:
+      "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&auto=format&fit=crop",
+    tags: ["TDD", "Testing", "Best Practices"],
     readingTime: 8,
-    lang: 'es',
+    lang: "es",
     content: `
 # ¿Qué es Test-Driven Development?
 
@@ -75,15 +78,17 @@ TDD es una herramienta poderosa que puede transformar la forma en que desarrolla
     `.trim(),
   },
   {
-    slug: 'clean-code-principios',
-    title: 'Principios de Clean Code que todo desarrollador debe conocer',
-    excerpt: 'Descubre los principios fundamentales para escribir código limpio, legible y mantenible que tus compañeros de equipo agradecerán.',
-    date: '2024-01-10',
-    author: 'CodeScouts',
-    coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop',
-    tags: ['Clean Code', 'Best Practices', 'Refactoring'],
+    slug: "clean-code-principios",
+    title: "Principios de Clean Code que todo desarrollador debe conocer",
+    excerpt:
+      "Descubre los principios fundamentales para escribir código limpio, legible y mantenible que tus compañeros de equipo agradecerán.",
+    date: "2024-01-10",
+    author: "CodeScouts",
+    coverImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+    tags: ["Clean Code", "Best Practices", "Refactoring"],
     readingTime: 10,
-    lang: 'es',
+    lang: "es",
     content: `
 # Principios de Clean Code
 
@@ -145,15 +150,17 @@ Cada vez que toques un archivo, mejóralo un poco. Con el tiempo, la base de có
     `.trim(),
   },
   {
-    slug: 'arquitectura-frontend-react',
-    title: 'Arquitectura Frontend Escalable con React',
-    excerpt: 'Aprende a estructurar proyectos React de manera que puedan crecer sin convertirse en un caos inmanejable.',
-    date: '2024-01-05',
-    author: 'CodeScouts',
-    coverImage: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop',
-    tags: ['React', 'Arquitectura', 'Frontend'],
+    slug: "arquitectura-frontend-react",
+    title: "Arquitectura Frontend Escalable con React",
+    excerpt:
+      "Aprende a estructurar proyectos React de manera que puedan crecer sin convertirse en un caos inmanejable.",
+    date: "2024-01-05",
+    author: "CodeScouts",
+    coverImage:
+      "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop",
+    tags: ["React", "Arquitectura", "Frontend"],
     readingTime: 12,
-    lang: 'es',
+    lang: "es",
     content: `
 # Arquitectura Frontend Escalable
 
@@ -220,21 +227,29 @@ function calculateReadingTime(content: string): number {
 }
 
 // Process posts
-export const blogPosts: BlogPost[] = rawPosts.map(post => ({
+export const blogPosts: BlogPost[] = rawPosts.map((post) => ({
   ...post,
   readingTime: post.readingTime || calculateReadingTime(post.content),
 }));
 
-export function getBlogPost(slug: string, lang: 'es' | 'en' = 'es'): BlogPost | undefined {
-  return blogPosts.find(post => post.slug === slug && (post.lang === lang || !post.lang));
+export function getBlogPost(
+  slug: string,
+  lang: Language = "es",
+): BlogPost | undefined {
+  return blogPosts.find(
+    (post) => post.slug === slug && (post.lang === lang || !post.lang),
+  );
 }
 
 export function getPostsByTag(tag: string): BlogPost[] {
-  return blogPosts.filter(post => post.tags?.includes(tag));
+  return blogPosts.filter((post) => post.tags?.includes(tag));
 }
 
 // Helper to parse markdown frontmatter (for future file-based blog)
-export function parseMarkdown(markdown: string): { data: Record<string, unknown>; content: string } {
+export function parseMarkdown(markdown: string): {
+  data: Record<string, unknown>;
+  content: string;
+} {
   const { data, content } = matter(markdown);
   return { data, content };
 }

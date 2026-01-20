@@ -1,11 +1,11 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
 import { Mail, Phone, Linkedin, Twitter, Github } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const quickLinks = [
     { href: "/services", label: t("nav.services") },

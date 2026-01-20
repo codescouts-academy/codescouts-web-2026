@@ -1,41 +1,63 @@
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Calendar, Linkedin, Twitter, Github } from 'lucide-react';
-import Layout from '@/components/layout/Layout';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent } from '@/components/ui/card';
+"use client";
+
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+  Linkedin,
+  Twitter,
+  Github,
+} from "lucide-react";
+import Layout from "@/components/layout/Layout";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent } from "@/components/ui/card";
 
 const Contact = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const contactInfo = [
     {
       icon: Mail,
-      label: 'Email',
-      value: t('contact.email'),
-      href: `mailto:${t('contact.email')}`,
+      label: "Email",
+      value: t("contact.email"),
+      href: `mailto:${t("contact.email")}`,
     },
     {
       icon: Phone,
-      label: 'Teléfono',
-      value: t('contact.phone'),
-      href: `tel:${t('contact.phone').replace(/\s/g, '')}`,
+      label: "Teléfono",
+      value: t("contact.phone"),
+      href: `tel:${t("contact.phone").replace(/\s/g, "")}`,
     },
     {
       icon: MapPin,
-      label: 'Ubicación',
-      value: 'Madrid, España',
+      label: "Ubicación",
+      value: "Madrid, España",
       href: null,
     },
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: 'https://linkedin.com/company/codescouts', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com/codescouts_', label: 'Twitter' },
-    { icon: Github, href: 'https://github.com/codescouts-academy', label: 'GitHub' },
+    {
+      icon: Linkedin,
+      href: "https://linkedin.com/company/codescouts",
+      label: "LinkedIn",
+    },
+    {
+      icon: Twitter,
+      href: "https://twitter.com/codescouts_",
+      label: "Twitter",
+    },
+    {
+      icon: Github,
+      href: "https://github.com/codescouts-academy",
+      label: "GitHub",
+    },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -56,13 +78,13 @@ const Contact = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <span className="inline-block px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium mb-6">
-              {t('contact.title')}
+              {t("contact.title")}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              {t('contact.subtitle')}
+              {t("contact.subtitle")}
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground">
-              {t('contact.description')}
+              {t("contact.description")}
             </p>
           </motion.div>
         </div>
@@ -83,7 +105,7 @@ const Contact = () => {
                 <CardContent className="p-8">
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name">{t('contact.form.name')}</Label>
+                      <Label htmlFor="name">{t("contact.form.name")}</Label>
                       <Input
                         id="name"
                         type="text"
@@ -94,7 +116,7 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email">{t('contact.form.email')}</Label>
+                      <Label htmlFor="email">{t("contact.form.email")}</Label>
                       <Input
                         id="email"
                         type="email"
@@ -115,7 +137,9 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">{t('contact.form.message')}</Label>
+                      <Label htmlFor="message">
+                        {t("contact.form.message")}
+                      </Label>
                       <Textarea
                         id="message"
                         placeholder="Cuéntanos en qué podemos ayudarte..."
@@ -126,7 +150,7 @@ const Contact = () => {
                     </div>
 
                     <Button type="submit" size="lg" className="w-full glow">
-                      {t('contact.form.send')}
+                      {t("contact.form.send")}
                     </Button>
                   </form>
                 </CardContent>
@@ -158,7 +182,9 @@ const Contact = () => {
                         <info.icon className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground">{info.label}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {info.label}
+                        </p>
                         {info.href ? (
                           <a
                             href={info.href}
@@ -187,7 +213,9 @@ const Contact = () => {
                     <Calendar className="w-5 h-5 text-primary" />
                   </div>
                   <div className="space-y-3">
-                    <h3 className="font-semibold">{t('contact.scheduleCall')}</h3>
+                    <h3 className="font-semibold">
+                      {t("contact.scheduleCall")}
+                    </h3>
                     <Button asChild variant="outline">
                       <a
                         href="https://calendly.com/codescouts"

@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
 import { Award, Users, Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const About = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const values = [
     {

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -82,7 +82,7 @@ const testimonials: Testimonial[] = [
 ];
 
 const Testimonials = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextTestimonial = () => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import {
   ArrowRight,
   Users,
@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const Services = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const services = [
     {

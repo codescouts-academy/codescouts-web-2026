@@ -1,17 +1,26 @@
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Calendar, Clock, ArrowRight, User } from 'lucide-react';
-import Layout from '@/components/layout/Layout';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { blogPosts } from '@/lib/blog';
+"use client";
+
+import { motion } from "framer-motion";
+import { Calendar, Clock, ArrowRight, User } from "lucide-react";
+import Layout from "@/components/layout/Layout";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { blogPosts } from "@/lib/blog";
+import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
+import Link from "next/link";
 
 const Blog = () => {
-  const { t, i18n } = useTranslation();
-  const currentLang = i18n.language as 'es' | 'en';
+  const t = useTranslations();
+  const params = useParams<{ locale: string }>();
 
   const posts = blogPosts
-    .filter(post => post.lang === currentLang || !post.lang)
+    // .filter((post) => post.lang === params?.locale || !post.lang)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
@@ -27,13 +36,15 @@ const Blog = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <span className="inline-block px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium mb-6">
-              {t('common.blog')}
+              {t("common.blog")}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Artículos y recursos para <span className="text-primary">desarrolladores</span>
+              Artículos y recursos para{" "}
+              <span className="text-primary">desarrolladores</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground">
-              Compartimos nuestro conocimiento sobre buenas prácticas, arquitectura y desarrollo de software
+              Compartimos nuestro conocimiento sobre buenas prácticas,
+              arquitectura y desarrollo de software
             </p>
           </motion.div>
         </div>
@@ -49,10 +60,10 @@ const Blog = () => {
                   key={post.slug}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                 >
-                  <Link to={`/blog/${post.slug}`}>
+                  <Link href={`/${params?.locale}/blog/${post.slug}`}>
                     <Card className="h-full group hover:border-primary/50 transition-all duration-300 bg-card/50 backdrop-blur-sm overflow-hidden">
                       {post.coverImage && (
                         <div className="aspect-video overflow-hidden">
@@ -67,11 +78,14 @@ const Blog = () => {
                         <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
                           <span className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
-                            {new Date(post.date).toLocaleDateString(currentLang, {
-                              year: 'numeric',
-                              month: 'short',
-                              day: 'numeric',
-                            })}
+                            {new Date(post.date).toLocaleDateString(
+                              params?.locale,
+                              {
+                                year: "numeric",
+                                month: "short",
+                                day: "numeric",
+                              },
+                            )}
                           </span>
                           {post.readingTime && (
                             <span className="flex items-center gap-1">
@@ -105,7 +119,7 @@ const Blog = () => {
                           ))}
                         </div>
                         <span className="inline-flex items-center text-sm text-primary font-medium group-hover:gap-2 transition-all">
-                          {t('common.readMore')}
+                          {t("common.readMore")}
                           <ArrowRight className="w-4 h-4 ml-1" />
                         </span>
                       </CardContent>

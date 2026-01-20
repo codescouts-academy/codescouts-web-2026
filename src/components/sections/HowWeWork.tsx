@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import { TrendingUp, Users, Compass, Monitor } from "lucide-react";
 
 const HowWeWork = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const features = [
     {

@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const Hero = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const scrollToContent = () => {
     const element = document.getElementById("about");

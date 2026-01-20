@@ -1,27 +1,30 @@
-import { useParams, Navigate, Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { Calendar, Clock, ArrowLeft, User, Tag } from 'lucide-react';
-import Layout from '@/components/layout/Layout';
-import { Button } from '@/components/ui/button';
-import MarkdownRenderer from '@/components/blog/MarkdownRenderer';
-import { getBlogPost, blogPosts } from '@/lib/blog';
+"use client";
+
+import { motion } from "framer-motion";
+import { Calendar, Clock, ArrowLeft, User, Tag } from "lucide-react";
+import Layout from "@/components/layout/Layout";
+import { Button } from "@/components/ui/button";
+import MarkdownRenderer from "@/components/blog/MarkdownRenderer";
+import { getBlogPost, blogPosts } from "@/lib/blog";
+import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
 
 const BlogPost = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const { i18n } = useTranslation();
-  const currentLang = i18n.language as 'es' | 'en';
+  const params = useParams<{ locale: string; slug: string }>();
+  const post = getBlogPost(params?.slug || "", params?.locale || "en");
+  const navigate = useRouter();
 
-  const post = getBlogPost(slug || '', currentLang);
+  console.log(post);
 
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    navigate.replace(`/${params?.locale}/blog`);
+    return;
   }
 
   // Get related posts
   const relatedPosts = blogPosts
-    .filter(p => p.slug !== post.slug && p.lang === currentLang)
-    .filter(p => p.tags?.some(tag => post.tags?.includes(tag)))
+    .filter((p) => p.slug !== post.slug && p.lang === params?.locale)
+    .filter((p) => p.tags?.some((tag) => post.tags?.includes(tag)))
     .slice(0, 3);
 
   return (
@@ -36,7 +39,7 @@ const BlogPost = () => {
           >
             {/* Back Button */}
             <Button asChild variant="ghost" size="sm" className="mb-8">
-              <Link to="/blog">
+              <Link href="/blog">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Volver al blog
               </Link>
@@ -57,11 +60,14 @@ const BlogPost = () => {
               <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="flex items-center gap-1">
                   <Calendar className="w-4 h-4" />
-                  {new Date(post.date).toLocaleDateString(currentLang, {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
+                  {new Date(post.date).toLocaleDateString(
+                    params?.locale || "en",
+                    {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    },
+                  )}
                 </span>
                 {post.readingTime && (
                   <span className="flex items-center gap-1">
@@ -110,12 +116,14 @@ const BlogPost = () => {
             {/* Related Posts */}
             {relatedPosts.length > 0 && (
               <section className="mt-16 pt-12 border-t border-border">
-                <h2 className="text-2xl font-bold mb-8">Artículos relacionados</h2>
+                <h2 className="text-2xl font-bold mb-8">
+                  Artículos relacionados
+                </h2>
                 <div className="grid md:grid-cols-3 gap-6">
                   {relatedPosts.map((relatedPost) => (
                     <Link
                       key={relatedPost.slug}
-                      to={`/blog/${relatedPost.slug}`}
+                      href={`/blog/${relatedPost.slug}`}
                       className="group"
                     >
                       <article className="p-4 bg-secondary/30 rounded-xl border border-border/50 hover:border-primary/50 transition-colors">

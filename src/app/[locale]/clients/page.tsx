@@ -1,11 +1,13 @@
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { Building2, ExternalLink } from 'lucide-react';
-import Layout from '@/components/layout/Layout';
-import { clients } from '@/lib/clients';
+"use client";
+
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
+import { Building2, ExternalLink } from "lucide-react";
+import Layout from "@/components/layout/Layout";
+import { clients } from "@/lib/clients";
 
 const Clients = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <Layout>
@@ -20,13 +22,13 @@ const Clients = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <span className="inline-block px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium mb-6">
-              {t('clients.badge')}
+              {t("clients.badge")}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              {t('clients.title')}
+              {t("clients.title")}
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground">
-              {t('clients.subtitle')}
+              {t("clients.subtitle")}
             </p>
           </motion.div>
         </div>
@@ -41,7 +43,7 @@ const Clients = () => {
                 key={client.slug}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 className="group bg-secondary/30 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300"
               >
@@ -108,25 +110,33 @@ const Clients = () => {
               <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
                 {clients.length}+
               </div>
-              <div className="text-muted-foreground">{t('clients.stats.clients')}</div>
+              <div className="text-muted-foreground">
+                {t("clients.stats.clients")}
+              </div>
             </div>
             <div>
               <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
                 6+
               </div>
-              <div className="text-muted-foreground">{t('clients.stats.years')}</div>
+              <div className="text-muted-foreground">
+                {t("clients.stats.years")}
+              </div>
             </div>
             <div>
               <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
                 50+
               </div>
-              <div className="text-muted-foreground">{t('clients.stats.teams')}</div>
+              <div className="text-muted-foreground">
+                {t("clients.stats.teams")}
+              </div>
             </div>
             <div>
               <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
                 100%
               </div>
-              <div className="text-muted-foreground">{t('clients.stats.satisfaction')}</div>
+              <div className="text-muted-foreground">
+                {t("clients.stats.satisfaction")}
+              </div>
             </div>
           </motion.div>
         </div>

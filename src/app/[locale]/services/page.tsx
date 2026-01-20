@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   Users,
@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const Services = () => {
+  const locale = useLocale();
   const t = useTranslations();
 
   const services = [
@@ -120,6 +121,7 @@ const Services = () => {
             {services.map((service, index) => (
               <motion.article
                 key={service.id}
+                id={service.id}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -151,14 +153,14 @@ const Services = () => {
 
                   {service.linkTo ? (
                     <Button asChild className="glow">
-                      <Link href={service.linkTo}>
+                      <Link href={`/${locale}${service.linkTo}`}>
                         Ver cursos disponibles
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
                   ) : (
                     <Button asChild className="glow">
-                      <Link href="/contact">
+                      <Link href={`/${locale}/contact`}>
                         {t("common.contact")}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>

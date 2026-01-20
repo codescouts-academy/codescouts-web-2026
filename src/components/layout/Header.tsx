@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,7 +15,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const pathname = usePathname();
-  const params = useParams<{ locale: string }>();
+  const locale = useLocale();
   const router = useRouter();
 
   const toggleLanguage = (locale: string) => {
@@ -65,7 +65,7 @@ const Header = () => {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                href={`/${params?.locale}${link.href}`}
+                href={`/${locale}${link.href}`}
                 className={`link-hover text-sm font-medium transition-colors ${
                   pathname === link.href
                     ? "text-primary"
@@ -79,7 +79,7 @@ const Header = () => {
             {/* Language Switcher - Simple Button */}
 
             {routing.locales
-              .filter((l) => l !== params?.locale)
+              .filter((l) => l !== locale)
               .map((locale) => (
                 <button
                   key={locale}
@@ -95,7 +95,7 @@ const Header = () => {
           <div className="flex md:hidden items-center gap-3">
             {/* Language Switcher - Simple Button */}
             {routing.locales
-              .filter((l) => l !== params?.locale)
+              .filter((l) => l !== locale)
               .map((locale) => (
                 <button
                   key={locale}

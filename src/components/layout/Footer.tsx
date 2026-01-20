@@ -1,11 +1,12 @@
 "use client";
 
 import { Mail, Phone, Linkedin, Twitter, Github } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 
 const Footer = () => {
   const t = useTranslations();
+  const locale = useLocale();
 
   const quickLinks = [
     { href: "/services", label: t("nav.services") },
@@ -16,19 +17,19 @@ const Footer = () => {
 
   const services = [
     {
-      href: "/services/technical-coaching",
+      href: "#technical-coaching",
       label: t("services.technicalCoaching.title"),
     },
     {
-      href: "/services/accelerated-program",
+      href: "#accelerated-program",
       label: t("services.acceleratedProgram.title"),
     },
     {
-      href: "/services/cto-as-service",
+      href: "#cto-as-service",
       label: t("services.ctoAsService.title"),
     },
     {
-      href: "/services/software-consulting",
+      href: "#software-consulting",
       label: t("services.softwareConsulting.title"),
     },
   ];
@@ -87,7 +88,7 @@ const Footer = () => {
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={`/${locale}${link.href}`}
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
                     {link.label}
@@ -106,7 +107,7 @@ const Footer = () => {
               {services.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={`/${locale}/services/${link.href}`}
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
                     {link.label}
@@ -133,7 +134,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="mailto:hola@codescouts.academy"
+                  href={`mailto:${t("contact.email")}`}
                   className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   <Mail className="h-4 w-4" />

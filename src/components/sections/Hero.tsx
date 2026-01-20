@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const Hero = () => {
+  const locale = useLocale();
   const t = useTranslations();
 
   const scrollToContent = () => {
@@ -66,13 +67,13 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button asChild size="lg" className="glow group">
-              <Link href="/services">
+              <Link href={`/${locale}/services`}>
                 {t("hero.ctaSecondary")}
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/contact">{t("common.contact")}</Link>
+              <Link href={`/${locale}/contact`}>{t("common.contact")}</Link>
             </Button>
           </motion.div>
 

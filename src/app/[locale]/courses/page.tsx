@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   Code,
@@ -30,6 +30,7 @@ import {
 import Link from "next/link";
 
 const Courses = () => {
+  const locale = useLocale();
   const t = useTranslations();
 
   const courses = [
@@ -258,7 +259,7 @@ const Courses = () => {
                     {t("courses.customCourse.description")}
                   </CardDescription>
                   <Button asChild variant="outline" className="w-full">
-                    <Link href="/contact">
+                    <Link href={`/${locale}/contact`}>
                       {t("common.contact")}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
@@ -287,7 +288,7 @@ const Courses = () => {
               específicas de tu equipo y tecnologías
             </p>
             <Button asChild size="lg" className="glow">
-              <Link href="/contact">
+              <Link href={`/${locale}/contact`}>
                 Solicitar información
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>

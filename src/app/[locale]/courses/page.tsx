@@ -201,7 +201,7 @@ const Courses = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
               >
-                <Card className="h-full group hover:border-primary/50 transition-all duration-300 bg-card/50 backdrop-blur-sm">
+                <Card className="h-full group hover:border-primary/50 transition-all duration-300 bg-card/50 backdrop-blur-sm flex flex-col">
                   <CardHeader>
                     <div className="flex items-start justify-between mb-2">
                       <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
@@ -219,11 +219,14 @@ const Courses = () => {
                       </span>
                     </div>
                   </CardHeader>
-                  <CardContent className="space-y-4">
+
+                  <CardContent className="flex flex-col flex-grow gap-2">
                     <CardDescription className="text-sm leading-relaxed">
                       {course.description}
                     </CardDescription>
-                    <div className="flex flex-wrap gap-2">
+
+                    {/* Tags pegados al bottom */}
+                    <div className="flex flex-wrap gap-2 mt-auto">
                       {course.tags.map((tag) => (
                         <span
                           key={tag}

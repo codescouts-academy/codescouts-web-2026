@@ -107,8 +107,7 @@ const Services = () => {
               {t("services.subtitle")}
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground">
-              Nos especializamos en desarrollar equipos de alto rendimiento a
-              través de prácticas de eXtreme Programming
+              {t("services.subtitle2")}
             </p>
           </motion.div>
         </div>

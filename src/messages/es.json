@@ -78,6 +78,7 @@
   "services": {
     "title": "Nuestros Servicios",
     "subtitle": "Nos enfocamos en la práctica dedicada sobre un proyecto real, cuidando detalladamente la calidad del software y la puesta de valor",
+    "subtitle2": "Nos especializamos en desarrollar equipos de alto rendimiento a través de prácticas de eXtreme Programming",
     "technicalCoaching": {
       "title": "Technical Coaching",
       "description": "Si necesitas ayuda en tu equipo para incorporar los conocimientos que les hace falta, este es el servicio ideal para ti. Junto a un technical coach, el equipo podrá trabajar en sus tareas del día a día, priorizando el conocimiento en cada paso, sin perder de vista el aumento de la productividad y la entrega de valor.",
@@ -107,7 +108,9 @@
   },
   "courses": {
     "title": "Formación",
-    "subtitle": "Disponemos de una gran variedad de cursos a medida orientados a poner en práctica lo que realmente necesitas en tu día a día.",
+    "subtitle": "Cursos diseñados para equipos que buscan la",
+    "subtitle1": "excelencia",
+    "subtitle2": "Disponemos de una gran variedad de cursos a medida orientados a poner en práctica lo que realmente necesitas en tu día a día.",
     "legacyCode": {
       "title": "Código Legacy",
       "description": "Si agregar funcionalidades a tu aplicación, si seguir las tendencias de tecnología o incluso actualizar una dependencias se convierte en un dolor de cabeza para tu equipo, este curso es perfecto para ti. En este curso aprenderemos técnicas avanzadas para trabajar con código legacy y al mismo tiempo comenzar a eliminar aquellas piezas que tienen un alto nivel de acoplamiento que nos impiden evolucionar nuestro software"
@@ -147,7 +150,30 @@
     "customCourse": {
       "title": "¿No tenemos el curso que buscas?",
       "description": "Si no encuentras en esta lista el curso que buscas para tu empresa, contáctanos y lo organizaremos con muchas ganas. Seguro te sorprenderemos."
-    }
+    },
+    "level": {
+      "basic": "Básico",
+      "basicIntermediate": "Básico a Intermedio",
+      "intermediate": "Intermedio",
+      "advanced": "Avanzado"
+    },
+    "features": {
+      "flexibility": {
+        "title": "Flexibilidad horaria",
+        "description": "Adaptamos los horarios a las necesidades de tu equipo"
+      },
+      "smallGroups": {
+        "title": "Grupos reducidos",
+        "description": "Máximo 12 personas para garantizar atención personalizada"
+      },
+      "practicalFocus": {
+        "title": "Enfoque práctico",
+        "description": "Más del 70% del curso es práctica sobre casos reales"
+      }
+    },
+    "ctaTitle": "¿Necesitas formación personalizada?",
+    "ctaDescription": "Diseñamos programas a medida adaptados a las necesidades específicas de tu equipo y tecnologías",
+    "ctaButton": "Solicitar información"
   },
   "testimonials": {
     "title": "Lo que dicen nuestros clientes"

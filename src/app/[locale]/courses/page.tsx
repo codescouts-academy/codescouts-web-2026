@@ -40,7 +40,7 @@ const Courses = () => {
       title: t("courses.legacyCode.title"),
       description: t("courses.legacyCode.description"),
       duration: "16-24",
-      level: "Avanzado",
+      level: t("courses.level.advanced"),
       tags: ["Refactoring", "Testing", "SOLID"],
     },
     {
@@ -49,7 +49,7 @@ const Courses = () => {
       title: t("courses.frontendArchitecture.title"),
       description: t("courses.frontendArchitecture.description"),
       duration: "16-20",
-      level: "Intermedio",
+      level: t("courses.level.intermediate"),
       tags: ["React", "Arquitectura", "Escalabilidad"],
     },
     {
@@ -67,7 +67,7 @@ const Courses = () => {
       title: t("courses.cleanCode.title"),
       description: t("courses.cleanCode.description"),
       duration: "8-12",
-      level: "Básico",
+      level: t("courses.level.basic"),
       tags: ["Best Practices", "Legibilidad", "Mantenibilidad"],
     },
     {
@@ -76,7 +76,7 @@ const Courses = () => {
       title: t("courses.nextJs.title"),
       description: t("courses.nextJs.description"),
       duration: "16-24",
-      level: "Intermedio",
+      level: t("courses.level.intermediate"),
       tags: ["Next.js", "SSR", "Vercel"],
     },
     {
@@ -85,8 +85,8 @@ const Courses = () => {
       title: t("courses.ddd.title"),
       description: t("courses.ddd.description"),
       duration: "20-24",
-      level: "Avanzado",
-      tags: ["Dominio", "Bounded Context", "Agregados"],
+      level: t("courses.level.advanced"),
+      tags: ["Domain", "Bounded Context", "Aggregates"],
     },
     {
       id: "tdd",
@@ -94,7 +94,7 @@ const Courses = () => {
       title: t("courses.tdd.title"),
       description: t("courses.tdd.description"),
       duration: "12-16",
-      level: "Intermedio",
+      level: t("courses.level.intermediate"),
       tags: ["Testing", "Red-Green-Refactor", "Unit Tests"],
     },
     {
@@ -103,7 +103,7 @@ const Courses = () => {
       title: t("courses.react.title"),
       description: t("courses.react.description"),
       duration: "24-32",
-      level: "Básico a Intermedio",
+      level: t("courses.level.basicIntermediate"),
       tags: ["React", "TypeScript", "Hooks"],
     },
     {
@@ -112,7 +112,7 @@ const Courses = () => {
       title: t("courses.oop.title"),
       description: t("courses.oop.description"),
       duration: "12-16",
-      level: "Básico",
+      level: t("courses.level.basic"),
       tags: ["OOP", "SOLID", "Abstracción"],
     },
   ];
@@ -120,18 +120,18 @@ const Courses = () => {
   const features = [
     {
       icon: Clock,
-      title: "Flexibilidad horaria",
-      description: "Adaptamos los horarios a las necesidades de tu equipo",
+      title: t("courses.features.flexibility.title"),
+      description: t("courses.features.flexibility.description"),
     },
     {
       icon: Users,
-      title: "Grupos reducidos",
-      description: "Máximo 12 personas para garantizar atención personalizada",
+      title: t("courses.features.smallGroups.title"),
+      description: t("courses.features.smallGroups.description"),
     },
     {
       icon: Target,
-      title: "Enfoque práctico",
-      description: "Más del 70% del curso es práctica sobre casos reales",
+      title: t("courses.features.practicalFocus.title"),
+      description: t("courses.features.practicalFocus.description"),
     },
   ];
 
@@ -151,11 +151,11 @@ const Courses = () => {
               {t("courses.title")}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Cursos diseñados para equipos que buscan la{" "}
-              <span className="text-primary">excelencia</span>
+              {t("courses.subtitle")}{" "}
+              <span className="text-primary">{t("courses.subtitle1")}</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground">
-              {t("courses.subtitle")}
+              {t("courses.subtitle2")}
             </p>
           </motion.div>
         </div>
@@ -284,15 +284,14 @@ const Courses = () => {
             className="max-w-2xl mx-auto"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              ¿Necesitas formación personalizada?
+              {t("courses.ctaTitle")}
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
-              Diseñamos programas a medida adaptados a las necesidades
-              específicas de tu equipo y tecnologías
+              {t("courses.ctaDescription")}
             </p>
             <Button asChild size="lg" className="glow">
               <Link href={`/${locale}/contact`}>
-                Solicitar información
+                {t("courses.ctaButton")}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </Button>

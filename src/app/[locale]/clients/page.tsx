@@ -1,12 +1,13 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Building2, ExternalLink } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { clients } from "@/lib/clients";
 
 const Clients = () => {
+  const locale = useLocale();
   const t = useTranslations();
 
   return (
@@ -88,7 +89,7 @@ const Clients = () => {
                   </div>
 
                   <p className="text-muted-foreground text-sm leading-relaxed line-clamp-4">
-                    {client.description}
+                    {client.description[locale]}
                   </p>
                 </div>
               </motion.article>

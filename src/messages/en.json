@@ -78,6 +78,7 @@
   "services": {
     "title": "Our Services",
     "subtitle": "We focus on dedicated practice on a real project, carefully taking care of software quality and value delivery",
+    "subtitle2": "We specialize in developing high-performance teams through eXtreme Programming practices",
     "technicalCoaching": {
       "title": "Technical Coaching",
       "description": "If you need help on your team to incorporate the knowledge they lack, this is the ideal service for you. Together with a technical coach, the team will be able to work on their day-to-day tasks, prioritizing knowledge at each step, without losing sight of increasing productivity and value delivery.",
@@ -107,7 +108,9 @@
   },
   "courses": {
     "title": "Training",
-    "subtitle": "We have a wide variety of customized courses aimed at putting into practice what you really need in your day-to-day.",
+    "subtitle": "Courses designed for teams seeking the",
+    "subtitle1": "excellence",
+    "subtitle2": "We have a wide variety of customized courses aimed at putting into practice what you really need in your day-to-day.",
     "legacyCode": {
       "title": "Legacy Code",
       "description": "If adding features to your application, following technology trends, or even updating dependencies becomes a headache for your team, this course is perfect for you. In this course we will learn advanced techniques for working with legacy code while starting to eliminate those pieces that have a high level of coupling that prevent us from evolving our software"
@@ -147,7 +150,30 @@
     "customCourse": {
       "title": "Don't see the course you're looking for?",
       "description": "If you don't find the course you're looking for in this list, contact us and we'll organize it with great enthusiasm. We're sure we'll surprise you."
-    }
+    },
+    "level": {
+      "basic": "Basic",
+      "basicIntermediate": "Basic to Intermediate",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "features": {
+      "flexibility": {
+        "title": "Schedule flexibility",
+        "description": "We adapt the schedules to your team's needs"
+      },
+      "smallGroups": {
+        "title": "Small groups",
+        "description": "Maximum 12 people to ensure personalized attention"
+      },
+      "practicalFocus": {
+        "title": "Practical focus",
+        "description": "More than 70% of the course is practice on real cases"
+      }
+    },
+    "ctaTitle": "Need personalized training?",
+    "ctaDescription": "We design custom programs tailored to your team's needs and technologies",
+    "ctaButton": "Request information"
   },
   "testimonials": {
     "title": "What our clients say"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
@@ -94,6 +94,14 @@ const Testimonials = () => {
       (prev) => (prev - 1 + testimonials.length) % testimonials.length,
     );
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextTestimonial();
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const currentTestimonial = testimonials[currentIndex];
 

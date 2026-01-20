@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CodeScouts Design System
+   Modern, developer-focused aesthetic with dark theme and golden accents
+   Inspired by terminal/code editors aesthetic
+*/
+
+@layer base {
+  :root {
+    /* Core colors - Dark mode first (primary experience) */
+    --background: 220 16% 4%;
+    --foreground: 60 9% 98%;
+
+    --card: 220 16% 7%;
+    --card-foreground: 60 9% 98%;
+
+    --popover: 220 16% 7%;
+    --popover-foreground: 60 9% 98%;
+
+    /* Brand colors - Golden yellow accent */
+    --primary: 48 96% 53%;
+    --primary-foreground: 220 16% 4%;
+
+    --secondary: 220 14% 12%;
+    --secondary-foreground: 60 9% 98%;
+
+    --muted: 220 14% 16%;
+    --muted-foreground: 220 9% 60%;
+
+    --accent: 48 96% 53%;
+    --accent-foreground: 220 16% 4%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 60 9% 98%;
+
+    --border: 220 14% 16%;
+    --input: 220 14% 16%;
+    --ring: 48 96% 53%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-gold: linear-gradient(
+      135deg,
+      hsl(48 96% 53%) 0%,
+      hsl(38 92% 50%) 100%
+    );
+    --gradient-dark: linear-gradient(
+      180deg,
+      hsl(220 16% 4%) 0%,
+      hsl(220 16% 8%) 100%
+    );
+    --gradient-card: linear-gradient(
+      145deg,
+      hsl(220 16% 8%) 0%,
+      hsl(220 16% 5%) 100%
+    );
+    --gradient-hero: radial-gradient(
+      ellipse at top,
+      hsl(220 16% 10%) 0%,
+      hsl(220 16% 4%) 70%
+    );
+
+    --shadow-glow: 0 0 40px hsl(48 96% 53% / 0.15);
+    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.4);
+    --shadow-lg: 0 10px 40px hsl(0 0% 0% / 0.5);
+
+    /* Code block colors */
+    --code-bg: 220 16% 8%;
+    --code-border: 220 14% 18%;
+    --code-text: 48 96% 70%;
+
+    /* Sidebar */
+    --sidebar-background: 220 16% 6%;
+    --sidebar-foreground: 60 9% 98%;
+    --sidebar-primary: 48 96% 53%;
+    --sidebar-primary-foreground: 220 16% 4%;
+    --sidebar-accent: 220 14% 12%;
+    --sidebar-accent-foreground: 60 9% 98%;
+    --sidebar-border: 220 14% 16%;
+    --sidebar-ring: 48 96% 53%;
+  }
+
+  .light {
+    --background: 60 9% 98%;
+    --foreground: 220 16% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 16% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 16% 10%;
+
+    --primary: 220 16% 10%;
+    --primary-foreground: 60 9% 98%;
+
+    --secondary: 220 14% 94%;
+    --secondary-foreground: 220 16% 10%;
+
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 48 96% 53%;
+    --accent-foreground: 220 16% 10%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 60 9% 98%;
+
+    --border: 220 14% 90%;
+    --input: 220 14% 90%;
+    --ring: 220 16% 10%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+}
+
+@layer components {
+  /* Terminal/Code style elements */
+  .code-tag {
+    @apply font-mono text-primary;
+  }
+
+  .terminal-cursor {
+    @apply inline-block w-2 h-5 bg-primary animate-pulse ml-1;
+  }
+
+  /* Glass morphism card */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 rounded-xl;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-gold);
+  }
+
+  /* Glow effect */
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Section styles */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Code block styling for blog */
+  .prose pre {
+    @apply rounded-lg border border-border bg-secondary p-4 overflow-x-auto;
+  }
+
+  .prose code {
+    @apply font-mono text-sm bg-secondary px-1.5 py-0.5 rounded text-primary;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  /* Link hover effect */
+  .link-hover {
+    @apply relative;
+  }
+
+  .link-hover::after {
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+    content: "";
+  }
+
+  .link-hover:hover::after {
+    @apply w-full;
+  }
+
+  /* Service card hover */
+  .service-card {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .service-card:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+  }
+}
+
+@layer utilities {
+  /* Animated gradient background */
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+
+  @keyframes gradient {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Fade up animation */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Stagger animation delays */
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* Grid pattern background */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Dot pattern */
+  .bg-dots {
+    background-image: radial-gradient(hsl(var(--border)) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+}

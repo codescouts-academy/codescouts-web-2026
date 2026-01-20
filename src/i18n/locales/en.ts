@@ -1,0 +1,197 @@
+export const en = {
+  common: {
+    contact: "Contact",
+    learnMore: "Learn more",
+    services: "Services",
+    courses: "Training",
+    blog: "Blog",
+    about: "About",
+    home: "Home",
+    readMore: "Read more",
+    hours: "hours",
+    newsletter: "Newsletter",
+    subscribe: "Subscribe",
+    send: "Send",
+    close: "Close",
+  },
+  nav: {
+    services: "Services",
+    courses: "Training",
+    clients: "Clients",
+    blog: "Blog",
+    contact: "Contact",
+  },
+  hero: {
+    tagline: "Technical Coaches",
+    title: "We help software teams achieve",
+    titleHighlight: "technical excellence",
+    description: "Focusing on quality and delivery speed as well as improvement and sustainable team rhythm by developing together",
+    cta: "Learn more",
+    ctaSecondary: "Our services",
+  },
+  about: {
+    title: "Who we are",
+    subtitle: "We are expert software developers who help teams deliver quality software working with eXtreme programming practices",
+    tagline: "We are Technical Coaches",
+    excellence: {
+      title: "Excellence",
+      description: "We work in software teams developing their product, helping teams improve technically by focusing on transmitting our knowledge and experience in eXtreme programming and software quality practices.",
+    },
+    teamwork: {
+      title: "Teamwork",
+      description: "We believe that teamwork is the key to success, therefore our commitment is 100%, we are one more member of your team and we will help solve the most critical problems the right way.",
+    },
+    environment: {
+      title: "Environment",
+      description: "We are passionate, motivated, proactive Software Engineers and our main goal is to transmit all our experience in each project creating a collaborative and motivating work environment.",
+    },
+  },
+  howWeWork: {
+    title: "How we work",
+    subtitle: "These are some characteristics of our day-to-day work",
+    continuousImprovement: {
+      title: "Continuous improvement",
+      description: "We seek excellence, for this we have a sustainable work plan that allows us to learn quickly",
+    },
+    mentoring: {
+      title: "Mentoring",
+      description: "We detect improvement points for each student and provide them with tools to improve their performance",
+    },
+    closedGroups: {
+      title: "Closed groups",
+      description: "Teaching in closed groups allows us to focus on the skills and improvements of each team member",
+    },
+    remoteOrOnsite: {
+      title: "Remote or On-site",
+      description: "We have tools that will make the remote experience truly excellent",
+    },
+  },
+  howWeHelp: {
+    title: "How we help you",
+    subtitle: "As a company specialized in Technical coaching we pay special attention to team delivery metrics following these indicators",
+    bugReduction: "Bug reduction",
+    deliveryFrequency: "Delivery frequency",
+    teamPerformance: "Team performance increase",
+    talentRetention: "Talent retention",
+    teamEmpowerment: "Team empowerment and commitment",
+  },
+  services: {
+    title: "Our Services",
+    subtitle: "We focus on dedicated practice on a real project, carefully taking care of software quality and value delivery",
+    technicalCoaching: {
+      title: "Technical Coaching",
+      description: "If you need help on your team to incorporate the knowledge they lack, this is the ideal service for you. Together with a technical coach, the team will be able to work on their day-to-day tasks, prioritizing knowledge at each step, without losing sight of increasing productivity and value delivery.",
+      fullDescription: "If you need help on your team to incorporate the knowledge they lack, this is the ideal service for you. Here they can learn to develop their skills in a proactive environment. Together with a technical coach, the team will be able to work on their day-to-day tasks, having a technical coach who will help ensure this is done in the best possible way, prioritizing knowledge at each step; without losing sight of increasing productivity and value delivery.",
+      quote: "We develop high-performance teams capable of meeting product demand effectively and sustainably",
+    },
+    acceleratedProgram: {
+      title: "Accelerated Program",
+      description: "We ensure that your team has the knowledge to work in your company by preparing a customized program to transmit concepts as clearly as possible, and as always accompanied by exercises that allow putting each of these topics into practice to accelerate the ramp up.",
+      fullDescription: "We ensure that your team has the knowledge to work in your company by preparing a customized program to transmit concepts as clearly as possible, and as always accompanied by exercises that allow putting each of these topics into practice.",
+      quote: "We train software teams by delivering a customized learning plan, adjusted to your company's needs and technologies, with technical coaches with more than 10 years in the industry",
+    },
+    ctoAsService: {
+      title: "CTO as a Service",
+      description: "Do you need to define or redefine your company's technology strategy and want to validate it with us? Do you need to know which technologies are best for your products? This service fits perfectly.",
+      quote: "We help technology companies develop an effective strategy that allows them to grow quickly and sustainably over time, creating technological components that fit your objectives.",
+    },
+    softwareConsulting: {
+      title: "Software Consulting",
+      description: "We will discover what points you need to improve in your current software, we will also analyze the development methodology and help you improve it step by step, defining an iterative plan so you can evolve your product.",
+      quote: "We help software companies solve technical problems that prevent efficiently achieving the software's objective",
+    },
+    training: {
+      title: "Training",
+      description: "We have a wide variety of customized courses aimed at putting into practice what you really need in your day-to-day, executing the course in the most proactive way to speed up learning and implementation of knowledge.",
+    },
+  },
+  courses: {
+    title: "Training",
+    subtitle: "We have a wide variety of customized courses aimed at putting into practice what you really need in your day-to-day.",
+    legacyCode: {
+      title: "Legacy Code",
+      description: "If adding features to your application, following technology trends, or even updating dependencies becomes a headache for your team, this course is perfect for you. In this course we will learn advanced techniques for working with legacy code while starting to eliminate those pieces that have a high level of coupling that prevent us from evolving our software",
+    },
+    frontendArchitecture: {
+      title: "Frontend Architecture",
+      description: "When we work on large projects, we all know the challenge of adding new features and maintaining current ones, all without bugs. For this, we have created this course, where we will learn how to implement a sustainable React architecture that allows us to add features much faster and easier, without so much effort.",
+    },
+    designPatterns: {
+      title: "Design Patterns",
+      description: "Design patterns are the key to creating software that evolves easily and with reasonable effort over a long time. Patterns not only allow us to have elegant designs, but also unify the way of working across different development teams.",
+    },
+    cleanCode: {
+      title: "Clean Code",
+      description: "Do you want to learn the definitive techniques that will allow you to have clearer, self-explanatory and easier to maintain code? In this course we will explain everything you need to know, but as we always do, this course has a high volume of practice.",
+    },
+    nextJs: {
+      title: "Next.js",
+      description: "Next.js gives you the best React.js development experience with all the features you need for production like Client Side Rendering, Server Side Rendering, Static Site Generation (SSG) and even automatic production deployments with Vercel.",
+    },
+    ddd: {
+      title: "Domain Driven Design",
+      description: "Having trouble designing your domain and creating useful unit tests? DDD can help make your code expressive and modular - perfect for unit testing!",
+    },
+    tdd: {
+      title: "Test-Driven Development",
+      description: "Also known as TDD (test-driven development) is a programming practice that consists of writing tests first (usually unit tests) and then writing the source code that passes the test satisfactorily and, finally, refactoring the written code.",
+    },
+    react: {
+      title: "React with TypeScript",
+      description: "Learn everything you need to create enterprise applications using React, one of the most widely used Frontend libraries in the entire world. We will ensure that your team acquires the professional competencies necessary to build high-quality software.",
+    },
+    oop: {
+      title: "Object-Oriented Design",
+      description: "We all know how important it is to master object-oriented programming. For this, we propose to explain in a clear, simple way and as we usually do with lots and lots of practice how to design in the best way using the object-oriented programming paradigm.",
+    },
+    customCourse: {
+      title: "Don't see the course you're looking for?",
+      description: "If you don't find the course you're looking for in this list, contact us and we'll organize it with great enthusiasm. We're sure we'll surprise you.",
+    },
+  },
+  testimonials: {
+    title: "What our clients say",
+  },
+  clients: {
+    badge: "Our Clients",
+    title: "Companies that trust us",
+    subtitle: "These are some clients who trust us",
+    stats: {
+      clients: "Satisfied clients",
+      years: "Years of experience",
+      teams: "Teams transformed",
+      satisfaction: "Satisfaction",
+    },
+  },
+  newsletter: {
+    title: "Scouts Letter",
+    subtitle: "This is our newsletter, our bulletin to keep you updated on all the events we hold in the community.",
+    cta: "I want to be in the Scoutsletter",
+    placeholder: "Your email",
+  },
+  contact: {
+    title: "Contact",
+    subtitle: "Let's talk?",
+    description: "We will be happy to talk with you",
+    phone: "+34 664 109 973",
+    email: "hola@codescouts.academy",
+    scheduleCall: "If you prefer, schedule a call with us directly",
+    form: {
+      name: "Name",
+      email: "Email",
+      message: "Message",
+      send: "Send",
+    },
+  },
+  footer: {
+    tagline: "We help software teams achieve technical excellence",
+    quickLinks: "Quick links",
+    followUs: "Follow us",
+    rights: "All rights reserved",
+  },
+  notFound: {
+    title: "404",
+    subtitle: "Page not found",
+    backHome: "Back to home",
+  },
+};

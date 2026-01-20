@@ -202,9 +202,18 @@
     "phone": "+34 664 109 973",
     "email": "hola@codescouts.academy",
     "scheduleCall": "Si lo prefieres, agéndanos una llamada directamente",
+    "followUs": "Síguenos en nuestras redes sociales",
+    "callUs": "Agendar llamada",
     "form": {
+      "namePlaceholder": "Juan Pérez",
+      "emailPlaceholder": "juan.perez@email.com",
+      "phonePlaceholder": "+34 600 000 000",
+      "messagePlaceholder": "Cuéntanos en qué podemos ayudarte...",
+      "companyPlaceholder": "Acme Corp (opcional)",
+      "location": "Ubicación",
       "name": "Nombre",
       "email": "Email",
+      "phone": "Teléfono",
       "message": "Mensaje",
       "send": "Enviar"
     }

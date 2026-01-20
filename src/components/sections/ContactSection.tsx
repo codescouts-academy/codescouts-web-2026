@@ -64,7 +64,9 @@ const ContactSection = () => {
                   <Phone className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Teléfono</p>
+                  <p className="text-sm text-muted-foreground">
+                    {t("contact.form.phone")}
+                  </p>
                   <p className="font-medium">{t("contact.phone")}</p>
                 </div>
               </a>
@@ -77,7 +79,9 @@ const ContactSection = () => {
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Email</p>
+                  <p className="text-sm text-muted-foreground">
+                    {t("contact.form.email")}
+                  </p>
                   <p className="font-medium">{t("contact.email")}</p>
                 </div>
               </a>
@@ -113,6 +117,7 @@ const ContactSection = () => {
                     id="name"
                     type="text"
                     value={formData.name}
+                    placeholder={t("contact.form.namePlaceholder")}
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
@@ -132,6 +137,7 @@ const ContactSection = () => {
                     id="email"
                     type="email"
                     value={formData.email}
+                    placeholder={t("contact.form.emailPlaceholder")}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
@@ -150,6 +156,7 @@ const ContactSection = () => {
                   <Textarea
                     id="message"
                     value={formData.message}
+                    placeholder={t("contact.form.messagePlaceholder")}
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
                     }

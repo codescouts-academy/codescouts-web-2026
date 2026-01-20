@@ -202,9 +202,18 @@
     "phone": "+34 664 109 973",
     "email": "hello@codescouts.academy",
     "scheduleCall": "If you prefer, schedule a call with us directly",
+    "followUs": "Follow us on our social networks",
+    "callUs": "Schedule call",
     "form": {
+      "namePlaceholder": "John Doe",
+      "emailPlaceholder": "john.doe@email.com",
+      "phonePlaceholder": "+1 555 000 0000",
+      "messagePlaceholder": "Tell us how we can help you...",
+      "companyPlaceholder": "Acme Corp (optional)",
+      "location": "Location",
       "name": "Name",
       "email": "Email",
+      "phone": "Phone",
       "message": "Message",
       "send": "Send"
     }

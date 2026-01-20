@@ -24,19 +24,19 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      label: "Email",
+      label: t("contact.form.email"),
       value: t("contact.email"),
       href: `mailto:${t("contact.email")}`,
     },
     {
       icon: Phone,
-      label: "Teléfono",
+      label: t("contact.form.phone"),
       value: t("contact.phone"),
       href: `tel:${t("contact.phone").replace(/\s/g, "")}`,
     },
     {
       icon: MapPin,
-      label: "Ubicación",
+      label: t("contact.form.location"),
       value: "Madrid, España",
       href: null,
     },
@@ -109,7 +109,7 @@ const Contact = () => {
                       <Input
                         id="name"
                         type="text"
-                        placeholder="Tu nombre"
+                        placeholder={t("contact.form.namePlaceholder")}
                         required
                         className="bg-background/50"
                       />
@@ -120,7 +120,7 @@ const Contact = () => {
                       <Input
                         id="email"
                         type="email"
-                        placeholder="tu@email.com"
+                        placeholder={t("contact.form.emailPlaceholder")}
                         required
                         className="bg-background/50"
                       />
@@ -131,7 +131,7 @@ const Contact = () => {
                       <Input
                         id="company"
                         type="text"
-                        placeholder="Tu empresa (opcional)"
+                        placeholder={t("contact.form.companyPlaceholder")}
                         className="bg-background/50"
                       />
                     </div>
@@ -142,7 +142,7 @@ const Contact = () => {
                       </Label>
                       <Textarea
                         id="message"
-                        placeholder="Cuéntanos en qué podemos ayudarte..."
+                        placeholder={t("contact.form.messagePlaceholder")}
                         rows={5}
                         required
                         className="bg-background/50 resize-none"
@@ -222,7 +222,7 @@ const Contact = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Agendar llamada
+                        {t("contact.callUs")}
                       </a>
                     </Button>
                   </div>
@@ -231,7 +231,7 @@ const Contact = () => {
 
               {/* Social Links */}
               <div className="space-y-4">
-                <h3 className="font-semibold">Síguenos</h3>
+                <h3 className="font-semibold">{t("contact.followUs")}</h3>
                 <div className="flex gap-4">
                   {socialLinks.map((social) => (
                     <a

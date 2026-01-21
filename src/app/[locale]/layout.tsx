@@ -4,10 +4,6 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../index.css";
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
-
 export default async function LocaleLayout({
   children,
   params,
@@ -34,4 +30,8 @@ export default async function LocaleLayout({
       </body>
     </html>
   );
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
 }

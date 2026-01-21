@@ -167,7 +167,9 @@ const Contact = () => {
             >
               {/* Contact Details */}
               <div className="space-y-6">
-                <h2 className="text-2xl font-bold">Información de contacto</h2>
+                <h2 className="text-2xl font-bold">
+                  {t("contact.contactInfo")}
+                </h2>
                 <div className="space-y-4">
                   {contactInfo.map((info, index) => (
                     <motion.div

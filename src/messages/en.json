@@ -79,31 +79,54 @@
     "title": "Our Services",
     "subtitle": "We focus on dedicated practice on a real project, carefully taking care of software quality and value delivery",
     "subtitle2": "We specialize in developing high-performance teams through eXtreme Programming practices",
+    "exploreCourses": "See available courses",
+    "ctaTitle": "Ready to take your team to the next level?",
+    "ctaSubtitle": "Schedule a call with us and discover how we can help you",
     "technicalCoaching": {
       "title": "Technical Coaching",
       "description": "If you need help on your team to incorporate the knowledge they lack, this is the ideal service for you. Together with a technical coach, the team will be able to work on their day-to-day tasks, prioritizing knowledge at each step, without losing sight of increasing productivity and value delivery.",
       "fullDescription": "If you need help on your team to incorporate the knowledge they lack, this is the ideal service for you. Here they can learn to develop their skills in a proactive environment. Together with a technical coach, the team will be able to work on their day-to-day tasks, having a technical coach who will help ensure this is done in the best possible way, prioritizing knowledge at each step; without losing sight of increasing productivity and value delivery.",
-      "quote": "We develop high-performance teams capable of meeting product demand effectively and sustainably"
+      "quote": "We develop high-performance teams capable of meeting product demand effectively and sustainably",
+      "benefit1": "Improved code quality",
+      "benefit2": "Increased team productivity",
+      "benefit3": "Effective knowledge transfer",
+      "benefit4": "Development of best practices"
     },
     "acceleratedProgram": {
       "title": "Accelerated Program",
       "description": "We ensure that your team has the knowledge to work in your company by preparing a customized program to transmit concepts as clearly as possible, and as always accompanied by exercises that allow putting each of these topics into practice to accelerate the ramp up.",
       "fullDescription": "We ensure that your team has the knowledge to work in your company by preparing a customized program to transmit concepts as clearly as possible, and as always accompanied by exercises that allow putting each of these topics into practice.",
-      "quote": "We train software teams by delivering a customized learning plan, adjusted to your company's needs and technologies, with technical coaches with more than 10 years in the industry"
+      "quote": "We train software teams by delivering a customized learning plan, adjusted to your company's needs and technologies, with technical coaches with more than 10 years in the industry",
+      "benefit1": "Accelerated ramp up",
+      "benefit2": "Personalized program",
+      "benefit3": "Practical exercises",
+      "benefit4": "Coaches with 10+ years experience"
     },
     "ctoAsService": {
       "title": "CTO as a Service",
       "description": "Do you need to define or redefine your company's technology strategy and want to validate it with us? Do you need to know which technologies are best for your products? This service fits perfectly.",
-      "quote": "We help technology companies develop an effective strategy that allows them to grow quickly and sustainably over time, creating technological components that fit your objectives."
+      "quote": "We help technology companies develop an effective strategy that allows them to grow quickly and sustainably over time, creating technological components that fit your objectives.",
+      "benefit1": "Defined technology strategy",
+      "benefit2": "Optimal technology selection",
+      "benefit3": "Sustainable growth",
+      "benefit4": "Custom technology components"
     },
     "softwareConsulting": {
       "title": "Software Consulting",
       "description": "We will discover what points you need to improve in your current software, we will also analyze the development methodology and help you improve it step by step, defining an iterative plan so you can evolve your product.",
-      "quote": "We help software companies solve technical problems that prevent efficiently achieving the software's objective"
+      "quote": "We help software companies solve technical problems that prevent efficiently achieving the software's objective",
+      "benefit1": "Improvement points analysis",
+      "benefit2": "Methodology review",
+      "benefit3": "Iterative evolution plan",
+      "benefit4": "Product optimization"
     },
     "training": {
       "title": "Training",
-      "description": "We have a wide variety of customized courses aimed at putting into practice what you really need in your day-to-day, executing the course in the most proactive way to speed up learning and implementation of knowledge."
+      "description": "We have a wide variety of customized courses aimed at putting into practice what you really need in your day-to-day, executing the course in the most proactive way to speed up learning and implementation of knowledge.",
+      "benefit1": "Custom courses",
+      "benefit2": "Practical learning",
+      "benefit3": "Proactive methodology",
+      "benefit4": "Immediate application"
     }
   },
   "courses": {
@@ -199,6 +222,7 @@
     "title": "Contact",
     "subtitle": "Let's talk?",
     "description": "We will be happy to talk with you",
+    "contactInfo": "Contact Information",
     "phone": "+34 664 109 973",
     "email": "hello@codescouts.academy",
     "scheduleCall": "If you prefer, schedule a call with us directly",

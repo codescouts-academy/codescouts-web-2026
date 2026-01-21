@@ -27,10 +27,10 @@ const Services = () => {
       description: t("services.technicalCoaching.fullDescription"),
       quote: t("services.technicalCoaching.quote"),
       benefits: [
-        "Mejora en la calidad del código",
-        "Aumento de productividad del equipo",
-        "Transferencia de conocimiento efectiva",
-        "Desarrollo de buenas prácticas",
+        t("services.technicalCoaching.benefit1"),
+        t("services.technicalCoaching.benefit2"),
+        t("services.technicalCoaching.benefit3"),
+        t("services.technicalCoaching.benefit4"),
       ],
     },
     {
@@ -40,10 +40,10 @@ const Services = () => {
       description: t("services.acceleratedProgram.fullDescription"),
       quote: t("services.acceleratedProgram.quote"),
       benefits: [
-        "Ramp up acelerado",
-        "Programa personalizado",
-        "Ejercitación práctica",
-        "Coaches con +10 años de experiencia",
+        t("services.acceleratedProgram.benefit1"),
+        t("services.acceleratedProgram.benefit2"),
+        t("services.acceleratedProgram.benefit3"),
+        t("services.acceleratedProgram.benefit4"),
       ],
     },
     {
@@ -53,10 +53,10 @@ const Services = () => {
       description: t("services.ctoAsService.description"),
       quote: t("services.ctoAsService.quote"),
       benefits: [
-        "Estrategia tecnológica definida",
-        "Selección de tecnologías óptimas",
-        "Crecimiento sostenible",
-        "Componentes tecnológicos a medida",
+        t("services.ctoAsService.benefit1"),
+        t("services.ctoAsService.benefit2"),
+        t("services.ctoAsService.benefit3"),
+        t("services.ctoAsService.benefit4"),
       ],
     },
     {
@@ -66,10 +66,10 @@ const Services = () => {
       description: t("services.softwareConsulting.description"),
       quote: t("services.softwareConsulting.quote"),
       benefits: [
-        "Análisis de puntos de mejora",
-        "Revisión de metodología",
-        "Plan iterativo de evolución",
-        "Optimización del producto",
+        t("services.softwareConsulting.benefit1"),
+        t("services.softwareConsulting.benefit2"),
+        t("services.softwareConsulting.benefit3"),
+        t("services.softwareConsulting.benefit4"),
       ],
     },
     {
@@ -79,10 +79,10 @@ const Services = () => {
       description: t("services.training.description"),
       quote: "",
       benefits: [
-        "Cursos a medida",
-        "Aprendizaje práctico",
-        "Metodología proactiva",
-        "Aplicación inmediata",
+        t("services.training.benefit1"),
+        t("services.training.benefit2"),
+        t("services.training.benefit3"),
+        t("services.training.benefit4"),
       ],
       linkTo: "/courses",
     },
@@ -153,7 +153,7 @@ const Services = () => {
                   {service.linkTo ? (
                     <Button asChild className="glow">
                       <Link href={`/${locale}${service.linkTo}`}>
-                        Ver cursos disponibles
+                        {t("services.exploreCourses")}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
@@ -204,13 +204,13 @@ const Services = () => {
             className="max-w-2xl mx-auto"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              ¿Listo para llevar a tu equipo al siguiente nivel?
+              {t("services.ctaTitle")}
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
-              Agenda una llamada con nosotros y descubre cómo podemos ayudarte
+              {t("services.ctaSubtitle")}
             </p>
             <Button asChild size="lg" className="glow">
-              <Link href="/contact">
+              <Link href={`/${locale}/contact`}>
                 {t("contact.subtitle")}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>

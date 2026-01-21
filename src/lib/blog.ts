@@ -33,7 +33,6 @@ function calculateReadingTime(content: string): number {
 export function getPostsFromLang(lang: Language): BlogPost[] {
   const langDir = path.join(BLOG_DIR, lang);
 
-  console.log("Loading blog posts from:", langDir);
   if (!fs.existsSync(langDir)) return [];
 
   return fs

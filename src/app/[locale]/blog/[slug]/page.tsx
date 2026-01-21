@@ -30,5 +30,12 @@ export default BlogPost;
 export const dynamic = "force-static";
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  const locales = routing.locales.map((locale) => ({ locale }));
+  const params = locales.flatMap((locale) => {
+    const posts = getPostsFromLang(locale.locale);
+
+    return posts.map((post) => ({ locale: locale.locale, slug: post.slug }));
+  });
+
+  return params;
 }

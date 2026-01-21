@@ -6,13 +6,15 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-export default async function BlogPage({ params }: Props) {
+const BlogPage = async ({ params }: Props) => {
   const { locale } = await params;
 
   const posts = getPostsFromLang(locale);
 
   return <BlogPosts blogPosts={posts} />;
-}
+};
+
+export default BlogPage;
 
 export const dynamic = "force-static";
 

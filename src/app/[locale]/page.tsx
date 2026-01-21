@@ -5,7 +5,6 @@ import HowWeWork from "@/components/sections/HowWeWork";
 import HowWeHelp from "@/components/sections/HowWeHelp";
 import Services from "@/components/sections/Services";
 import Testimonials from "@/components/sections/Testimonials";
-import Newsletter from "@/components/sections/Newsletter";
 import ContactSection from "@/components/sections/ContactSection";
 
 const Index = () => {

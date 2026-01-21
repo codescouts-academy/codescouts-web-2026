@@ -42,7 +42,7 @@ const HowWeWork = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            {t("howWeWork.title")} <span className="text-3xl">🔨</span>
+            {t("howWeWork.title")}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             {t("howWeWork.subtitle")}

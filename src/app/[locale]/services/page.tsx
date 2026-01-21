@@ -170,7 +170,7 @@ const Services = () => {
                 {/* Benefits Card */}
                 <div className="bg-secondary/30 backdrop-blur-sm border border-border/50 rounded-2xl p-8">
                   <h3 className="text-lg font-semibold mb-6 text-primary">
-                    Beneficios
+                    {t("services.benefitsIncluded")}
                   </h3>
                   <ul className="space-y-4">
                     {service.benefits.map((benefit, i) => (

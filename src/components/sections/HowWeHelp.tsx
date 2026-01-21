@@ -49,10 +49,10 @@ const HowWeHelp = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            {t("howWeHelp.title")} <span className="text-3xl">🙏</span>
+            {t("howWeHelp.title")}
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            {t("howWeHelp.subtitle")} 👇
+            {t("howWeHelp.subtitle")}
           </p>
         </motion.div>
 

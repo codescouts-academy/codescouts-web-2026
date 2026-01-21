@@ -17,8 +17,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
   const t = useTranslations();
 
   const contactInfo = [
@@ -60,9 +62,63 @@ const Contact = () => {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const formToHubSpot = (formData: FormData) => {
+    let fieldArray = [];
+    for (let [name, value] of formData.entries()) {
+      fieldArray.push({
+        objectTypeId: "0-1",
+        name: name,
+        value: value,
+      });
+    }
+    return fieldArray;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
+
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const fields = formToHubSpot(formData);
+
+    const payload = {
+      fields: fields,
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title,
+      },
+    };
+
+    try {
+      const response = await fetch(
+        "https://api.hsforms.com/submissions/v3/integration/submit/25900557/9cd94ae9-df87-4df2-a6cb-b1ade33504aa",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        },
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("HubSpot error:", errorData);
+        throw new Error("Network response was not ok");
+      }
+
+      form.reset();
+
+      toast({
+        title: t("contact.successMessage"),
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: t("contact.errorMessage"),
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -105,11 +161,27 @@ const Contact = () => {
                 <CardContent className="p-8">
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name">{t("contact.form.name")}</Label>
+                      <Label htmlFor="firstname">
+                        {t("contact.form.name")}
+                      </Label>
                       <Input
-                        id="name"
+                        id="firstname"
+                        name="firstname"
                         type="text"
                         placeholder={t("contact.form.namePlaceholder")}
+                        required
+                        className="bg-background/50"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastname">
+                        {t("contact.form.lastname")}
+                      </Label>
+                      <Input
+                        id="lastname"
+                        name="lastname"
+                        type="text"
+                        placeholder={t("contact.form.lastnamePlaceholder")}
                         required
                         className="bg-background/50"
                       />
@@ -119,6 +191,7 @@ const Contact = () => {
                       <Label htmlFor="email">{t("contact.form.email")}</Label>
                       <Input
                         id="email"
+                        name="email"
                         type="email"
                         placeholder={t("contact.form.emailPlaceholder")}
                         required
@@ -130,6 +203,7 @@ const Contact = () => {
                       <Label htmlFor="company">Empresa</Label>
                       <Input
                         id="company"
+                        name="company"
                         type="text"
                         placeholder={t("contact.form.companyPlaceholder")}
                         className="bg-background/50"
@@ -142,6 +216,7 @@ const Contact = () => {
                       </Label>
                       <Textarea
                         id="message"
+                        name="message"
                         placeholder={t("contact.form.messagePlaceholder")}
                         rows={5}
                         required

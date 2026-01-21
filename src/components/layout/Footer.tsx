@@ -1,6 +1,15 @@
 "use client";
 
-import { Mail, Phone, Linkedin, Twitter, Github } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  Linkedin,
+  Twitter,
+  Github,
+  LucideExternalLink,
+  Youtube,
+  Instagram,
+} from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 
@@ -8,11 +17,14 @@ const Footer = () => {
   const t = useTranslations();
   const locale = useLocale();
 
-  const quickLinks = [
-    { href: "/services", label: t("nav.services") },
-    { href: "/courses", label: t("nav.courses") },
-    { href: "/blog", label: t("nav.blog") },
-    { href: "/contact", label: t("nav.contact") },
+  const externalLinks = [
+    { href: "https://agile.codescouts.academy/", label: "Agile Hub" },
+    { href: "https://interview.codescouts.academy/", label: "Interview" },
+    {
+      href: "https://coach.codescouts.academy/",
+      label: "Need coaching?",
+    },
+    { href: "https://campus.codescouts.academy/", label: "Campus" },
   ];
 
   const services = [
@@ -51,9 +63,17 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm leading-relaxed">
               {t("footer.tagline")}
             </p>
-            <div className="flex gap-4 pt-2">
+            <div className="flex gap-3 items-center">
               <a
-                href="https://linkedin.com/company/codescouts"
+                href="https://github.com/codescouts-academy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/codescouts"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -61,20 +81,20 @@ const Footer = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://twitter.com/codescouts"
+                href="https://www.instagram.com/codescouts.academy/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                <Twitter className="h-5 w-5" />
+                <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="https://github.com/codescouts"
+                href="https://www.youtube.com/@code_scouts"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                <Github className="h-5 w-5" />
+                <Youtube className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -85,13 +105,16 @@ const Footer = () => {
               {t("footer.quickLinks")}
             </h4>
             <ul className="space-y-2">
-              {quickLinks.map((link) => (
+              {externalLinks.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={`/${locale}${link.href}`}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
                     {link.label}
+                    <LucideExternalLink className="w-3 h-3 inline-block ml-1" />
                   </Link>
                 </li>
               ))}

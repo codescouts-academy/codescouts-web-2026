@@ -14,23 +14,82 @@ const ContactSection = () => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    firstname: "",
+    lastname: "",
+    company: "",
     email: "",
     message: "",
   });
+
+  const formToHubSpot = (formData: FormData) => {
+    let fieldArray = [];
+    for (let [name, value] of formData.entries()) {
+      fieldArray.push({
+        objectTypeId: "0-1",
+        name: name,
+        value: value,
+      });
+    }
+    return fieldArray;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const form = new FormData();
+    form.append("firstname", formData.firstname);
+    form.append("lastname", formData.lastname);
+    form.append("company", formData.company);
+    form.append("email", formData.email);
+    form.append("message", formData.message);
+    const fields = formToHubSpot(form);
 
-    toast({
-      title: "¡Mensaje enviado!",
-      description: "Nos pondremos en contacto contigo pronto.",
-    });
+    const payload = {
+      fields: fields,
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title,
+      },
+    };
 
-    setFormData({ name: "", email: "", message: "" });
+    try {
+      const response = await fetch(
+        "https://api.hsforms.com/submissions/v3/integration/submit/25900557/9cd94ae9-df87-4df2-a6cb-b1ade33504aa",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        },
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("HubSpot error:", errorData);
+        throw new Error("Network response was not ok");
+      }
+
+      setFormData({
+        firstname: "",
+        lastname: "",
+        company: "",
+        email: "",
+        message: "",
+      });
+
+      toast({
+        title: t("contact.successMessage"),
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: t("contact.errorMessage"),
+        variant: "destructive",
+      });
+    }
+
     setIsLoading(false);
   };
 
@@ -93,6 +152,15 @@ const ContactSection = () => {
                     {t("contact.scheduleCall")}
                   </p>
                 </div>
+                <Button asChild variant="outline">
+                  <a
+                    href="https://calendly.com/codescouts/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t("contact.callUs")}
+                  </a>
+                </Button>
               </div>
             </div>
           </motion.div>
@@ -116,10 +184,29 @@ const ContactSection = () => {
                   <Input
                     id="name"
                     type="text"
-                    value={formData.name}
+                    value={formData.firstname}
                     placeholder={t("contact.form.namePlaceholder")}
                     onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
+                      setFormData({ ...formData, firstname: e.target.value })
+                    }
+                    required
+                    className="bg-background/50"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="lastname"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    {t("contact.form.lastname")}
+                  </label>
+                  <Input
+                    id="lastname"
+                    type="text"
+                    value={formData.lastname}
+                    placeholder={t("contact.form.lastnamePlaceholder")}
+                    onChange={(e) =>
+                      setFormData({ ...formData, lastname: e.target.value })
                     }
                     required
                     className="bg-background/50"
@@ -140,6 +227,26 @@ const ContactSection = () => {
                     placeholder={t("contact.form.emailPlaceholder")}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
+                    }
+                    required
+                    className="bg-background/50"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="company"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    {t("contact.form.company")}
+                  </label>
+                  <Input
+                    id="company"
+                    type="text"
+                    value={formData.company}
+                    placeholder={t("contact.form.companyPlaceholder")}
+                    onChange={(e) =>
+                      setFormData({ ...formData, company: e.target.value })
                     }
                     required
                     className="bg-background/50"

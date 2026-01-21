@@ -240,6 +240,7 @@
       "location": "Ubicación",
       "name": "Nombre",
       "lastname": "Apellido",
+      "company": "Empresa",
       "email": "Email",
       "phone": "Teléfono",
       "message": "Mensaje",

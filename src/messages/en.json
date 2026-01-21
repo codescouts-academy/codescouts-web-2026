@@ -240,6 +240,7 @@
       "location": "Location",
       "name": "Name",
       "lastname": "Last Name",
+      "company": "Company",
       "email": "Email",
       "phone": "Phone",
       "message": "Message",

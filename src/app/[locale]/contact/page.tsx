@@ -39,7 +39,7 @@ const Contact = () => {
     {
       icon: MapPin,
       label: t("contact.form.location"),
-      value: "Madrid, España",
+      value: "Galicia, España",
       href: null,
     },
   ];
@@ -200,7 +200,9 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="company">Empresa</Label>
+                      <Label htmlFor="company">
+                        {t("contact.form.company")}
+                      </Label>
                       <Input
                         id="company"
                         name="company"
@@ -295,7 +297,7 @@ const Contact = () => {
                     </h3>
                     <Button asChild variant="outline">
                       <a
-                        href="https://calendly.com/codescouts"
+                        href="https://calendly.com/codescouts/30min"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

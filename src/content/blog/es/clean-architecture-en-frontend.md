@@ -2,11 +2,7 @@
 title: Clean architecture en frontend
 date: 2023-10-30T00:00:00.000Z
 summary: Clean Architecture es un nombre popularizado “Uncle Bob” que se basa en la premisa de estructurar el código en capas contiguas, es decir, que solo tienen comunicación con las capas que están inmediatamente a sus lados.
-images: [images/blog/clean-architecture.png]
-image: images/blog/clean-architecture.png
-feature_image: images/blog/clean-architecture.png
-with_reading_time: true
-with_post_share: true
+image: /images/blog/clean-architecture.png
 tags: [tcr, tdd, tests, commit]
 ---
 

@@ -6,7 +6,7 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import MarkdownRenderer from "@/components/blog/MarkdownRenderer";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { BlogPost } from "@/lib/blog";
 
 const Post = ({
@@ -17,10 +17,11 @@ const Post = ({
   relatedPosts: BlogPost[];
 }) => {
   const locale = useLocale();
+  const t = useTranslations();
 
   return (
     <Layout>
-      <article className="py-20 md:py-32">
+      <article className="py-20 md:py-32 grayscale">
         <div className="section-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -32,18 +33,18 @@ const Post = ({
             <Button asChild variant="ghost" size="sm" className="mb-8">
               <Link href={`/${locale}/blog`}>
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Volver al blog
+                {t("blog.backToBlog")}
               </Link>
             </Button>
 
             {/* Header */}
             <header className="mb-12">
               {post.coverImage && (
-                <div className="aspect-video rounded-2xl overflow-hidden mb-8">
+                <div className="aspect-video rounded-2xl overflow-hidden flex justify-center items-center">
                   <img
                     src={post.coverImage}
                     alt={post.title}
-                    className="w-full h-full object-cover"
+                    className="w-fit h-fit object-contain group-hover:brightness-110 group-hover:scale-105 transition-all duration-700"
                   />
                 </div>
               )}
@@ -60,7 +61,7 @@ const Post = ({
                 {post.readingTime && (
                   <span className="flex items-center gap-1">
                     <Clock className="w-4 h-4" />
-                    {post.readingTime} min de lectura
+                    {post.readingTime} {t("blog.readingTime")}
                   </span>
                 )}
                 {post.author && (

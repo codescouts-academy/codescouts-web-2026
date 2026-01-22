@@ -2,11 +2,7 @@
 title: Clean Code
 date: 2022-05-03T00:00:00.000Z
 summary: Si quieres ser como nosotros, un Code Scouts, tienes que mantener el código mejor de como lo has encontrado, echa un vistazo a nuestro blog que habla de ello.
-images: [images/blog/clean-code-feature.png]
-image: images/blog/clean-code.png
-feature_image: images/blog/clean-code-feature.png
-with_reading_time: true
-with_post_share: true
+image: /images/blog/clean-code.png
 tags: [cleancode, codigolimpio, codescouts]
 ---
 

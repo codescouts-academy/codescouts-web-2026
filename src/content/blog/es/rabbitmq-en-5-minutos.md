@@ -2,11 +2,7 @@
 title: RabbitMQ en 5 minutos
 date: 2024-05-10T00:00:00.000Z
 summary: ¿Quieres aprender los conceptos clave de RabbitMQ?, te explico qué es RabbitMQ en 5 minutos.
-images: [images/blog/rabbitmq.png]
-image: images/blog/rabbitmq.png
-feature_image: images/blog/rabbitmq.png
-with_reading_time: true
-with_post_share: true
+image: /images/blog/rabbitmq.png
 tags: [rabbitmq, codescouts]
 ---
 

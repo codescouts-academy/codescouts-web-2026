@@ -2,11 +2,7 @@
 title: Tipos de tests
 date: 2022-07-05T00:00:00.000Z
 summary: Existen muchos tipos de testing, o pruebas de software, que podemos usar para confirmar que nuestro software continúa funcionando correctamente tras introducir cambios nuevos sobre nuestro código fuente.
-images: [images/blog/test-pyramid-feature.png]
-image: images/blog/test-pyramid.png
-feature_image: images/blog/test-pyramid-feature.png
-with_reading_time: true
-with_post_share: true
+image: /images/blog/test-pyramid.png
 tags: [test, unit test, integration test, e2e, ui, test pyramid]
 ---
 
@@ -43,7 +39,7 @@ Automated testing es un componente clave para continuous integration y continuou
 
 Las pruebas unitarias son a bajo nivel (cercanas al código fuente de nuestra aplicación).
 
->  Este tipo de testing consiste en probar de forma individual las funciones y/o métodos (de las clases, componentes y/o módulos que son usados por nuestro software).
+> Este tipo de testing consiste en probar de forma individual las funciones y/o métodos (de las clases, componentes y/o módulos que son usados por nuestro software).
 
 Debido a lo específicas que son, generalmente son las pruebas unitarias de menor coste, y pueden **ejecutarse rápidamente** por un servidor de continuous integration (integración continua).
 
@@ -194,7 +190,7 @@ Automatizar es clave para hacer esto posible, y escribir pruebas (tarde o tempra
 
 Entonces la pregunta es: **¿vale la pena hacer pruebas manuales hoy en día?**
 
-Y la respuésta es: **sí**, y deben enfocarse en lo que se conoce como **"exploratory testing"**, 
+Y la respuésta es: **sí**, y deben enfocarse en lo que se conoce como **"exploratory testing"**,
 
 > donde el objetivo es descubrir errores que no son muy obvios.
 
@@ -215,7 +211,7 @@ Necesitamos anticipar qué ocurrirá cuando un usuario cometa un error 👇
 ingresando datos incoheretes,
 intentando guardar un formulario sin completar todos los campos,
 o vaya de un paso a otro sin seguir una secuencia, con o sin malas intenciones.
-Así mismo, necesitamos verificar si es posible para un usuario comprometer datos (es decir, tener acceso a recursos que no deben).  
+Así mismo, necesitamos verificar si es posible para un usuario comprometer datos (es decir, tener acceso a recursos que no deben).
 
 Espero que les haya gustado este post 🖖
 

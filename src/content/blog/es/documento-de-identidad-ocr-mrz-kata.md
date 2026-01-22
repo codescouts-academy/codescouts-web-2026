@@ -3,10 +3,7 @@ title: Documento de identidad - OCR/MRZ Kata
 date: 2024-08-21T00:00:00.000Z
 summary: Kata nivel medio/avanzado para practicar TDD y Mocks (opcional) en un algoritmo del mundo real. Esta Kata consiste en implementar un algoritmo que traduzca una imagen de un DNI a una cadena de caracteres con la información estructurada, y a partir de esta cadena parsearlo a un objeto con la información del DNI.
 images: [images/blog/mrz-feature.webp]
-image: images/blog/mrz-feature.webp
-feature_image: images/blog/mrz-feature.webp
-with_reading_time: true
-with_post_share: true
+image: /images/blog/mrz-feature.webp
 tags: [tdd, ocr, mrz, kata]
 ---
 

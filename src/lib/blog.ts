@@ -31,7 +31,7 @@ function calculateReadingTime(content: string): number {
  * Load all posts for a given language
  */
 export function getPostsFromLang(lang: Language): BlogPost[] {
-  const langDir = path.join(BLOG_DIR, lang);
+  const langDir = path.join(BLOG_DIR, "es");
 
   if (!fs.existsSync(langDir)) return [];
 
@@ -52,7 +52,7 @@ export function getPostsFromLang(lang: Language): BlogPost[] {
         summary: data.summary,
         date: data.date,
         author: data.author,
-        coverImage: data.coverImage,
+        coverImage: data.image,
         tags: data.tags ?? [],
         content,
         readingTime: calculateReadingTime(content),
@@ -67,7 +67,7 @@ export function getBlogPost(
   slug: string,
   lang: Language = "es",
 ): BlogPost | undefined {
-  return getPostsFromLang(lang).find((post) => post.slug === slug);
+  return getPostsFromLang("es").find((post) => post.slug === slug);
 }
 
 /**

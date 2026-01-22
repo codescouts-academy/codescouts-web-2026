@@ -2,11 +2,7 @@
 title: Mob programming
 date: 2022-04-28T00:00:00.000Z
 summary: Un grupo de gente brillante trabajando en lo mismo, al mismo tiempo, en el mismo lugar y en la misma computadora.
-images: [images/blog/mob-feature.png]
-image: images/blog/mob.png
-feature_image: images/blog/mob-feature.png
-with_reading_time: true
-with_post_share: true
+image: /images/blog/mob.png
 tags: [mobprogramming, codescouts]
 ---
 
@@ -20,12 +16,12 @@ Y como sugiere el nombre, Mob Programming es un enfoque en el desarrollo de soft
 
 El mob programming no está restringido a ningún tipo de trabajo, puede usarse para:
 
--   Historias de usuarios 📄
--   Requisitos 📃
--   Pruebas 🧪
--   Diseño 💄
--   Corrección de errores 🐛
--   Solución de problemas 🪲
+- Historias de usuarios 📄
+- Requisitos 📃
+- Pruebas 🧪
+- Diseño 💄
+- Corrección de errores 🐛
+- Solución de problemas 🪲
 
 Esto puede significar que un equipo de mob típico diseñará, desarrollará, probará e implementará todo junto.
 
@@ -33,17 +29,17 @@ Esto puede significar que un equipo de mob típico diseñará, desarrollará, pr
 
 ## Beneficios del mob programming
 
--   Mayor aprendizaje y comunicación 📖
--   Mayor capacidad para crear 💭
--   Mayor calidad de código ✅
--   Equipo más feliz y más cohesionado 😊
+- Mayor aprendizaje y comunicación 📖
+- Mayor capacidad para crear 💭
+- Mayor calidad de código ✅
+- Equipo más feliz y más cohesionado 😊
 
 ## Roles en el mob programming
 
--   El conductor (driver) 🧑🏻‍💻
--   El navegante (navigator) 🧑🏻‍🏫
--   El mob (los demás integrantes que no son ni driver ni navigator) 🧔🏻🧑🏾‍🦱🧑🏻‍🦰🧑🏻‍🦱👱🏻🧑🏾‍🦲
--   El facilitador (usualmente el technical coach) 🙎🏼
+- El conductor (driver) 🧑🏻‍💻
+- El navegante (navigator) 🧑🏻‍🏫
+- El mob (los demás integrantes que no son ni driver ni navigator) 🧔🏻🧑🏾‍🦱🧑🏻‍🦰🧑🏻‍🦱👱🏻🧑🏾‍🦲
+- El facilitador (usualmente el technical coach) 🙎🏼
 
 ![Untitled](/images/blog/mob1-content.png)
 
@@ -55,36 +51,36 @@ Esto puede significar que un equipo de mob típico diseñará, desarrollará, pr
 
 ## Flujo de programación del MOB
 
--   Temporizador de 10 minutos ⏱️
--   El navigator se une al mob 🧑🏻‍🏫 -> 🧑🏻‍🦱🧑🏻‍🦰🧑🏻‍🦱👱🏻🧑🏾‍🦲
--   El driver se convierte en navigator 🧑🏻‍🏫 -> 🧑🏻‍💻
+- Temporizador de 10 minutos ⏱️
+- El navigator se une al mob 🧑🏻‍🏫 -> 🧑🏻‍🦱🧑🏻‍🦰🧑🏻‍🦱👱🏻🧑🏾‍🦲
+- El driver se convierte en navigator 🧑🏻‍🏫 -> 🧑🏻‍💻
 
 ![Untitled](/images/blog/mob2-content.png)
 
 ## Buenas prácticas
 
--   Indicar un objetivo
-    -   Asegúrese de que el equipo esté en la misma página y trabaje hacia el mismo objetivo
--   Si y...
-    -   Continúe con lo que tiene, no deshaga el trabajo de navegadores anteriores
--   Haz commit cada vez que estes en un punto seguro
-    -   No estes más de 2 minutos sin hacer commit y moverte al siguiente paso
--   Confía en el navigator
-    -   Sin pensar en el teclado
--   Expresa al driver tus intenciones
-    -   Escribir el código para que el siguiente paso a realizar sea obvio.
--   Código intencional
-    -   Explica primero su intención en un lenguaje sencillo, luego tradúzcalo a código
--   Feedback constante
-    -   Los comentarios nos permiten saber que estamos progresando
--   Centrarse en el aprendizaje
-    -   No te preocupes demasiado por no ser productivo desde el principio
+- Indicar un objetivo
+  - Asegúrese de que el equipo esté en la misma página y trabaje hacia el mismo objetivo
+- Si y...
+  - Continúe con lo que tiene, no deshaga el trabajo de navegadores anteriores
+- Haz commit cada vez que estes en un punto seguro
+  - No estes más de 2 minutos sin hacer commit y moverte al siguiente paso
+- Confía en el navigator
+  - Sin pensar en el teclado
+- Expresa al driver tus intenciones
+  - Escribir el código para que el siguiente paso a realizar sea obvio.
+- Código intencional
+  - Explica primero su intención en un lenguaje sencillo, luego tradúzcalo a código
+- Feedback constante
+  - Los comentarios nos permiten saber que estamos progresando
+- Centrarse en el aprendizaje
+  - No te preocupes demasiado por no ser productivo desde el principio
 
 ## Reglas para trabajar juntos
 
--   Amabilidad 🧡
--   Consideración 🙏
--   Respeto 🤝
+- Amabilidad 🧡
+- Consideración 🙏
+- Respeto 🤝
 
 ![Untitled](/images/blog/mob3-content.png)
 

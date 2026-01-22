@@ -2,11 +2,7 @@
 title: Los principios solid
 date: 2022-04-29T00:00:00.000Z
 summary: Los principios SOLID son la base de la programación orientada a objetos
-images: [images/blog/solid-feature.png]
-image: images/blog/solid.png
-feature_image: images/blog/solid-feature.png
-with_reading_time: true
-with_post_share: true
+image: /images/blog/solid.png
 tags: [principles, principios, solid, codescouts]
 ---
 
@@ -206,7 +202,7 @@ class HouseSparrow implements Bird {
   public fly() {}
   public walk() {
     throw new Error(
-      "Unfortunately, House Sparrow can not walk!, they jump on real world"
+      "Unfortunately, House Sparrow can not walk!, they jump on real world",
     );
   }
 }

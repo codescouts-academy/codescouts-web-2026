@@ -2,11 +2,7 @@
 title: Test && Commit || Revert
 date: 2022-07-02T00:00:00.000Z
 summary: El flujo de trabajo TCR (Test && Commit || Revert) consiste en que tras cada cambio en el código de producción se lanzan los tests. Si los test pasan, se ejecuta un commit con los cambios.
-images: [images/blog/test-commit-revert-feature.png]
-image: images/blog/test-commit-revert.png
-feature_image: images/blog/test-commit-revert-feature.png
-with_reading_time: true
-with_post_share: true
+image: /images/blog/test-commit-revert.png
 tags: [tcr, tdd, tests, commit]
 ---
 

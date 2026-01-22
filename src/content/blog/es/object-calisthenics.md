@@ -2,11 +2,7 @@
 title: Object Calisthenics
 date: 2022-05-02T00:00:00.000Z
 summary: Si quieres tener un buen diseño de software, seguramente tienes que seguir estas 10 reglas para garantizarlo.
-images: [images/blog/objects-calisthenics.png]
-image: images/blog/objects-calisthenics.png
-feature_image: images/blog/objects-calisthenics.png
-with_reading_time: true
-with_post_share: true
+image: /images/blog/objects-calisthenics.png
 tags: [diseño, design, objectcalisthenics, codescouts]
 ---
 

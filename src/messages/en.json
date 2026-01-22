@@ -75,6 +75,13 @@
     "talentRetention": "Talent retention",
     "teamEmpowerment": "Team empowerment and commitment"
   },
+  "blog": {
+    "backToBlog": "Back to blog",
+    "readingTime": "min read",
+    "title": "Articles and resources for",
+    "developers": "developers",
+    "description": "We share our knowledge about best practices, architecture, and software development"
+  },
   "services": {
     "title": "Our Services",
     "subtitle": "We focus on dedicated practice on a real project, carefully taking care of software quality and value delivery",

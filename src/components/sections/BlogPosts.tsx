@@ -38,12 +38,11 @@ const BlogPosts = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
               {t("common.blog")}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Artículos y recursos para{" "}
-              <span className="text-primary">desarrolladores</span>
+              {t("blog.title")}{" "}
+              <span className="text-primary">{t("blog.developers")}</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground">
-              Compartimos nuestro conocimiento sobre buenas prácticas,
-              arquitectura y desarrollo de software
+              {t("blog.description")}
             </p>
           </motion.div>
         </div>
@@ -65,11 +64,11 @@ const BlogPosts = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
                   <Link href={`/${locale}/blog/${post.slug}`}>
                     <Card className="h-full group hover:border-primary/50 transition-all duration-300 bg-card/50 backdrop-blur-sm overflow-hidden">
                       {post.coverImage && (
-                        <div className="aspect-video overflow-hidden">
+                        <div className="flex justify-center items-center aspect-auto overflow-hidden">
                           <img
                             src={post.coverImage}
                             alt={post.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            className="h-[200px] w-[200px] p-2 object-contain object-center grayscale contrast-110 brightness-90 group-hover:brightness-110 group-hover:scale-105 transition-all duration-700"
                           />
                         </div>
                       )}

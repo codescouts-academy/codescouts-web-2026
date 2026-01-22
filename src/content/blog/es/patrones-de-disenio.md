@@ -2,11 +2,7 @@
 title: GOF Design patterns
 date: 2025-10-29T00:00:00.000Z
 summary: Guia completa acerca de los patrones de diseño de GOF, creacionales, comportamiento y estructurales.
-images: [images/blog/gof-feature.png]
-image: images/blog/gof.png
-feature_image: images/blog/gof-feature.png
-with_reading_time: true
-with_post_share: true
+image: /images/blog/gof.png
 tags: [GOF, gang of four, design patterns, codescouts]
 ---
 
@@ -499,7 +495,7 @@ class CreditCardPayment implements PaymentStrategy {
 
   pay(amount: number): void {
     console.log(
-      `Pagando ${amount}€ con tarjeta terminada en ${this.cardNumber.slice(-4)}`
+      `Pagando ${amount}€ con tarjeta terminada en ${this.cardNumber.slice(-4)}`,
     );
   }
 }

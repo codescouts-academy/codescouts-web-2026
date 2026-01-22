@@ -2,11 +2,7 @@
 title: Fakes Spies Mocks Stubs Dummies
 date: 2022-11-19T00:00:00.000Z
 summary: Cada vez que pregunto la diferencia entre estos tipos de test dobles, nadie sabe responderlo claramente, esta vez te aseguro que no quedarán dudas.
-images: [images/blog/dummy-stub-spy-mock-fake.png]
-image: images/blog/dummy-stub-spy-mock-fake.png
-feature_image: images/blog/dummy-stub-spy-mock-fake.png
-with_reading_time: true
-with_post_share: true
+image: /images/blog/dummy-stub-spy-mock-fake.png
 tags: [testdoubles, tdd, dobles-de-test, codescouts]
 ---
 
@@ -26,7 +22,7 @@ Supongamos que tenemos la siguiente **_interface_**
 
 ```typescript
 export interface Authenticator {
-    authenticate(userName: string, password: string): boolean;
+  authenticate(userName: string, password: string): boolean;
 }
 ```
 
@@ -34,23 +30,23 @@ La implementación de nuestro dummy será 👇
 
 ```typescript
 class AuthenticatorDummy implements Authenticator {
-    public authenticate(userName: string, password: string): boolean {
-        throw new Error("Not implemented");
-    }
+  public authenticate(userName: string, password: string): boolean {
+    throw new Error("Not implemented");
+  }
 }
 ```
 
 Y lo usaremos así 👇
 
 ```typescript
-test("get exception if username is empty", ()=> {
-    const authenticatorDummy = new AuthenticatorDummy();
-    const login = new Login(authenticatorDummy);
+test("get exception if username is empty", () => {
+  const authenticatorDummy = new AuthenticatorDummy();
+  const login = new Login(authenticatorDummy);
 
-    const authorize = ()=> login.authorize("", "Some password");
+  const authorize = () => login.authorize("", "Some password");
 
-    expect(authorize).toThrow("Username can not be empty");
-})
+  expect(authorize).toThrow("Username can not be empty");
+});
 ```
 
 ### ¿Cuándo usamos un dummy?
@@ -74,23 +70,23 @@ Los **Stubs son objetos Dummies** también que están implementados para hacer n
 Supongamos que tenemos este test
 
 ```typescript
-test("authentication is rejected when username or password are incorrect", ()=> {
-    const rejectAuthorizer= new RejectAuthorizer();
-    const login = new Login(rejectAuthorizer);
+test("authentication is rejected when username or password are incorrect", () => {
+  const rejectAuthorizer = new RejectAuthorizer();
+  const login = new Login(rejectAuthorizer);
 
-    const success = login.authorize("Wrong username", "Wrong password");
+  const success = login.authorize("Wrong username", "Wrong password");
 
-    expect(success).toBeFalsy();
-})
+  expect(success).toBeFalsy();
+});
 ```
 
 Entonces nuestro Stub será algo así cierto 🤔
 
 ```typescript
 class RejectAuthorizer implements Authenticator {
-    public authenticate(userName: string, password: string): boolean {
-        return false;
-    }
+  public authenticate(userName: string, password: string): boolean {
+    return false;
+  }
 }
 ```
 
@@ -98,23 +94,23 @@ Pero si queremos hacer un test donde el login sea correcto podremos generar un S
 
 ```typescript
 class SuccessAuthorizer implements Authenticator {
-    public authenticate(userName: string, password: string): boolean {
-        return true;
-    }
+  public authenticate(userName: string, password: string): boolean {
+    return true;
+  }
 }
 ```
 
 Y ahora en nuestro test
 
 ```typescript
-test("authentication is success when user name and password are correct", ()=> {
-    const successAuthorizer= new SuccessAuthorizer();
-    const login = new Login(successAuthorizer);
+test("authentication is success when user name and password are correct", () => {
+  const successAuthorizer = new SuccessAuthorizer();
+  const login = new Login(successAuthorizer);
 
-    const success = login.authorize("Wrong username", "Wrong password");
+  const success = login.authorize("Wrong username", "Wrong password");
 
-    expect(success).toBeTruthy();
-})
+  expect(success).toBeTruthy();
+});
 ```
 
 ### ¿Cuando usamos un Stub?
@@ -131,52 +127,52 @@ Por ejemplo implementemos un Spy del caso que venimos viendo
 
 ```typescript
 export class AuthenticationSpy implements Authenticator {
-    private count: number = 0;
-    private result: boolean = false;
+  private count: number = 0;
+  private result: boolean = false;
 
-    private lastUserName: string = "";
-    private lastPassword: string = "";
+  private lastUserName: string = "";
+  private lastPassword: string = "";
 
-    public authenticate(userName: string, password: string): boolean {
-        this.count++;
-        this.lastUserName = userName;
-        this.lastPassword = password;
+  public authenticate(userName: string, password: string): boolean {
+    this.count++;
+    this.lastUserName = userName;
+    this.lastPassword = password;
 
-        return this.result;
-    }
+    return this.result;
+  }
 
-    public get times(): number {
-        return this.count;
-    }
+  public get times(): number {
+    return this.count;
+  }
 
-    public changeResult(newResult: boolean) {
-        this.result = newResult;
-    }
+  public changeResult(newResult: boolean) {
+    this.result = newResult;
+  }
 
-    public get lastUserNameUsed() {
-        return this.lastUserName;
-    }
+  public get lastUserNameUsed() {
+    return this.lastUserName;
+  }
 
-    public get lastPasswordUsed() {
-        return this.lastPassword;
-    }
+  public get lastPasswordUsed() {
+    return this.lastPassword;
+  }
 }
 ```
 
 <br />
 
 ```typescript
-test("the user try to authenticate the authorizer authentication call once time", ()=> {
-    const authenticationSpy= new AuthenticationSpy();
-    authenticationSpy.changeResult(true);
+test("the user try to authenticate the authorizer authentication call once time", () => {
+  const authenticationSpy = new AuthenticationSpy();
+  authenticationSpy.changeResult(true);
 
-    const login = new Login(authenticationSpy);
+  const login = new Login(authenticationSpy);
 
-    const success = login.authorize("Wrong username", "Wrong password");
+  const success = login.authorize("Wrong username", "Wrong password");
 
-    expect(success).toBeTruthy();
-    expect(authenticationSpy.times).toBe(1);
-})
+  expect(success).toBeTruthy();
+  expect(authenticationSpy.times).toBe(1);
+});
 ```
 
 Los Spies pueden ser simples e incluso retornar un único valor o incluso pueden ser complejos guardando un historial completo de cada valor que se ha cambiado por cada vez que se ha invocado la función.
@@ -196,33 +192,37 @@ Por ejemplo miremos la implementación de este Mock.
 
 ```typescript
 class AuthenticatorMock extends AuthenticationSpy /* 👈 Extends previous Spy created */ {
-    constructor(private readonly expectedUsername: string,
-        private readonly expectedPassword: string,
-        private readonly authenticateCalling: number) {
-        super()
-    }
+  constructor(
+    private readonly expectedUsername: string,
+    private readonly expectedPassword: string,
+    private readonly authenticateCalling: number,
+  ) {
+    super();
+  }
 
-    public validate(): boolean {
-        return this.authenticateCalling === this.times &&
-            this.expectedUsername === this.lastUserNameUsed &&
-            this.expectedPassword === this.lastPasswordUsed;
-    }
+  public validate(): boolean {
+    return (
+      this.authenticateCalling === this.times &&
+      this.expectedUsername === this.lastUserNameUsed &&
+      this.expectedPassword === this.lastPasswordUsed
+    );
+  }
 }
 ```
 
 Entonces en nuestro test podemos hacer algo así
 
 ```typescript
-test("the login is correct when user and password are correct", ()=> {
-    const authenticationMock = new AuthenticatorMock("Code", "Scouts", 1);
-    authenticationMock.changeResult(true);
-    const login = new Login(authenticationMock);
+test("the login is correct when user and password are correct", () => {
+  const authenticationMock = new AuthenticatorMock("Code", "Scouts", 1);
+  authenticationMock.changeResult(true);
+  const login = new Login(authenticationMock);
 
-    const success = login.authorize("Code", "Scouts");
+  const success = login.authorize("Code", "Scouts");
 
-    expect(success).toBeTruthy();
-    expect(authenticationMock.validate()).toBeTruthy();
-})
+  expect(success).toBeTruthy();
+  expect(authenticationMock.validate()).toBeTruthy();
+});
 ```
 
 ### ¿Cuándo utilizamos los Mocks?
@@ -239,32 +239,32 @@ Veamos un ejemplo que es más fácil 👇
 
 ```typescript
 class AuthorizationFake implements Authenticator {
-    public authenticate(userName: string, password: string): boolean {
-        return userName === "Code" && password === "Scouts";
-    }
+  public authenticate(userName: string, password: string): boolean {
+    return userName === "Code" && password === "Scouts";
+  }
 }
 ```
 
 ```typescript
-test("authentication is rejected when username or password are incorrect", ()=> {
-    const authorizationFake= new AuthorizationFake();
-    const login = new Login(authorizationFake);
+test("authentication is rejected when username or password are incorrect", () => {
+  const authorizationFake = new AuthorizationFake();
+  const login = new Login(authorizationFake);
 
-    const success = login.authorize("Wrong username", "Wrong password");
+  const success = login.authorize("Wrong username", "Wrong password");
 
-    expect(success).toBeFalsy();
-})
+  expect(success).toBeFalsy();
+});
 ```
 
 ```typescript
-test("authentication is success when username and password correct", ()=> {
-    const authorizationFAke= new AuthorizationFAke();
-    const login = new Login(authorizationFAke);
+test("authentication is success when username and password correct", () => {
+  const authorizationFAke = new AuthorizationFAke();
+  const login = new Login(authorizationFAke);
 
-    const success = login.authorize("Code", "Scouts");
+  const success = login.authorize("Code", "Scouts");
 
-    expect(success).toBeTruthy();
-})
+  expect(success).toBeTruthy();
+});
 ```
 
 ### ¿Cuándo usamos Fakes?
@@ -274,11 +274,11 @@ Los Fakes nos ayudan mucho cuando tenemos escenarios más complejos, o queremos 
 Espero que ahora quede claro qué son cada uno de estos tests dobles.
 Pero no me quiero ir sin antes dejarles un pequeño resumen.
 
--   Dummy: Un dummy es una implementación que no realiza nada
--   Sub: Dummy que retorna valores específicos para cada escenario
--   Spy: Un Spy es un Stub que tiene la habilidad de cambiar el valor de respuesta cada vez que nosotros queramos
--   Mocks: Son Spies que tiene lógica de aserción internamente.
--   Fake: Simuladores que tienen un determinado escenario de fallo o de aserción complejo o dependiente de un estado interno.
+- Dummy: Un dummy es una implementación que no realiza nada
+- Sub: Dummy que retorna valores específicos para cada escenario
+- Spy: Un Spy es un Stub que tiene la habilidad de cambiar el valor de respuesta cada vez que nosotros queramos
+- Mocks: Son Spies que tiene lógica de aserción internamente.
+- Fake: Simuladores que tienen un determinado escenario de fallo o de aserción complejo o dependiente de un estado interno.
 
 Espero que les sirva esta explicación teórica y práctica te dejo aquí el repositorio con el código para que puedas revisarlo con detenimiento.
 👉 [Repo](https://github.com/codescouts-academy/fake-stub-mock-spy-dummy)

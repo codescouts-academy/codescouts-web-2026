@@ -2,11 +2,7 @@
 title: Principios de la buena programación
 date: 2022-04-28T00:00:00.000Z
 summary: Tras años de experiencia, la industria ha acuñado numerosos acrónimos que hacen referencia a buenas prácticas, y a los que a menudo hacemos referencia, como... KISS, DRY, YAGNI, etc.
-images: [images/blog/principios-de-la-buena-programacion.png]
-image: images/blog/principios-de-la-buena-programacion.png
-feature_image: images/blog/principios-de-la-buena-programacion.png
-with_reading_time: true
-with_post_share: true
+image: /images/blog/principios-de-la-buena-programacion.png
 tags: [principles, principios, codescouts]
 ---
 

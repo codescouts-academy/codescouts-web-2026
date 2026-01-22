@@ -1,12 +1,8 @@
 ---
-title: 'React 18: Novedades'
+title: "React 18: Novedades"
 summary: Salió la nueva versión de React js, si quieres saber más acerca de las novedades que trae esta versión, te lo explicamos en 1 minuto!
 date: 2022-05-01T00:00:00.000Z
-images: [images/blog/react-feature.png]
-image: images/blog/react.png
-feature_image: images/blog/react-feature.png
-with_reading_time: true
-with_post_share: true
+image: /images/blog/react.png
 tags: [react, codescouts]
 ---
 
@@ -17,21 +13,17 @@ tags: [react, codescouts]
 ## Antes
 
 ```jsx
-    import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 
-    ReactDOM.render(
-    <App />,
-    document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById("root"));
 ```
 
 ## Ahora
 
 ```jsx
-    import {createRoot} from 'react-dom/client'
+import { createRoot } from "react-dom/client";
 
-    createRoot(
-        document.getElementById('root')
-    ).render(<App />)
+createRoot(document.getElementById("root")).render(<App />);
 ```
 
 ## Actualización por lotes
@@ -41,10 +33,10 @@ tags: [react, codescouts]
 ## Antes de React 18
 
 ```jsx
-    setTimeout(() => {
-        setCount(c = c + 1)
-        setFlag(f => !f)
-    }, 1000)
+setTimeout(() => {
+  setCount((c = c + 1));
+  setFlag((f) => !f);
+}, 1000);
 ```
 
 > renderiza dos veces el componente
@@ -52,10 +44,10 @@ tags: [react, codescouts]
 ## Ahora con React 18
 
 ```jsx
-    setTimeout(() => {
-        setCount(c = c + 1)
-        setFlag(f => !f)
-    }, 1000)
+setTimeout(() => {
+  setCount((c = c + 1));
+  setFlag((f) => !f);
+}, 1000);
 ```
 
 > El componente se renderiza una vez
@@ -81,13 +73,13 @@ tags: [react, codescouts]
 Ahora Suspense funciona en el servidor y soporta esperar datos.
 
 ```jsx
-    <Layout>
-        <Navbar />
-        <Sidebar />
-        <Suspense fallback={<Spinner />}>
-        <Comments />
-        </Suspense>
-    </Layout>
+<Layout>
+  <Navbar />
+  <Sidebar />
+  <Suspense fallback={<Spinner />}>
+    <Comments />
+  </Suspense>
+</Layout>
 ```
 
 ## Nuevos hooks: useId y useDeferredValue
@@ -97,13 +89,14 @@ Ahora Suspense funciona en el servidor y soporta esperar datos.
 > Te permite crear un identificador único en el cliente y en el servidor.
 
 ```jsx
-    function Checkbox() {
-        const id = useId();
-        return(
-        <div>
-            <input id={id} type="checkbox" name="useId" />
-        </div>
-    )}
+function Checkbox() {
+  const id = useId();
+  return (
+    <div>
+      <input id={id} type="checkbox" name="useId" />
+    </div>
+  );
+}
 ```
 
 ## useDeferredValue

@@ -46,6 +46,13 @@
       "description": "Somos Ingenieros de Software apasionados, motivados, proactivos y nuestro principal objetivo es transmitir toda nuestra experiencia en cada proyecto creando un entorno de trabajo colaborativo y motivador."
     }
   },
+  "blog": {
+    "backToBlog": "Volver al blog",
+    "readingTime": "min de lectura",
+    "title": "Artículos y recursos para",
+    "developers": "desarrolladores",
+    "description": "Compartimos nuestro conocimiento sobre buenas prácticas, arquitectura y desarrollo de software"
+  },
   "howWeWork": {
     "title": "¿Cómo trabajamos?",
     "subtitle": "Estas son algunas características de nuestra forma de trabajo día a día",

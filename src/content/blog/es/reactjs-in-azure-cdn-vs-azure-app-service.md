@@ -2,11 +2,7 @@
 title: ReactJs Azure CDN o Azure App service
 date: 2023-01-20T00:00:00.000Z
 summary: Hay varias ventajas en alojar una aplicación React JS en un Azure CDN en lugar de un Azure App Service.
-images: [images/blog/azure-cdn-vs-azure-app-service.png]
-image: images/blog/azure-cdn-vs-azure-app-service.png
-feature_image: images/blog/azure-cdn-vs-azure-app-service.png
-with_reading_time: true
-with_post_share: true
+image: /images/blog/azure-cdn-vs-azure-app-service.png
 tags: [azure, cdn, app service, codescouts]
 ---
 

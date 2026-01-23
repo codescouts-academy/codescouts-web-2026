@@ -22,7 +22,7 @@ const testimonials: Testimonial[] = [
     company: "Mirai",
     text: {
       es: "Superasteis mis expectativas con creces. Tanto Tomás como Damián son dos grandes profesionales a nivel técnico y a nivel enseñanza (cosa mucho mas difícil de encontrar desde mi punto de vista en el mundo técnico). He hecho otras formaciones con otras empresas y puedo decir que este formato me ha gustado mas que cualquiera.",
-      en: "You exceeded my expectations by far. Both Tomás and Damián are outstanding professionals, both technically and in teaching (which is much harder to find in the tech world, in my opinion). I’ve attended other training with different companies, and I can say I liked this format more than any other.",
+      en: "You exceeded my expectations by far. Both Tomás and Damián are outstanding professionals, both technically and in teaching (which is much harder to find in the tech world, in my opinion). I've attended other training with different companies, and I can say I liked this format more than any other.",
     },
     image: "/images/testimonials/juan-alvarez.png",
   },
@@ -32,7 +32,7 @@ const testimonials: Testimonial[] = [
     company: "Movicoders",
     text: {
       es: "Durante nuestra colaboración, Damián nos ayudó a mejorar el nivel del equipo de forma significativa. Mediante dinámicas de mob-programming en sesiones técnicas y fomentando el debate, la reflexión y la participación. Nos acompañó en el proceso de definición de nuestra arquitectura, siendo una pieza clave en él.",
-      en: "During our collaboration, Damián helped significantly improve the team’s skill level through mob-programming sessions and by encouraging debate, reflection, and participation. He guided us through defining our architecture, being a key part of the process.",
+      en: "During our collaboration, Damián helped significantly improve the team's skill level through mob-programming sessions and by encouraging debate, reflection, and participation. He guided us through defining our architecture, being a key part of the process.",
     },
     image: "/images/testimonials/juanjo-hernandez.png",
   },
@@ -72,7 +72,7 @@ const testimonials: Testimonial[] = [
     company: "Submer",
     text: {
       es: "Hemos experimentado un significativo impulso en nuestro desarrollo, tanto a nivel tecnológico como metodológico, gracias a la colaboración con Damián. Su enfoque y habilidades han acelerado nuestro progreso, permitiéndonos simplificar y aplicar buenas prácticas en el desarrollo.",
-      en: "We’ve experienced significant progress in our development, both technologically and methodologically, thanks to collaborating with Damián. His approach and skills accelerated our progress, allowing us to simplify and apply best practices in development.",
+      en: "We've experienced significant progress in our development, both technologically and methodologically, thanks to collaborating with Damián. His approach and skills accelerated our progress, allowing us to simplify and apply best practices in development.",
     },
     image: "/images/testimonials/jonathan-huet.png",
   },
@@ -102,6 +102,16 @@ const Testimonials = () => {
   const locale = useLocale();
   const t = useTranslations();
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const preloadCount = 2;
+
+    for (let i = 1; i <= preloadCount; i++) {
+      const nextIndex = (currentIndex + i) % testimonials.length;
+      const img = new Image();
+      img.src = testimonials[nextIndex].image;
+    }
+  }, [currentIndex]);
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);

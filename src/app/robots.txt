@@ -1,0 +1,8 @@
+User-agent: *
+
+Allow: /images/favicon.png
+Disallow: /images/
+Disallow: /es/legal/
+Disallow: /en/legal/
+
+Sitemap: https://www.codescouts.academy/sitemap.xml

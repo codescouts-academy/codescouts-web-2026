@@ -40,7 +40,7 @@ const Contact = () => {
     {
       icon: MapPin,
       label: t("contact.form.location"),
-      value: "Galicia, España",
+      value: t("contact.location"),
       href: null,
     },
   ];

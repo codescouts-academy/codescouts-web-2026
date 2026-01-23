@@ -238,6 +238,7 @@
     "callUs": "Schedule call",
     "successMessage": "Message sent successfully!",
     "errorMessage": "There was an error sending your message. Please try again later.",
+    "location": "Galicia, Spain",
     "form": {
       "namePlaceholder": "John",
       "lastnamePlaceholder": "Doe",
@@ -258,8 +259,7 @@
   "footer": {
     "tagline": "We help software teams achieve technical excellence",
     "quickLinks": "Quick links",
-    "followUs": "Follow us",
-    "rights": "All rights reserved"
+    "followUs": "Follow us"
   },
   "notFound": {
     "title": "404",

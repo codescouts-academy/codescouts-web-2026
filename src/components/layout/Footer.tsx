@@ -9,6 +9,7 @@ import {
   LucideExternalLink,
   Youtube,
   Instagram,
+  MapPin,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
@@ -19,11 +20,11 @@ const Footer = () => {
 
   const externalLinks = [
     { href: "https://agile.codescouts.academy/", label: "Agile Hub" },
-    { href: "https://interview.codescouts.academy/", label: "Interview" },
     {
       href: "https://coach.codescouts.academy/",
       label: "Need coaching?",
     },
+    { href: "https://interview.codescouts.academy/", label: "Interview" },
     { href: "https://campus.codescouts.academy/", label: "Campus" },
   ];
 
@@ -156,6 +157,12 @@ const Footer = () => {
                   {t("contact.email")}
                 </a>
               </li>
+              <li>
+                <p className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm">
+                  <MapPin className="h-4 w-4" />
+                  {t("contact.location")}
+                </p>
+              </li>
             </ul>
           </div>
         </div>
@@ -163,11 +170,26 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} CodeScouts. {t("footer.rights")}.
+            <div className="flex flex-col gap-1">
+              <p className="text-muted-foreground text-xs font-mono">
+                {`// ${new Date().getFullYear()} CodeScouts`}
+              </p>
+              <p className="text-muted-foreground text-xs font-mono">
+                {"// +30 teams coached worldwide"}
+              </p>
+            </div>
           </p>
-          <p className="text-muted-foreground text-xs font-mono">
-            {"// Built with ♥ from Galicia"}
-          </p>
+          <div className="flex flex-col gap-1">
+            <p className="text-muted-foreground text-xs font-mono">
+              {"// Built with ♥ from Galicia"}
+            </p>
+            <Link
+              href={`/${locale}/legal`}
+              className="text-muted-foreground text-xs font-mono"
+            >
+              {"// Legal"}
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

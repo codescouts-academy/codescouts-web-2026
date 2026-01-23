@@ -67,7 +67,7 @@ const Header = () => {
                 key={link.href}
                 href={`/${locale}${link.href}`}
                 className={`link-hover text-sm font-medium transition-colors ${
-                  pathname === link.href
+                  pathname.includes(link.href)
                     ? "text-primary"
                     : "text-muted-foreground hover:text-foreground"
                 }`}

@@ -25,7 +25,7 @@ const Footer = () => {
       label: "Need coaching?",
     },
     { href: "https://interview.codescouts.academy/", label: "Interview" },
-    { href: "https://campus.codescouts.academy/", label: "Campus" },
+    { href: "https://library.codescouts.academy/", label: "Library" },
   ];
 
   const services = [

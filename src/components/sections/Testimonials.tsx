@@ -103,16 +103,6 @@ const Testimonials = () => {
   const t = useTranslations();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const preloadCount = 2;
-
-    for (let i = 1; i <= preloadCount; i++) {
-      const nextIndex = (currentIndex + i) % testimonials.length;
-      const img = new Image();
-      img.src = testimonials[nextIndex].image;
-    }
-  }, [currentIndex]);
-
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };

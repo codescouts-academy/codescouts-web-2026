@@ -175,13 +175,19 @@ const Footer = () => {
                 {`// ${new Date().getFullYear()} CodeScouts`}
               </p>
               <p className="text-muted-foreground text-xs font-mono">
-                {"// +30 teams coached worldwide"}
+                {`// ${process.env.VERCEL_GIT_COMMIT_MESSAGE ?? "feat: new release"}`}
+              </p>
+              <p className="text-muted-foreground text-xs font-mono">
+                {`// ${process.env.VERCEL_GIT_COMMIT_SHA ?? "72f74d90a01aee6afaa4936abe00e5ac9ab8a4cb"}`}
               </p>
             </div>
           </p>
           <div className="flex flex-col gap-1">
             <p className="text-muted-foreground text-xs font-mono">
               {"// Built with ♥ from Galicia"}
+            </p>
+            <p className="text-muted-foreground text-xs font-mono">
+              {"// +30 teams coached worldwide"}
             </p>
             <Link
               href={`/${locale}/legal`}

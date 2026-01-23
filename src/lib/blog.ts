@@ -24,6 +24,7 @@ const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200;
   const words = content.split(/\s+/).length;
+
   return Math.ceil(words / wordsPerMinute);
 }
 

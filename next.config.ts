@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
   distDir: "dist",
+  env: {
+    SITE_URL: 'https://www.codescouts.academy',
+  },
 };
 
 export default withNextIntl(nextConfig);

@@ -3,7 +3,6 @@ title: Patrones GRASP, el viejo SOLID
 date: 2022-07-03T00:00:00.000Z
 summary: Hoy en día se habla mucho de los principios SOLID, pero unos cuantos años antes, Craig Larman introdujo unos patrones muy interesantes, veámoslos!
 image: /images/blog/grasp.png
-feature_iage: images/blog/grasp-feature.png
 tags: [diseño, design, objectcalisthenics, codescouts]
 ---
 

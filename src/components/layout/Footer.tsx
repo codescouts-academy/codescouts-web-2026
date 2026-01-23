@@ -81,14 +81,6 @@ const Footer = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://www.instagram.com/codescouts.academy/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a
                 href="https://www.youtube.com/@code_scouts"
                 target="_blank"
                 rel="noopener noreferrer"

@@ -10,12 +10,30 @@ import {
   BookOpen,
   Gavel,
 } from "lucide-react";
+
+import type { LucideIcon } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 
-const AvisoLegal = () => {
-  const locale = useLocale();
+type LocalizedString = {
+  es: string;
+  en: string;
+};
 
-  const legalSections = [
+type LegalSection = {
+  icon: LucideIcon;
+  title: LocalizedString;
+  content: LocalizedString;
+  details?: Array<{
+    label: LocalizedString;
+    value: string;
+  }>;
+  items?: Array<LocalizedString>;
+};
+
+const AvisoLegal = () => {
+  const locale = useLocale() as keyof LocalizedString;
+
+  const legalSections: LegalSection[] = [
     {
       icon: FileText,
       title: {

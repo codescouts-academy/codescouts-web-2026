@@ -1,12 +1,11 @@
 import BlogPosts from "@/components/sections/BlogPosts";
+import { LocaleProps } from "@/i18n";
 import { routing } from "@/i18n/routing";
 import { getPostsFromLang } from "@/lib/blog";
+import { generateBlogListMeta } from "@/lib/meta";
+import { Metadata } from "next";
 
-type Props = {
-  params: Promise<{ locale: string }>;
-};
-
-const BlogPage = async ({ params }: Props) => {
+const Page = async ({ params }: LocaleProps) => {
   const { locale } = await params;
 
   const posts = getPostsFromLang(locale);
@@ -14,10 +13,18 @@ const BlogPage = async ({ params }: Props) => {
   return <BlogPosts blogPosts={posts} />;
 };
 
-export default BlogPage;
+export default Page;
 
 export const dynamic = "force-static";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: LocaleProps): Promise<Metadata> {
+  const { locale } = await params;
+
+  return generateBlogListMeta(locale);
 }

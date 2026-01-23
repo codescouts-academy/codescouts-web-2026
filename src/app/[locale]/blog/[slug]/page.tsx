@@ -2,12 +2,15 @@ import { redirect } from "next/navigation";
 import { getBlogPost, getPostsFromLang } from "@/lib/blog";
 import Post from "@/components/sections/Post";
 import { routing } from "@/i18n/routing";
+import type { Metadata } from "next";
+import { generateBlogPostMeta } from "@/lib/meta";
+import { LocaleProps } from "@/i18n";
 
-type Props = {
-  params: Promise<{ locale: string; slug: string }>;
+type Props = LocaleProps & {
+  params: Promise<{ slug: string }>;
 };
 
-const BlogPost = async ({ params }: Props) => {
+const Page = async ({ params }: Props) => {
   const { locale, slug } = await params;
 
   const post = getBlogPost(slug || "", locale || "en");
@@ -25,7 +28,7 @@ const BlogPost = async ({ params }: Props) => {
   return <Post post={post} relatedPosts={relatedPosts} />;
 };
 
-export default BlogPost;
+export default Page;
 
 export const dynamic = "force-static";
 
@@ -38,4 +41,17 @@ export function generateStaticParams() {
   });
 
   return params;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const post = getBlogPost(slug, locale);
+
+  if (!post) {
+    return {
+      title: "Post not found",
+    };
+  }
+
+  return generateBlogPostMeta(post, locale, slug);
 }

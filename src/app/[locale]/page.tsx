@@ -9,7 +9,6 @@ import ContactSection from "@/components/sections/ContactSection";
 import { LocaleProps } from "@/i18n";
 import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
 import { generateHomeMeta } from "@/lib/meta";
-import { routing } from "@/i18n/routing";
 
 const Page = () => {
   return (

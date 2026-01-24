@@ -6,6 +6,7 @@ import { Building2, ExternalLink } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { clients } from "@/lib/clients";
 import { Language } from "@/i18n";
+import { Highlight } from "@/components/ui/highlight";
 
 const ClientsList = ({ locale }: { locale: Language }) => {
   const t = useTranslations();
@@ -25,9 +26,9 @@ const ClientsList = ({ locale }: { locale: Language }) => {
             <span className="inline-block px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium mb-6">
               {t("clients.badge")}
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <Highlight highlight={["confían", "trust"]}>
               {t("clients.title")}
-            </h1>
+            </Highlight>
             <p className="text-lg md:text-xl text-muted-foreground">
               {t("clients.subtitle")}
             </p>

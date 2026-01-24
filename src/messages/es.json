@@ -49,8 +49,7 @@
   "blog": {
     "backToBlog": "Volver al blog",
     "readingTime": "min de lectura",
-    "title": "Artículos y recursos para",
-    "developers": "desarrolladores",
+    "title": "Artículos y recursos para desarrolladores",
     "description": "Compartimos nuestro conocimiento sobre buenas prácticas, arquitectura y desarrollo de software"
   },
   "howWeWork": {
@@ -139,9 +138,8 @@
   },
   "courses": {
     "title": "Formación",
-    "subtitle": "Cursos diseñados para equipos que buscan la",
-    "subtitle1": "excelencia",
-    "subtitle2": "Disponemos de una gran variedad de cursos a medida orientados a poner en práctica lo que realmente necesitas en tu día a día.",
+    "subtitle": "Cursos diseñados para equipos que buscan la excelencia",
+    "subtitle1": "Disponemos de una gran variedad de cursos a medida orientados a poner en práctica lo que realmente necesitas en tu día a día.",
     "legacyCode": {
       "title": "Código Legacy",
       "description": "Si agregar funcionalidades a tu aplicación, si seguir las tendencias de tecnología o incluso actualizar una dependencias se convierte en un dolor de cabeza para tu equipo, este curso es perfecto para ti. En este curso aprenderemos técnicas avanzadas para trabajar con código legacy y al mismo tiempo comenzar a eliminar aquellas piezas que tienen un alto nivel de acoplamiento que nos impiden evolucionar nuestro software"

@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { Language } from "@/i18n";
+import { Highlight } from "@/components/ui/highlight";
 
 const Courses = ({ locale }: { locale: Language }) => {
   const t = useTranslations();
@@ -150,12 +151,11 @@ const Courses = ({ locale }: { locale: Language }) => {
             <span className="inline-block px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium mb-6">
               {t("courses.title")}
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              {t("courses.subtitle")}{" "}
-              <span className="text-primary">{t("courses.subtitle1")}</span>
-            </h1>
+            <Highlight highlight={["excelencia", "excellence"]}>
+              {t("courses.subtitle")}
+            </Highlight>
             <p className="text-lg md:text-xl text-muted-foreground">
-              {t("courses.subtitle2")}
+              {t("courses.subtitle1")}
             </p>
           </motion.div>
         </div>

@@ -13,6 +13,7 @@ import {
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { BlogPost } from "@/lib/blog";
+import { Highlight } from "@/components/ui/highlight";
 
 const BlogPosts = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
   const t = useTranslations();
@@ -37,10 +38,9 @@ const BlogPosts = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
             <span className="inline-block px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium mb-6">
               {t("common.blog")}
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              {t("blog.title")}{" "}
-              <span className="text-primary">{t("blog.developers")}</span>
-            </h1>
+            <Highlight highlight={["desarrolladores", "developers"]}>
+              {t("blog.title")}
+            </Highlight>
             <p className="text-lg md:text-xl text-muted-foreground">
               {t("blog.description")}
             </p>

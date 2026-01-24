@@ -78,8 +78,7 @@
   "blog": {
     "backToBlog": "Back to blog",
     "readingTime": "min read",
-    "title": "Articles and resources for",
-    "developers": "developers",
+    "title": "Articles and resources for developers",
     "description": "We share our knowledge about best practices, architecture, and software development"
   },
   "services": {
@@ -139,9 +138,8 @@
   },
   "courses": {
     "title": "Training",
-    "subtitle": "Courses designed for teams seeking the",
-    "subtitle1": "excellence",
-    "subtitle2": "We have a wide variety of customized courses aimed at putting into practice what you really need in your day-to-day.",
+    "subtitle": "Courses designed for teams seeking the excellence",
+    "subtitle1": "We have a wide variety of customized courses aimed at putting into practice what you really need in your day-to-day.",
     "legacyCode": {
       "title": "Legacy Code",
       "description": "If adding features to your application, following technology trends, or even updating dependencies becomes a headache for your team, this course is perfect for you. In this course we will learn advanced techniques for working with legacy code while starting to eliminate those pieces that have a high level of coupling that prevent us from evolving our software"

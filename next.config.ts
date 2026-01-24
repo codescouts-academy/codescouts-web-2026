@@ -10,6 +10,18 @@ const nextConfig: NextConfig = {
   env: {
     SITE_URL: 'https://www.codescouts.academy',
   },
+  async rewrites() {
+    return [
+      {
+        source: '/blog/:slug',
+        destination: '/es/blog/:slug',
+      },
+      {
+        source: '/',
+        destination: '/es',
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

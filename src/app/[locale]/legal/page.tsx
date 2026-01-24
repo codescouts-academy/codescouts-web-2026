@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   Scale,
@@ -32,6 +32,7 @@ type LegalSection = {
 
 const AvisoLegal = () => {
   const locale = useLocale() as keyof LocalizedString;
+  const t = useTranslations();
 
   const legalSections: LegalSection[] = [
     {
@@ -52,7 +53,7 @@ const AvisoLegal = () => {
         { label: { es: "NIF/CIF", en: "Tax ID" }, value: "ESB26606152" },
         {
           label: { es: "Correo Electrónico", en: "Email" },
-          value: "gerencia@codescouts.academy",
+          value: t("contact.email"),
         },
       ],
     },

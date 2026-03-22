@@ -134,7 +134,7 @@ const Header = () => {
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={`/${locale}${link.href}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`block py-2 text-base font-medium transition-colors ${
                     pathname === link.href

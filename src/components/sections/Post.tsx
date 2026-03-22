@@ -21,7 +21,7 @@ const Post = ({
 
   return (
     <Layout>
-      <article className="py-20 md:py-32 grayscale">
+      <article className="py-6 md:py-20 grayscale">
         <div className="section-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

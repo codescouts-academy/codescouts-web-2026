@@ -51,7 +51,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-32 bg-secondary/30">
+    <section className="py-6 md:py-20 bg-secondary/30">
       <div className="section-container">
         {/* Section Header */}
         <motion.div

@@ -36,7 +36,7 @@ const HowWeHelp = () => {
   ];
 
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden">
+    <section className="py-6 md:py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20" />
 
       <div className="section-container relative">

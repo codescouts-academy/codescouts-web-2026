@@ -26,7 +26,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 md:py-32 relative">
+    <section id="about" className="py-6 md:py-20 relative">
       <div className="absolute inset-0 bg-dots opacity-30" />
 
       <div className="section-container relative">

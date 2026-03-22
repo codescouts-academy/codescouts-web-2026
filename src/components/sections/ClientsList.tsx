@@ -14,7 +14,7 @@ const ClientsList = ({ locale }: { locale: Language }) => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
+      <section className="py-6 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
         <div className="section-container relative">
           <motion.div
@@ -37,7 +37,7 @@ const ClientsList = ({ locale }: { locale: Language }) => {
       </section>
 
       {/* Clients Grid */}
-      <section className="py-20 md:py-32">
+      <section className="py-6 md:py-20">
         <div className="section-container">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {clients.map((client, index) => (

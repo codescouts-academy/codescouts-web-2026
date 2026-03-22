@@ -125,7 +125,7 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
+      <section className="py-6 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
         <div className="section-container relative">
           <motion.div
@@ -148,7 +148,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 md:py-32">
+      <section className="py-6 md:py-20">
         <div className="section-container">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             {/* Contact Form */}
@@ -159,7 +159,7 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
             >
               <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-                <CardContent className="p-8">
+                <CardContent className="p-0">
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
                       <Label htmlFor="firstname">

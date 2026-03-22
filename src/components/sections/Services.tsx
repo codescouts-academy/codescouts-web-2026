@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   Users,
@@ -92,7 +92,7 @@ const Services = ({ locale }: { locale: Language }) => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
+      <section className="py-6 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
         <div className="section-container relative">
           <motion.div
@@ -122,7 +122,7 @@ const Services = ({ locale }: { locale: Language }) => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 md:py-32">
+      <section className="py-6 md:py-20">
         <div className="section-container">
           <div className="space-y-24">
             {services.map((service, index) => (
@@ -203,7 +203,7 @@ const Services = ({ locale }: { locale: Language }) => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-primary/5 to-transparent">
+      <section className="py-6 md:py-20 bg-gradient-to-b from-primary/5 to-transparent">
         <div className="section-container text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

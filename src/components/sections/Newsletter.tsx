@@ -31,7 +31,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="py-20 md:py-32 bg-secondary/30">
+    <section className="py-6 md:py-20 bg-secondary/30">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -1,7 +1,7 @@
 ---
 title: 4 Reglas del diseño simple
 date: 2022-04-30T00:00:00.000Z
-summary: Un grupo de gente brillante trabajando en lo mismo, al mismo tiempo, en el mismo lugar y en la misma computadora.
+summary: 4 reglas de diseño simple es un conjunto de reglas que nos ayudan a escribir código limpio y bien diseñado. Estas reglas fueron propuestas por Kent Beck, uno de los pioneros de Extreme Programming, y se basan en la idea de que un diseño es simple cuando sigue estas reglas en orden de importancia.
 image: /images/blog/simple-design.png
 tags: [4rules, diseño, 4reglas, design, codescouts]
 ---

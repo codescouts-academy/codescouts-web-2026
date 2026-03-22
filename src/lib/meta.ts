@@ -1,5 +1,6 @@
 import { Language } from "@/i18n";
-import { BlogPost } from "@/lib/blog";
+import { BlogPost, getPostsFromLang } from "@/lib/blog";
+import { testimonials } from "@/lib/testimonials";
 import { Metadata } from "next";
 
 const baseUrl = process.env.SITE_URL;
@@ -7,7 +8,7 @@ const baseUrl = process.env.SITE_URL;
 export const generateBlogPostMeta = (post: BlogPost, locale: Language, slug: string): Metadata => {
   const postUrl = `${baseUrl}/${locale}/blog/${slug}`;
   const imageUrl = `${baseUrl}${post.coverImage}`;
-  const title = `${post.title} | CodeScouts`;
+  const title = `CodeScouts | ${post.title}`;
 
   return {
     title: title,
@@ -78,40 +79,16 @@ export const generateBlogListMeta = (locale: Language): Metadata => {
 
   const blogUrl = `${baseUrl}/${locale}/blog`;
   const imageUrl = `${baseUrl}/images/avatar.png`;
-  const ogTitle = "Blog | CodeScouts"
 
   const title = isSpanish
-    ? `${ogTitle} - Artículos sobre desarrollo de software`
-    : `${ogTitle} - Software Development Articles`;
+    ? "CodeScouts | Artículos sobre desarrollo de software"
+    : "CodeScouts | Software Development Articles";
 
   const description = isSpanish
     ? "Descubre artículos sobre buenas prácticas de programación, arquitectura de software, metodologías ágiles y coaching técnico. Aprende de la experiencia de nuestros expertos."
     : "Discover articles about programming best practices, software architecture, agile methodologies and technical coaching. Learn from our experts' experience.";
 
-  const keywords = isSpanish
-    ? [
-      "blog desarrollo software",
-      "buenas prácticas programación",
-      "clean code",
-      "arquitectura software",
-      "technical coaching",
-      "extreme programming",
-      "TDD",
-      "refactoring",
-      "diseño simple",
-    ]
-    : [
-      "software development blog",
-      "programming best practices",
-      "clean code",
-      "software architecture",
-      "technical coaching",
-      "extreme programming",
-      "TDD",
-      "refactoring",
-      "simple design",
-    ];
-
+  const keywords = getPostsFromLang(locale).flatMap((post) => post.title);
 
   return {
     title,
@@ -120,7 +97,7 @@ export const generateBlogListMeta = (locale: Language): Metadata => {
     keywords: keywords.join(", "),
 
     openGraph: {
-      title: ogTitle,
+      title,
       description,
       type: "website",
       url: blogUrl,
@@ -138,7 +115,7 @@ export const generateBlogListMeta = (locale: Language): Metadata => {
 
     twitter: {
       card: "summary_large_image",
-      title: ogTitle,
+      title,
       description,
       images: [imageUrl],
       creator: "@code_scouts",
@@ -176,39 +153,30 @@ export const generateClientsMeta = (locale: Language): Metadata => {
 
   const clientsUrl = `${baseUrl}/${locale}/clients`;
   const imageUrl = `${baseUrl}/images/avatar.png`;
-  const ogTitle = "Clients | CodeScouts";
 
   const title = isSpanish
-    ? `${ogTitle} - Empresas que confían en nosotros`
-    : `${ogTitle} - Companies that trust us`;
+    ? "CodeScouts | Empresas que confían en nosotros"
+    : "CodeScouts | Companies that trust us";
 
   const description = isSpanish
     ? "Descubre las empresas y equipos que han mejorado su desarrollo de software con CodeScouts. Casos de éxito en technical coaching, consultoría y formación de equipos de desarrollo."
     : "Discover the companies and teams that have improved their software development with CodeScouts. Success stories in technical coaching, consulting and development team training.";
 
-  const keywords = isSpanish
-    ? [
-      "clientes codescouts",
-      "casos de éxito",
-      "empresas software",
-      "testimonios clientes",
-      "coaching técnico empresas",
-      "consultoría software",
-      "formación equipos desarrollo",
-      "transformación digital",
-      "mejora procesos desarrollo",
-    ]
-    : [
-      "codescouts clients",
-      "success stories",
-      "software companies",
-      "client testimonials",
-      "technical coaching companies",
-      "software consulting",
-      "development team training",
-      "digital transformation",
-      "development process improvement",
-    ];
+  const keywords = testimonials.reduce((acc, testimonial) => {
+    const companyKeywords = isSpanish
+      ? [
+        `clientes codescouts ${testimonial.company}`,
+        `testimonio ${testimonial.name}`,
+        `opinión ${testimonial.name}`,
+      ]
+      : [
+        `codescouts clients ${testimonial.company}`,
+        `testimonial ${testimonial.name}`,
+        `review ${testimonial.name}`,
+      ];
+
+    return [...acc, ...companyKeywords];
+  }, [] as string[]);
 
   return {
     title,
@@ -217,7 +185,7 @@ export const generateClientsMeta = (locale: Language): Metadata => {
     keywords: keywords.join(", "),
 
     openGraph: {
-      title: ogTitle,
+      title,
       description,
       type: "website",
       url: clientsUrl,
@@ -235,7 +203,7 @@ export const generateClientsMeta = (locale: Language): Metadata => {
 
     twitter: {
       card: "summary_large_image",
-      title: ogTitle,
+      title,
       description,
       images: [imageUrl],
       creator: "@code_scouts",
@@ -276,11 +244,10 @@ export const generateContactMeta = (locale: Language): Metadata => {
 
   const contactUrl = `${baseUrl}/${locale}/contact`;
   const imageUrl = `${baseUrl}/images/avatar.png`;
-  const ogTitle = "Contact | CodeScouts";
 
   const title = isSpanish
-    ? `${ogTitle} - Hablemos de tu proyecto`
-    : `${ogTitle} - Let's talk about your project`;
+    ? "CodeScouts | Hablemos de tu proyecto"
+    : "CodeScouts | Let's talk about your project";
 
   const description = isSpanish
     ? "¿Necesitas mejorar la calidad de tu software o acelerar tu equipo de desarrollo? Contáctanos y descubre cómo CodeScouts puede ayudarte con coaching técnico, consultoría y formación personalizada."
@@ -289,27 +256,9 @@ export const generateContactMeta = (locale: Language): Metadata => {
   const keywords = isSpanish
     ? [
       "contacto codescouts",
-      "consultoría software",
-      "presupuesto desarrollo",
-      "coaching técnico",
-      "formación equipos",
-      "asesoría técnica",
-      "mejora procesos desarrollo",
-      "consultoría ágil",
-      "transformación digital",
-      "auditoría código",
     ]
     : [
       "contact codescouts",
-      "software consulting",
-      "development budget",
-      "technical coaching",
-      "team training",
-      "technical advisory",
-      "development process improvement",
-      "agile consulting",
-      "digital transformation",
-      "code audit",
     ];
 
   return {
@@ -319,7 +268,7 @@ export const generateContactMeta = (locale: Language): Metadata => {
     keywords: keywords.join(", "),
 
     openGraph: {
-      title: ogTitle,
+      title,
       description,
       type: "website",
       url: contactUrl,
@@ -339,7 +288,7 @@ export const generateContactMeta = (locale: Language): Metadata => {
 
     twitter: {
       card: "summary_large_image",
-      title: ogTitle,
+      title,
       description,
       images: [imageUrl],
       creator: "@code_scouts",
@@ -385,11 +334,10 @@ export const generateCoursesMeta = (locale: Language): Metadata => {
 
   const coursesUrl = `${baseUrl}/${locale}/courses`;
   const imageUrl = `${baseUrl}/images/avatar.png`;
-  const ogTitle = "Training | CodeScouts";
 
   const title = isSpanish
-    ? `${ogTitle} - Formación técnica para equipos de desarrollo`
-    : `${ogTitle} - Technical training for development teams`;
+    ? "CodeScouts | Formación técnica para equipos de desarrollo"
+    : "CodeScouts | Technical training for development teams";
 
   const description = isSpanish
     ? "Cursos y formación a medida para equipos de desarrollo. Aprende TDD, Clean Code, arquitectura de software, pair programming y extreme programming con expertos. Cursos bonificables por FUNDAE."
@@ -434,7 +382,7 @@ export const generateCoursesMeta = (locale: Language): Metadata => {
     keywords: keywords.join(", "),
 
     openGraph: {
-      title: ogTitle,
+      title,
       description,
       type: "website",
       url: coursesUrl,
@@ -452,7 +400,7 @@ export const generateCoursesMeta = (locale: Language): Metadata => {
 
     twitter: {
       card: "summary_large_image",
-      title: ogTitle,
+      title,
       description,
       images: [imageUrl],
       creator: "@code_scouts",
@@ -496,11 +444,10 @@ export const generateServicesMeta = (locale: Language): Metadata => {
 
   const servicesUrl = `${baseUrl}/${locale}/services`;
   const imageUrl = `${baseUrl}/images/services/index.png`;
-  const ogTitle = "Services | CodeScouts";
 
   const title = isSpanish
-    ? `${ogTitle} - Consultoría y coaching técnico para equipos`
-    : `${ogTitle} - Consulting and technical coaching for teams`;
+    ? "CodeScouts | Servicio de Technical coaching, consultoría de software y CTO as a Service"
+    : "CodeScouts | Technical coaching, software consulting and CTO as a Service";
 
   const description = isSpanish
     ? "Servicios de consultoría de software, technical coaching, CTO as a Service y programa acelerado para equipos de desarrollo. Mejora la calidad de tu software y acelera tu proceso de desarrollo con expertos."
@@ -513,27 +460,12 @@ export const generateServicesMeta = (locale: Language): Metadata => {
       "cto as a service",
       "programa acelerado desarrollo",
       "asesoría técnica",
-      "mejora procesos desarrollo",
-      "auditoría código",
-      "arquitectura software",
-      "transformación digital",
-      "mentoring técnico",
-      "pair programming",
-      "mob programming",
     ]
     : [
       "software consulting",
       "technical coaching",
       "cto as a service",
       "accelerated development program",
-      "technical advisory",
-      "development process improvement",
-      "code audit",
-      "software architecture",
-      "digital transformation",
-      "technical mentoring",
-      "pair programming",
-      "mob programming",
     ];
 
   return {
@@ -543,7 +475,7 @@ export const generateServicesMeta = (locale: Language): Metadata => {
     keywords: keywords.join(", "),
 
     openGraph: {
-      title: ogTitle,
+      title,
       description,
       type: "website",
       url: servicesUrl,
@@ -561,7 +493,7 @@ export const generateServicesMeta = (locale: Language): Metadata => {
 
     twitter: {
       card: "summary_large_image",
-      title: ogTitle,
+      title,
       description,
       images: [imageUrl],
       creator: "@code_scouts",
@@ -604,11 +536,10 @@ export const generateHomeMeta = (locale: Language): Metadata => {
 
   const homeUrl = `${baseUrl}/${locale === "es" ? "" : locale}`;
   const imageUrl = `${baseUrl}/images/avatar.png`;
-  const ogTitle = "CodeScouts";
 
   const title = isSpanish
-    ? `${ogTitle} - Technical coaching | Programa acelerado | Consultoría de software | Cursos a medida`
-    : `${ogTitle} - Technical coaching | Accelerated Program | Software Consulting | Custom Courses`;
+    ? "CodeScouts | Technical coaching para equipos de alto rendimiento"
+    : "CodeScouts | Technical coaching for high-performance teams";
 
   const description = isSpanish
     ? "Mejora la calidad de tu software y acelera tu equipo de desarrollo con CodeScouts. Ofrecemos technical coaching, consultoría especializada, CTO as a Service, programa acelerado y formación técnica a medida para empresas."
@@ -663,7 +594,7 @@ export const generateHomeMeta = (locale: Language): Metadata => {
     keywords: keywords.join(", "),
 
     openGraph: {
-      title: ogTitle,
+      title,
       description,
       type: "website",
       url: homeUrl,
@@ -683,7 +614,7 @@ export const generateHomeMeta = (locale: Language): Metadata => {
 
     twitter: {
       card: "summary_large_image",
-      title: ogTitle,
+      title,
       description,
       images: [imageUrl],
       creator: "@code_scouts",

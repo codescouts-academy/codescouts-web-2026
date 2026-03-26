@@ -3,6 +3,8 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../index.css";
+import { websiteSchema } from "@/lib/meta";
+import { JsonLd } from "@/components/JsonLd";
 
 export default async function LocaleLayout({
   children,

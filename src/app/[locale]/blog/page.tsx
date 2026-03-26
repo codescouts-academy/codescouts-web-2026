@@ -1,8 +1,9 @@
+import { JsonLd } from "@/components/JsonLd";
 import BlogPosts from "@/components/sections/BlogPosts";
 import { LocaleProps } from "@/i18n";
 import { routing } from "@/i18n/routing";
 import { getPostsFromLang } from "@/lib/blog";
-import { generateBlogListMeta } from "@/lib/meta";
+import { blogsSchema, generateBlogListMeta } from "@/lib/meta";
 import { Metadata } from "next";
 
 const Page = async ({ params }: LocaleProps) => {
@@ -10,7 +11,12 @@ const Page = async ({ params }: LocaleProps) => {
 
   const posts = getPostsFromLang(locale);
 
-  return <BlogPosts blogPosts={posts} />;
+  return (
+    <>
+      <JsonLd data={blogsSchema(locale)} />
+      <BlogPosts blogPosts={posts} />;
+    </>
+  );
 };
 
 export default Page;

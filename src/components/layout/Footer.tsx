@@ -168,20 +168,18 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row md:justify-between md:items-center gap-4 ">
-          <p className="text-muted-foreground text-sm">
-            <div className="flex flex-col gap-1">
-              <p className="text-muted-foreground text-xs font-mono">
-                {`// ${new Date().getFullYear()} CodeScouts`}
-              </p>
-              <p className="text-muted-foreground text-xs font-mono">
-                {`// ${process.env.VERCEL_GIT_COMMIT_MESSAGE ?? "feat: new release"}`}
-              </p>
-              <p className="text-muted-foreground text-xs font-mono">
-                {`// ${process.env.VERCEL_GIT_COMMIT_SHA ?? "72f74d90a01aee6afaa4936abe00e5ac9ab8a4cb"}`}
-              </p>
-            </div>
-          </p>
+        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+          <div className="flex flex-col gap-1">
+            <p className="text-muted-foreground text-xs font-mono">
+              {`// ${new Date().getFullYear()} CodeScouts`}
+            </p>
+            <p className="text-muted-foreground text-xs font-mono">
+              {`// ${process.env.VERCEL_GIT_COMMIT_MESSAGE ?? "feat: new release"}`}
+            </p>
+            <p className="text-muted-foreground text-xs font-mono">
+              {`// ${process.env.VERCEL_GIT_COMMIT_SHA ?? "72f74d90a01aee6afaa4936abe00e5ac9ab8a4cb"}`}
+            </p>
+          </div>
           <div className="flex flex-col gap-1">
             <p className="text-muted-foreground text-xs font-mono">
               {"// Built with ♥ from Galicia"}

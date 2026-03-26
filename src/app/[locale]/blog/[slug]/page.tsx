@@ -3,8 +3,9 @@ import { getBlogPost, getPostsFromLang } from "@/lib/blog";
 import Post from "@/components/sections/Post";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
-import { generateBlogPostMeta } from "@/lib/meta";
+import { blogPostSchema, generateBlogPostMeta } from "@/lib/meta";
 import { LocaleProps } from "@/i18n";
+import { JsonLd } from "@/components/JsonLd";
 
 type Props = LocaleProps & {
   params: Promise<{ slug: string }>;
@@ -25,7 +26,12 @@ const Page = async ({ params }: Props) => {
     .filter((p) => p.tags?.some((tag) => post.tags?.includes(tag)))
     .slice(0, 3);
 
-  return <Post post={post} relatedPosts={relatedPosts} />;
+  return (
+    <>
+      <JsonLd data={blogPostSchema(post, locale, slug)} />
+      <Post post={post} relatedPosts={relatedPosts} />;
+    </>
+  );
 };
 
 export default Page;

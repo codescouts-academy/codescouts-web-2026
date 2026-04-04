@@ -174,10 +174,10 @@ const Footer = () => {
               {`// ${new Date().getFullYear()} CodeScouts`}
             </p>
             <p className="text-muted-foreground text-xs font-mono">
-              {`// ${process.env.VERCEL_GIT_COMMIT_MESSAGE ?? "feat: new release"}`}
+              {`// ${process.env.NEXT_PUBLIC_COMMIT_MESSAGE ?? "feat: new release"}`}
             </p>
             <p className="text-muted-foreground text-xs font-mono">
-              {`// ${process.env.VERCEL_GIT_COMMIT_SHA ?? "72f74d90a01aee6afaa4936abe00e5ac9ab8a4cb"}`}
+              {`// ${process.env.NEXT_PUBLIC_COMMIT_SHA ?? "72f74d90a01aee6afaa4936abe00e5ac9ab8a4cb"}`}
             </p>
           </div>
           <div className="flex flex-col gap-1">

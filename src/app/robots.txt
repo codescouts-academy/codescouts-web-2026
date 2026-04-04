@@ -1,7 +1,6 @@
 User-agent: *
 
-Allow: /images/favicon.png
-Disallow: /images/
+Allow: /images/
 Disallow: /es/legal/
 Disallow: /en/legal/
 

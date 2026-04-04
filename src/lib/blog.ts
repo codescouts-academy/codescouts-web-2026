@@ -32,7 +32,7 @@ function calculateReadingTime(content: string): number {
  * Load all posts for a given language
  */
 export function getPostsFromLang(lang: Language): BlogPost[] {
-  const langDir = path.join(BLOG_DIR, "es");
+  const langDir = path.join(BLOG_DIR, lang);
 
   if (!fs.existsSync(langDir)) return [];
 
@@ -58,7 +58,8 @@ export function getPostsFromLang(lang: Language): BlogPost[] {
         content,
         readingTime: calculateReadingTime(content),
       } satisfies BlogPost;
-    });
+    })
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 /**
@@ -68,7 +69,7 @@ export function getBlogPost(
   slug: string,
   lang: Language = "es",
 ): BlogPost | undefined {
-  return getPostsFromLang("es").find((post) => post.slug === slug);
+  return getPostsFromLang(lang).find((post) => post.slug === slug);
 }
 
 /**

@@ -29,7 +29,7 @@ const Page = async ({ params }: Props) => {
   return (
     <>
       <JsonLd data={blogPostSchema(post, locale, slug)} />
-      <Post post={post} relatedPosts={relatedPosts} />;
+      <Post post={post} relatedPosts={relatedPosts} />
     </>
   );
 };

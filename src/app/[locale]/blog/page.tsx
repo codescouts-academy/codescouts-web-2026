@@ -14,7 +14,7 @@ const Page = async ({ params }: LocaleProps) => {
   return (
     <>
       <JsonLd data={blogsSchema(locale)} />
-      <BlogPosts blogPosts={posts} />;
+      <BlogPosts blogPosts={posts} />
     </>
   );
 };

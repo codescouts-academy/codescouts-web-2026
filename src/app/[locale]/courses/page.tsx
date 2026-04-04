@@ -10,7 +10,7 @@ const Page = async ({ params }: LocaleProps) => {
   return (
     <>
       <JsonLd data={coursesSchema(locale)} />
-      <Courses locale={locale} />;
+      <Courses locale={locale} />
     </>
   );
 };

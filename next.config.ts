@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
   distDir: "dist",
   env: {
     SITE_URL: 'https://www.codescouts.academy',
+    NEXT_PUBLIC_COMMIT_SHA: process.env.VERCEL_GIT_COMMIT_SHA,
+    NEXT_PUBLIC_COMMIT_MESSAGE: process.env.VERCEL_GIT_COMMIT_MESSAGE,
   },
   async rewrites() {
     return [

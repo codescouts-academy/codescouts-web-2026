@@ -56,7 +56,7 @@ const Header = () => {
             <span className="font-mono text-xl md:text-2xl font-bold">
               <span className="text-foreground">&lt;</span>
               <span className="text-foreground">Code</span>
-              <span className="text-primary">Scouts</span>
+              <span className="gradient-text">Scouts</span>
               <span className="text-foreground">/&gt;</span>
             </span>
           </Link>

@@ -50,6 +50,18 @@ const ServicesSection = () => {
     },
   ];
 
+  const getServiceLinkLabel = (title: string, href: string) => {
+    if (locale === "es") {
+      return href.includes("/courses")
+        ? `Ver formación de ${title}`
+        : `Ver servicio de ${title}`;
+    }
+
+    return href.includes("/courses")
+      ? `View ${title} training`
+      : `View ${title} service`;
+  };
+
   return (
     <section className="py-6 md:py-20 bg-secondary/30">
       <div className="section-container">
@@ -94,9 +106,10 @@ const ServicesSection = () => {
               <Button asChild variant="ghost" className="group/btn p-0 h-auto">
                 <Link
                   href={service.href}
+                  aria-label={getServiceLinkLabel(service.title, service.href)}
                   className="flex items-center gap-2 text-primary hover:text-primary/80"
                 >
-                  {t("common.learnMore")}
+                  {getServiceLinkLabel(service.title, service.href)}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                 </Link>
               </Button>

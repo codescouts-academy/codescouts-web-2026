@@ -11,6 +11,7 @@ const Testimonials = () => {
   const locale = useLocale();
   const t = useTranslations();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const isSpanish = locale === "es";
 
   // Blob URL cache kept in memory across renders
   const blobCache = useRef<Map<string, string>>(new Map());
@@ -70,6 +71,12 @@ const Testimonials = () => {
   }, []);
 
   const currentTestimonial = testimonials[currentIndex];
+  const previousLabel = isSpanish
+    ? "Ver testimonio anterior"
+    : "View previous testimonial";
+  const nextLabel = isSpanish
+    ? "Ver testimonio siguiente"
+    : "View next testimonial";
 
   return (
     <section className="py-6 md:py-20 relative overflow-hidden">
@@ -118,9 +125,9 @@ const Testimonials = () => {
                     }}
                   />
                   <div>
-                    <h4 className="font-semibold text-foreground">
+                    <h3 className="font-semibold text-foreground">
                       {currentTestimonial.name}
-                    </h4>
+                    </h3>
                     <p className="text-sm text-muted-foreground">
                       {currentTestimonial.role}
                     </p>
@@ -144,7 +151,11 @@ const Testimonials = () => {
                         ? "bg-primary w-6"
                         : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
                     }`}
-                    aria-label={`Go to testimonial ${index + 1}`}
+                    aria-label={
+                      isSpanish
+                        ? `Ir al testimonio ${index + 1}`
+                        : `Go to testimonial ${index + 1}`
+                    }
                   />
                 ))}
               </div>
@@ -155,6 +166,8 @@ const Testimonials = () => {
                   size="icon"
                   onClick={prevTestimonial}
                   className="h-10 w-10"
+                  aria-label={previousLabel}
+                  title={previousLabel}
                 >
                   <ChevronLeft className="h-5 w-5" />
                 </Button>
@@ -163,6 +176,8 @@ const Testimonials = () => {
                   size="icon"
                   onClick={nextTestimonial}
                   className="h-10 w-10"
+                  aria-label={nextLabel}
+                  title={nextLabel}
                 >
                   <ChevronRight className="h-5 w-5" />
                 </Button>

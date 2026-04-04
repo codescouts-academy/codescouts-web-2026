@@ -4,11 +4,9 @@ import {
   Mail,
   Phone,
   Linkedin,
-  Twitter,
   Github,
   LucideExternalLink,
   Youtube,
-  Instagram,
   MapPin,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -17,6 +15,7 @@ import Link from "next/link";
 const Footer = () => {
   const t = useTranslations();
   const locale = useLocale();
+  const isSpanish = locale === "es";
 
   const externalLinks = [
     { href: "https://agile.codescouts.academy/", label: "Agile Hub" },
@@ -53,7 +52,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <Link href="/" className="inline-block">
+            <Link href={`/${locale}`} className="inline-block">
               <span className="font-mono text-xl font-bold">
                 <span className="text-foreground">&lt;</span>
                 <span className="text-foreground">Code</span>
@@ -70,6 +69,8 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="GitHub CodeScouts"
+                title="GitHub CodeScouts"
               >
                 <Github className="h-5 w-5" />
               </a>
@@ -78,6 +79,8 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="LinkedIn CodeScouts"
+                title="LinkedIn CodeScouts"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
@@ -86,6 +89,8 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="YouTube CodeScouts"
+                title="YouTube CodeScouts"
               >
                 <Youtube className="h-5 w-5" />
               </a>
@@ -94,9 +99,9 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">
+            <h2 className="font-semibold text-foreground mb-4">
               {t("footer.quickLinks")}
-            </h4>
+            </h2>
             <ul className="space-y-2">
               {externalLinks.map((link) => (
                 <li key={link.href}>
@@ -116,9 +121,9 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">
+            <h2 className="font-semibold text-foreground mb-4">
               {t("nav.services")}
-            </h4>
+            </h2>
             <ul className="space-y-2">
               {services.map((link) => (
                 <li key={link.href}>
@@ -135,9 +140,9 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">
+            <h2 className="font-semibold text-foreground mb-4">
               {t("contact.title")}
-            </h4>
+            </h2>
             <ul className="space-y-3">
               <li>
                 <a
@@ -181,6 +186,11 @@ const Footer = () => {
                 href={`https://github.com/codescouts-academy/codescouts-web-2026/commit/${process.env.NEXT_PUBLIC_COMMIT_SHA}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={
+                  isSpanish
+                    ? "Ver commit actual en GitHub"
+                    : "View current commit on GitHub"
+                }
               >
                 {`// ${process.env.NEXT_PUBLIC_COMMIT_SHA ?? "72f74d90a01aee6afaa4936abe00e5ac9ab8a4cb"}`}
               </a>

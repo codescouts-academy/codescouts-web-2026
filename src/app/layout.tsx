@@ -1,4 +1,5 @@
 import { JsonLd } from "@/components/JsonLd";
+import { ThemeProvider } from "@/components/theme-provider";
 import { routing } from "@/i18n/routing";
 import { baseUrl, organizationSchema, websiteSchema } from "@/lib/meta";
 import { Metadata } from "next";
@@ -22,13 +23,16 @@ export default function RootLayout({
   return (
     <html
       lang={routing.defaultLocale}
+      suppressHydrationWarning
       className="scrollbar-thin scrollbar-thumb-main-grey-1 hover:scrollbar-thumb-muted-foreground scrollbar-track-transparent"
     >
       <head>
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
       </head>
-      <body>{children}</body>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

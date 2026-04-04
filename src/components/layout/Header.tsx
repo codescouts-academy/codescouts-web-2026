@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { routing } from "@/i18n/routing";
 
@@ -51,7 +52,7 @@ const Header = () => {
       <div className="section-container">
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href={`/${locale}`} className="flex items-center gap-2 group">
             <span className="font-mono text-xl md:text-2xl font-bold">
               <span className="text-foreground">&lt;</span>
               <span className="text-foreground">Code</span>
@@ -80,29 +81,32 @@ const Header = () => {
 
             {routing.locales
               .filter((l) => l !== locale)
-              .map((locale) => (
+              .map((targetLocale) => (
                 <button
-                  key={locale}
-                  onClick={() => toggleLanguage(locale)}
+                  key={targetLocale}
+                  onClick={() => toggleLanguage(targetLocale)}
                   className="text-sm font-mono font-medium text-muted-foreground hover:text-primary transition-colors"
                 >
-                  {locale.toUpperCase()}
+                  {targetLocale.toUpperCase()}
                 </button>
               ))}
+
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-3">
+            <ThemeToggle className="h-9 w-9" />
             {/* Language Switcher - Simple Button */}
             {routing.locales
               .filter((l) => l !== locale)
-              .map((locale) => (
+              .map((targetLocale) => (
                 <button
-                  key={locale}
-                  onClick={() => toggleLanguage(locale)}
+                  key={targetLocale}
+                  onClick={() => toggleLanguage(targetLocale)}
                   className="text-sm font-mono font-medium text-muted-foreground hover:text-primary transition-colors"
                 >
-                  {locale.toUpperCase()}
+                  {targetLocale.toUpperCase()}
                 </button>
               ))}
 
@@ -147,7 +151,7 @@ const Header = () => {
               ))}
               <Button asChild className="w-full mt-4">
                 <Link
-                  href="/contact"
+                  href={`/${locale}/contact`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {t("common.contact")}

@@ -1,97 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Phone, Mail, Send, Calendar } from "lucide-react";
+import { Phone, Mail, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
+import { Card, CardContent } from "@/components/ui/card";
+import ContactForm from "@/components/contact/Form";
 
 const ContactSection = () => {
   const t = useTranslations();
-  const { toast } = useToast();
-  const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
-    company: "",
-    email: "",
-    message: "",
-  });
-
-  const formToHubSpot = (formData: FormData) => {
-    let fieldArray = [];
-    for (let [name, value] of formData.entries()) {
-      fieldArray.push({
-        objectTypeId: "0-1",
-        name: name,
-        value: value,
-      });
-    }
-    return fieldArray;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    const form = new FormData();
-    form.append("firstname", formData.firstname);
-    form.append("lastname", formData.lastname);
-    form.append("company", formData.company);
-    form.append("email", formData.email);
-    form.append("message", formData.message);
-    const fields = formToHubSpot(form);
-
-    const payload = {
-      fields: fields,
-      context: {
-        pageUri: window.location.href,
-        pageName: document.title,
-      },
-    };
-
-    try {
-      const response = await fetch(
-        "https://api.hsforms.com/submissions/v3/integration/submit/25900557/9cd94ae9-df87-4df2-a6cb-b1ade33504aa",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        },
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error("HubSpot error:", errorData);
-        throw new Error("Network response was not ok");
-      }
-
-      setFormData({
-        firstname: "",
-        lastname: "",
-        company: "",
-        email: "",
-        message: "",
-      });
-
-      toast({
-        title: t("contact.successMessage"),
-      });
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      toast({
-        title: t("contact.errorMessage"),
-        variant: "destructive",
-      });
-    }
-
-    setIsLoading(false);
-  };
 
   return (
     <section id="contact" className="py-6 md:py-20">
@@ -172,125 +89,7 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="glass-card p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    {t("contact.form.name")}
-                  </label>
-                  <Input
-                    id="name"
-                    type="text"
-                    value={formData.firstname}
-                    placeholder={t("contact.form.namePlaceholder")}
-                    onChange={(e) =>
-                      setFormData({ ...formData, firstname: e.target.value })
-                    }
-                    required
-                    className="bg-background/50"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="lastname"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    {t("contact.form.lastname")}
-                  </label>
-                  <Input
-                    id="lastname"
-                    type="text"
-                    value={formData.lastname}
-                    placeholder={t("contact.form.lastnamePlaceholder")}
-                    onChange={(e) =>
-                      setFormData({ ...formData, lastname: e.target.value })
-                    }
-                    required
-                    className="bg-background/50"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    {t("contact.form.email")}
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    placeholder={t("contact.form.emailPlaceholder")}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    required
-                    className="bg-background/50"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="company"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    {t("contact.form.company")}
-                  </label>
-                  <Input
-                    id="company"
-                    type="text"
-                    value={formData.company}
-                    placeholder={t("contact.form.companyPlaceholder")}
-                    onChange={(e) =>
-                      setFormData({ ...formData, company: e.target.value })
-                    }
-                    required
-                    className="bg-background/50"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    {t("contact.form.message")}
-                  </label>
-                  <Textarea
-                    id="message"
-                    value={formData.message}
-                    placeholder={t("contact.form.messagePlaceholder")}
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
-                    required
-                    rows={5}
-                    className="bg-background/50 resize-none"
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full glow"
-                >
-                  {isLoading ? (
-                    <span className="flex items-center gap-2">
-                      <span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                    </span>
-                  ) : (
-                    <span className="flex items-center gap-2">
-                      <Send className="h-4 w-4" />
-                      {t("contact.form.send")}
-                    </span>
-                  )}
-                </Button>
-              </form>
-            </div>
+            <ContactForm />
           </motion.div>
         </div>
       </div>

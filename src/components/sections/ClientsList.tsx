@@ -7,9 +7,12 @@ import Layout from "@/components/layout/Layout";
 import { clients } from "@/lib/clients";
 import { Language } from "@/i18n";
 import { Highlight } from "@/components/ui/highlight";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 const ClientsList = ({ locale }: { locale: Language }) => {
   const t = useTranslations();
+  const { theme } = useTheme();
 
   return (
     <Layout>
@@ -55,7 +58,12 @@ const ClientsList = ({ locale }: { locale: Language }) => {
                     <img
                       src={client.logo}
                       alt={`${client.name} logo`}
-                      className="max-h-24 max-w-[180px] object-contain filter brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity"
+                      className={cn(
+                        "max-h-24 max-w-[180px] object-contain filter brightness-0 opacity-70 group-hover:opacity-100 transition-opacity",
+                        {
+                          invert: theme === "dark",
+                        },
+                      )}
                     />
                   ) : (
                     <div className="w-20 h-20 rounded-xl bg-primary/10 flex items-center justify-center">

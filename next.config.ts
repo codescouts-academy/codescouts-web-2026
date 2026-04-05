@@ -20,8 +20,43 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
+        source: 'es/services/:slug+',
+        destination: '/es/services',
+        permanent: false,
+      },
+      {
+        source: 'en/services/:slug+',
+        destination: '/en/services',
+        permanent: false,
+      },
+      {
         source: '/clients/:slug+',
         destination: '/clients',
+        permanent: false,
+      },
+      {
+        source: 'es/clients/:slug+',
+        destination: '/es/clients',
+        permanent: false,
+      },
+      {
+        source: 'en/clients/:slug+',
+        destination: '/en/clients',
+        permanent: false,
+      },
+      {
+        source: '/courses/:slug+',
+        destination: '/courses',
+        permanent: false,
+      },
+      {
+        source: 'es/courses/:slug+',
+        destination: '/es/courses',
+        permanent: false,
+      },
+      {
+        source: 'en/courses/:slug+',
+        destination: '/en/courses',
         permanent: false,
       },
     ];

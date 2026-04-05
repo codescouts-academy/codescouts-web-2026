@@ -15,12 +15,12 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/services/:slug*',
+        source: '/services/:slug+',
         destination: '/services',
         permanent: false,
       },
       {
-        source: '/clients/:slug*',
+        source: '/clients/:slug+',
         destination: '/clients',
         permanent: false,
       },
@@ -28,34 +28,13 @@ const nextConfig: NextConfig = {
   },
   async rewrites() {
     return [
-      {
-        source: '/services',
-        destination: '/es/services',
-      },
-      {
-        source: '/contact',
-        destination: '/es/contact',
-      },
-      {
-        source: '/courses',
-        destination: '/es/courses',
-      },
-      {
-        source: '/clients',
-        destination: '/es/clients',
-      },
-      {
-        source: '/blog',
-        destination: '/es/blog',
-      },
-      {
-        source: '/blog/:slug',
-        destination: '/es/blog/:slug',
-      },
-      {
-        source: '/',
-        destination: '/es',
-      },
+      { source: '/services', destination: '/es/services' },
+      { source: '/contact', destination: '/es/contact' },
+      { source: '/courses', destination: '/es/courses' },
+      { source: '/clients', destination: '/es/clients' },
+      { source: '/blog', destination: '/es/blog' },
+      { source: '/blog/:slug', destination: '/es/blog/:slug' },
+      { source: '/', destination: '/es' },
     ];
   },
 };

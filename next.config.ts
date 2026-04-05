@@ -40,7 +40,7 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
-        source: 'en/clients/:slug+',
+        source: '/en/clients/:slug+',
         destination: '/en/clients',
         permanent: false,
       },

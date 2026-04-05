@@ -11,9 +11,9 @@ const Testimonials = () => {
   const locale = useLocale();
   const t = useTranslations();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const isSpanish = locale === "es";
 
-  // Blob URL cache kept in memory across renders
   const blobCache = useRef<Map<string, string>>(new Map());
   const [cachedSrcs, setCachedSrcs] = useState<Map<string, string>>(new Map());
 
@@ -28,14 +28,12 @@ const Testimonials = () => {
     } catch (_) {}
   });
 
-  // On mount: cache first 3 images
   useEffect(() => {
     [0, 1, 2].forEach((idx) => {
       fetchAndCache.current(testimonials[idx % testimonials.length].image);
     });
   }, []);
 
-  // On navigation: cache next 2
   useEffect(() => {
     [1, 2].forEach((offset) => {
       const idx = (currentIndex + offset) % testimonials.length;
@@ -43,7 +41,6 @@ const Testimonials = () => {
     });
   }, [currentIndex]);
 
-  // Cleanup blob URLs on unmount
   useEffect(() => {
     return () => {
       blobCache.current.forEach((blobUrl) => URL.revokeObjectURL(blobUrl));
@@ -63,12 +60,14 @@ const Testimonials = () => {
   };
 
   useEffect(() => {
+    if (isPaused) return;
+
     const interval = setInterval(() => {
       nextTestimonial();
     }, 10000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isPaused]);
 
   const currentTestimonial = testimonials[currentIndex];
   const previousLabel = isSpanish
@@ -83,7 +82,6 @@ const Testimonials = () => {
       <div className="absolute inset-0 bg-grid opacity-20" />
 
       <div className="section-container relative">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -96,9 +94,12 @@ const Testimonials = () => {
           </h2>
         </motion.div>
 
-        {/* Testimonial Card */}
         <div className="max-w-4xl mx-auto">
-          <div className="glass-card p-8 md:p-12 relative">
+          <div
+            className="glass-card p-8 md:p-12 relative"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             <Quote className="absolute top-6 left-6 h-12 w-12 text-primary/20" />
 
             <AnimatePresence mode="wait">
@@ -139,7 +140,6 @@ const Testimonials = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Navigation */}
             <div className="flex items-center justify-between mt-8 pt-6 border-t border-border">
               <div className="flex gap-2">
                 {testimonials.map((_, index) => (

@@ -61,7 +61,7 @@ const ClientsList = ({ locale }: { locale: Language }) => {
                       className={cn(
                         "max-h-24 max-w-[180px] object-contain filter brightness-0 opacity-70 group-hover:opacity-100 transition-opacity",
                         {
-                          invert: theme === "dark",
+                          invert: !theme || theme === "dark",
                         },
                       )}
                     />

@@ -12,14 +12,24 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_COMMIT_SHA: process.env.VERCEL_GIT_COMMIT_SHA,
     NEXT_PUBLIC_COMMIT_MESSAGE: process.env.VERCEL_GIT_COMMIT_MESSAGE,
   },
+  async redirects() {
+    return [
+      {
+        source: '/services/:slug*',
+        destination: '/services',
+        permanent: false,
+      },
+      {
+        source: '/clients/:slug*',
+        destination: '/clients',
+        permanent: false,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {
         source: '/services',
-        destination: '/es/services',
-      },
-      {
-        source: '/services/:slug',
         destination: '/es/services',
       },
       {
@@ -32,10 +42,6 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/clients',
-        destination: '/es/clients',
-      },
-      {
-        source: '/clients/:slug',
         destination: '/es/clients',
       },
       {

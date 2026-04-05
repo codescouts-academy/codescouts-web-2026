@@ -20,12 +20,12 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
-        source: 'es/services/:slug+',
+        source: '/es/services/:slug+',
         destination: '/es/services',
         permanent: false,
       },
       {
-        source: 'en/services/:slug+',
+        source: '/en/services/:slug+',
         destination: '/en/services',
         permanent: false,
       },
@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
-        source: 'es/clients/:slug+',
+        source: '/es/clients/:slug+',
         destination: '/es/clients',
         permanent: false,
       },
@@ -50,12 +50,12 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
-        source: 'es/courses/:slug+',
+        source: '/es/courses/:slug+',
         destination: '/es/courses',
         permanent: false,
       },
       {
-        source: 'en/courses/:slug+',
+        source: '/en/courses/:slug+',
         destination: '/en/courses',
         permanent: false,
       },

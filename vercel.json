@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    { "source": "/services", "destination": "/es/services" },
+    { "source": "/contact", "destination": "/es/contact" },
+    { "source": "/courses", "destination": "/es/courses" },
+    { "source": "/clients", "destination": "/es/clients" },
+    { "source": "/blog", "destination": "/es/blog" },
+    { "source": "/blog/:slug", "destination": "/es/blog/:slug" },
+    { "source": "/", "destination": "/es" }
+  ]
+}

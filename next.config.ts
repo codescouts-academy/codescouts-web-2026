@@ -12,34 +12,6 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_COMMIT_SHA: process.env.VERCEL_GIT_COMMIT_SHA,
     NEXT_PUBLIC_COMMIT_MESSAGE: process.env.VERCEL_GIT_COMMIT_MESSAGE,
   },
-  async rewrites() {
-    return [
-      {
-        source: '/blog/:slug',
-        destination: '/es/blog/:slug',
-      },
-      {
-        source: '/services',
-        destination: '/es/services',
-      },
-      {
-        source: '/contact',
-        destination: '/es/contact',
-      },
-      {
-        source: '/courses',
-        destination: '/es/courses',
-      },
-      {
-        source: '/clients',
-        destination: '/es/clients',
-      },
-      {
-        source: '/',
-        destination: '/es',
-      },
-    ];
-  },
 };
 
 export default withNextIntl(nextConfig);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
@@ -13,6 +13,41 @@ const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const isSpanish = locale === "es";
+
+  const blobCache = useRef<Map<string, string>>(new Map());
+  const [cachedSrcs, setCachedSrcs] = useState<Map<string, string>>(new Map());
+
+  const fetchAndCache = useRef(async (url: string) => {
+    if (blobCache.current.has(url)) return;
+    try {
+      const res = await fetch(url);
+      const blob = await res.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      blobCache.current.set(url, blobUrl);
+      setCachedSrcs(new Map(blobCache.current));
+    } catch (_) { }
+  });
+
+  useEffect(() => {
+    [0, 1, 2].forEach((idx) => {
+      fetchAndCache.current(testimonials[idx % testimonials.length].image);
+    });
+  }, []);
+
+  useEffect(() => {
+    [1, 2].forEach((offset) => {
+      const idx = (currentIndex + offset) % testimonials.length;
+      fetchAndCache.current(testimonials[idx].image);
+    });
+  }, [currentIndex]);
+
+  useEffect(() => {
+    return () => {
+      blobCache.current.forEach((blobUrl) => URL.revokeObjectURL(blobUrl));
+    };
+  }, []);
+
+  const getImageSrc = (url: string) => cachedSrcs.get(url) ?? url;
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -82,14 +117,9 @@ const Testimonials = () => {
 
                 <div className="flex items-center gap-4">
                   <img
-                    src={currentTestimonial.image}
+                    src={getImageSrc(currentTestimonial.image)}
                     alt={currentTestimonial.name}
                     className="w-14 h-14 rounded-full object-cover border-2 border-primary/20"
-                    width="56"
-                    height="56"
-                    loading="lazy"
-                    decoding="async"
-                    fetchPriority="low"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src =
                         `https://ui-avatars.com/api/?name=${encodeURIComponent(currentTestimonial.name)}&background=random`;
@@ -116,11 +146,10 @@ const Testimonials = () => {
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentIndex
+                    className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
                         ? "bg-primary w-6"
                         : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                    }`}
+                      }`}
                     aria-label={
                       isSpanish
                         ? `Ir al testimonio ${index + 1}`

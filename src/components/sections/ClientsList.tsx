@@ -9,10 +9,18 @@ import { Language } from "@/i18n";
 import { Highlight } from "@/components/ui/highlight";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 const ClientsList = ({ locale }: { locale: Language }) => {
   const t = useTranslations();
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && resolvedTheme !== "light";
 
   return (
     <Layout>
@@ -61,7 +69,7 @@ const ClientsList = ({ locale }: { locale: Language }) => {
                       className={cn(
                         "max-h-24 max-w-[180px] object-contain filter brightness-0 opacity-70 group-hover:opacity-100 transition-opacity",
                         {
-                          invert: !theme || theme === "dark",
+                          invert: isDark,
                         },
                       )}
                     />

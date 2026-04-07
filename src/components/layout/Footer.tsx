@@ -55,7 +55,7 @@ const Footer = () => {
               <span className="font-mono text-xl font-bold">
                 <span className="text-foreground">&lt;</span>
                 <span className="text-foreground">Code</span>
-                <span className="text-primary">Scouts</span>
+                <span className="gradient-text">Scouts</span>
                 <span className="text-foreground">/&gt;</span>
               </span>
             </Link>

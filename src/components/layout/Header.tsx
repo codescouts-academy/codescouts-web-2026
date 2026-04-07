@@ -18,6 +18,14 @@ const Header = () => {
   const pathname = usePathname();
   const locale = useLocale();
   const router = useRouter();
+  const mobileMenuId = "mobile-navigation-menu";
+  const mobileMenuLabel = isMobileMenuOpen
+    ? locale === "es"
+      ? "Cerrar menu principal"
+      : "Close main menu"
+    : locale === "es"
+      ? "Abrir menu principal"
+      : "Open main menu";
 
   const toggleLanguage = (locale: string) => {
     const segments = pathname?.split("/") || [];
@@ -43,11 +51,10 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/90 backdrop-blur-xl border-b border-border/50"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-background/90 backdrop-blur-xl border-b border-border/50"
+        : "bg-transparent"
+        }`}
     >
       <div className="section-container">
         <nav className="flex items-center justify-between h-16 md:h-20">
@@ -67,11 +74,10 @@ const Header = () => {
               <Link
                 key={link.href}
                 href={`/${locale}${link.href}`}
-                className={`link-hover text-sm font-medium transition-colors ${
-                  pathname.includes(link.href)
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                className={`link-hover text-sm font-medium transition-colors ${pathname.includes(link.href)
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
+                  }`}
               >
                 {link.label}
               </Link>
@@ -114,6 +120,10 @@ const Header = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={mobileMenuLabel}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls={mobileMenuId}
+              title={mobileMenuLabel}
             >
               {isMobileMenuOpen ? (
                 <X className="h-5 w-5" />
@@ -132,6 +142,7 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
+            id={mobileMenuId}
             className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border"
           >
             <div className="section-container py-4 space-y-3">
@@ -140,23 +151,14 @@ const Header = () => {
                   key={link.href}
                   href={`/${locale}${link.href}`}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block py-2 text-base font-medium transition-colors ${
-                    pathname === link.href
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
+                  className={`block py-2 text-base font-medium transition-colors ${pathname === link.href
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                    }`}
                 >
                   {link.label}
                 </Link>
               ))}
-              <Button asChild className="w-full mt-4">
-                <Link
-                  href={`/${locale}/contact`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {t("common.contact")}
-                </Link>
-              </Button>
             </div>
           </motion.div>
         )}

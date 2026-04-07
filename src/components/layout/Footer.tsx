@@ -15,7 +15,6 @@ import Link from "next/link";
 const Footer = () => {
   const t = useTranslations();
   const locale = useLocale();
-  const isSpanish = locale === "es";
 
   const externalLinks = [
     { href: "https://agile.codescouts.academy/", label: "Agile Hub" },
@@ -186,11 +185,6 @@ const Footer = () => {
                 href={`https://github.com/codescouts-academy/codescouts-web-2026/commit/${process.env.NEXT_PUBLIC_COMMIT_SHA}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={
-                  isSpanish
-                    ? "Ver commit actual en GitHub"
-                    : "View current commit on GitHub"
-                }
               >
                 {`// ${process.env.NEXT_PUBLIC_COMMIT_SHA ?? "72f74d90a01aee6afaa4936abe00e5ac9ab8a4cb"}`}
               </a>

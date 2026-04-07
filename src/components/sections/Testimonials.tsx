@@ -1,51 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { testimonials } from "@/lib/testimonials";
-
-const imagePreloadCache = new Map<string, Promise<void>>();
-
-const preloadImage = (src: string) => {
-  if (typeof window === "undefined") {
-    return Promise.resolve();
-  }
-
-  const cachedPromise = imagePreloadCache.get(src);
-  if (cachedPromise) {
-    return cachedPromise;
-  }
-
-  const image = new window.Image();
-  image.decoding = "async";
-
-  const preloadPromise = new Promise<void>((resolve) => {
-    const finish = () => resolve();
-
-    image.onload = finish;
-    image.onerror = () => {
-      imagePreloadCache.delete(src);
-      resolve();
-    };
-
-    image.src = src;
-
-    if (image.complete) {
-      resolve();
-      return;
-    }
-
-    if (typeof image.decode === "function") {
-      image.decode().then(finish).catch(finish);
-    }
-  });
-
-  imagePreloadCache.set(src, preloadPromise);
-  return preloadPromise;
-};
 
 const Testimonials = () => {
   const locale = useLocale();
@@ -53,47 +13,16 @@ const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const isSpanish = locale === "es";
-  const navigationTokenRef = useRef(0);
-
-  const preloadNearbyImages = (index: number) => {
-    const indexesToWarm = [
-      index,
-      (index + 1) % testimonials.length,
-      (index + 2) % testimonials.length,
-      (index - 1 + testimonials.length) % testimonials.length,
-    ];
-
-    indexesToWarm.forEach((imageIndex) => {
-      void preloadImage(testimonials[imageIndex].image);
-    });
-  };
-
-  const goToTestimonial = (nextIndex: number) => {
-    const normalizedIndex =
-      (nextIndex + testimonials.length) % testimonials.length;
-    const token = ++navigationTokenRef.current;
-
-    void preloadImage(testimonials[normalizedIndex].image).then(() => {
-      if (navigationTokenRef.current !== token) {
-        return;
-      }
-
-      setCurrentIndex(normalizedIndex);
-      preloadNearbyImages(normalizedIndex);
-    });
-  };
 
   const nextTestimonial = () => {
-    goToTestimonial(currentIndex + 1);
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
   const prevTestimonial = () => {
-    goToTestimonial(currentIndex - 1);
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
+    );
   };
-
-  useEffect(() => {
-    preloadNearbyImages(0);
-  }, []);
 
   useEffect(() => {
     if (isPaused) return;
@@ -103,7 +32,7 @@ const Testimonials = () => {
     }, 10000);
 
     return () => clearInterval(interval);
-  }, [currentIndex, isPaused]);
+  }, [isPaused]);
 
   const currentTestimonial = testimonials[currentIndex];
   const previousLabel = isSpanish
@@ -158,9 +87,9 @@ const Testimonials = () => {
                     className="w-14 h-14 rounded-full object-cover border-2 border-primary/20"
                     width="56"
                     height="56"
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
-                    fetchPriority="auto"
+                    fetchPriority="low"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src =
                         `https://ui-avatars.com/api/?name=${encodeURIComponent(currentTestimonial.name)}&background=random`;
@@ -186,12 +115,11 @@ const Testimonials = () => {
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => goToTestimonial(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentIndex
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
                         ? "bg-primary w-6"
                         : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                    }`}
+                      }`}
                     aria-label={
                       isSpanish
                         ? `Ir al testimonio ${index + 1}`

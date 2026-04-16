@@ -10,16 +10,6 @@ interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
-    name: "Juan Alvarez",
-    role: "Backend developer",
-    company: "Mirai",
-    text: {
-      es: "Superasteis mis expectativas con creces. Tanto Tomás como Damián son dos grandes profesionales a nivel técnico y a nivel enseñanza (cosa mucho mas difícil de encontrar desde mi punto de vista en el mundo técnico). He hecho otras formaciones con otras empresas y puedo decir que este formato me ha gustado mas que cualquiera.",
-      en: "You exceeded my expectations by far. Both Tomás and Damián are outstanding professionals, both technically and in teaching (which is much harder to find in the tech world, in my opinion). I've attended other training with different companies, and I can say I liked this format more than any other.",
-    },
-    image: "/images/testimonials/juan-alvarez.png",
-  },
-  {
     name: "Juanjo Hernandez",
     role: "Responsable del área de Nuevos Desarrollos",
     company: "Movicoders",
@@ -50,6 +40,16 @@ export const testimonials: Testimonial[] = [
     image: "/images/testimonials/ignacio-soler.png",
   },
   {
+    name: "Sebastián Espinoza",
+    role: "Tech Lead",
+    company: "AXA Partners",
+    text: {
+      es: "Contábamos con muchos proyectos que ofrecían en cierta medida la misma solución pero con distintas estrategias y arquitectura con lo cual se hacia complejo su progreso y mantenimiento. Nos han ayudado a clarificar conceptos y a definir una estrategia que se adapte a nuestros proyectos.",
+      en: "We had many projects that offered, to some extent, the same solution but with different strategies and architectures, making progress and maintenance complex. They helped clarify concepts and define a strategy that fits our projects.",
+    },
+    image: "/images/testimonials/sebastian-espinoza.png",
+  },
+  {
     name: "Erik Campobadal",
     role: "Senior Software Engineer",
     company: "Submer",
@@ -68,7 +68,8 @@ export const testimonials: Testimonial[] = [
       en: "We've experienced significant progress in our development, both technologically and methodologically, thanks to collaborating with Damián. His approach and skills accelerated our progress, allowing us to simplify and apply best practices in development.",
     },
     image: "/images/testimonials/jonathan-huet.png",
-  },
+  }
+  ,
   {
     name: "Manuel Valladares",
     role: "Senior Software Engineer",
@@ -80,13 +81,23 @@ export const testimonials: Testimonial[] = [
     image: "/images/testimonials/manuel-valladares.png",
   },
   {
-    name: "Sebastián Espinoza",
-    role: "Tech Lead",
-    company: "AXA Partners",
+    name: "Juan Alvarez",
+    role: "Backend developer",
+    company: "Mirai",
     text: {
-      es: "Contábamos con muchos proyectos que ofrecían en cierta medida la misma solución pero con distintas estrategias y arquitectura con lo cual se hacia complejo su progreso y mantenimiento. Nos han ayudado a clarificar conceptos y a definir una estrategia que se adapte a nuestros proyectos.",
-      en: "We had many projects that offered, to some extent, the same solution but with different strategies and architectures, making progress and maintenance complex. They helped clarify concepts and define a strategy that fits our projects.",
+      es: "Superasteis mis expectativas con creces. Tanto Tomás como Damián son dos grandes profesionales a nivel técnico y a nivel enseñanza (cosa mucho mas difícil de encontrar desde mi punto de vista en el mundo técnico). He hecho otras formaciones con otras empresas y puedo decir que este formato me ha gustado mas que cualquiera.",
+      en: "You exceeded my expectations by far. Both Tomás and Damián are outstanding professionals, both technically and in teaching (which is much harder to find in the tech world, in my opinion). I've attended other training with different companies, and I can say I liked this format more than any other.",
     },
-    image: "/images/testimonials/sebastian-espinoza.png",
+    image: "/images/testimonials/juan-alvarez.png",
   },
+  {
+    name: "Rubén Vega",
+    role: "Head of Product",
+    company: "Cluber",
+    text: {
+      es: "Teníamos expectativas altas, pero diría que han sido superadas. El conocimiento de Damián y la forma de comunicarlo y trasladarlo al equipo ha sido excelente. Resaltar también la capacidad de trabajo y la implicación de Damián en el proyecto, no solo proponiendo si no también ejecutando tareas y pruebas de concepto.",
+      en: "We had high expectations, but I would say they have been exceeded. Damián’s expertise, along with his ability to communicate and share it effectively with the team, has been excellent. I would also like to highlight his work ethic and commitment to the project; he doesn't just propose ideas, but also executes tasks and proofs of concept.",
+    },
+    image: "/images/testimonials/ruben-vega.png",
+  }
 ];

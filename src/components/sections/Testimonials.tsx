@@ -84,7 +84,7 @@ const Testimonials = () => {
                   <img
                     src={currentTestimonial.image}
                     alt={currentTestimonial.name}
-                    className="w-14 h-14 rounded-full object-cover border-2 border-primary/20"
+                    className="w-14 h-14 rounded-full object-cover border-2 border-primary/20 grayscale brightness-125"
                     width="56"
                     height="56"
                     loading="lazy"
@@ -117,8 +117,8 @@ const Testimonials = () => {
                     key={index}
                     onClick={() => setCurrentIndex(index)}
                     className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
-                        ? "bg-primary w-6"
-                        : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                      ? "bg-primary w-6"
+                      : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
                       }`}
                     aria-label={
                       isSpanish

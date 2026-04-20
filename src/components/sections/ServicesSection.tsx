@@ -92,22 +92,21 @@ const ServicesSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className={`glass-card p-8 service-card group ${
-                index === 4 ? "md:col-span-2 lg:col-span-1" : ""
-              }`}
+              className={`glass-card p-8 service-card group flex flex-col ${index === 4 ? "md:col-span-2 lg:col-span-1" : ""
+                }`}
             >
               <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                 <service.icon className="h-7 w-7 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
                 {service.description}
               </p>
-              <Button asChild variant="ghost" className="group/btn p-0 h-auto">
+              <Button asChild variant="ghost" className="group/btn p-0 h-auto self-start">
                 <Link
                   href={service.href}
                   aria-label={getServiceLinkLabel(service.title, service.href)}
-                  className="flex items-center gap-2 text-primary hover:text-primary/80"
+                  className="flex items-center gap-2 text-primary p-2"
                 >
                   {getServiceLinkLabel(service.title, service.href)}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />

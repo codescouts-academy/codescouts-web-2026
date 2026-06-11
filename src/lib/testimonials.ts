@@ -99,5 +99,15 @@ export const testimonials: Testimonial[] = [
       en: "We had high expectations, but I would say they have been exceeded. Damián’s expertise, along with his ability to communicate and share it effectively with the team, has been excellent. I would also like to highlight his work ethic and commitment to the project; he doesn't just propose ideas, but also executes tasks and proofs of concept.",
     },
     image: "/images/testimonials/ruben-vega.png",
+  },
+  {
+    name: "Fernando Rodriguez",
+    role: "Frontend developer",
+    company: "Cluber",
+    text: {
+      es: "Nos ayudaron a reorganizar nuestra forma de trabajar y a mejorar la coordinación entre equipos para lograr una entrega continua de valor. Implementaron mejoras en todo el proceso, desde Product Owner y QA hasta frontend y backend. Gracias a ello, aumentamos significativamente la consistencia en las entregas y eliminamos muchos de los bloqueos que sufríamos anteriormente",
+      en: "They helped us reorganise the way we work and improve coordination across teams to achieve continuous value delivery. They implemented improvements throughout the entire process, from Product Owners and QA to frontend and backend development. As a result, we significantly increased the consistency of our deliveries and eliminated many of the bottlenecks we had previously experienced.",
+    },
+    image: "/images/testimonials/fernando-rodriguez.png",
   }
 ];

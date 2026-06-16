@@ -10,6 +10,7 @@ import { Highlight } from "@/components/ui/highlight";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import Testimonials from "@/components/sections/Testimonials";
 
 const ClientsList = ({ locale }: { locale: Language }) => {
   const t = useTranslations();
@@ -114,6 +115,8 @@ const ClientsList = ({ locale }: { locale: Language }) => {
           </div>
         </div>
       </section>
+
+      <Testimonials />
 
       {/* Stats Section */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-transparent">

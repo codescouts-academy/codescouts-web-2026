@@ -163,21 +163,13 @@ const Services = ({ locale }: { locale: Language }) => {
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
-                    {service.linkTo ? (
-                      <Button asChild className="glow">
-                        <Link href={`/${locale}${service.linkTo}`}>
-                          {t("services.exploreCourses")}
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Link>
-                      </Button>
-                    ) : (
-                      <Button asChild className="glow">
-                        <Link href={`/${locale}/contact`}>
-                          {t("common.contact")}
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Link>
-                      </Button>
-                    )}
+
+                    <Button asChild className="glow">
+                      <Link href={`/${locale}/contact`}>
+                        {t("common.contact")}
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
                   </div>
                 </div>
 

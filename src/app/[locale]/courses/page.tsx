@@ -1,7 +1,11 @@
 import { JsonLd } from "@/components/JsonLd";
 import Courses from "@/components/sections/Courses";
 import { LocaleProps } from "@/i18n";
-import { coursesSchema, generateCoursesMeta } from "@/lib/meta";
+import {
+  breadcrumbSchema,
+  coursesSchema,
+  generateCoursesMeta,
+} from "@/lib/meta";
 import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
 
 const Page = async ({ params }: LocaleProps) => {
@@ -10,6 +14,14 @@ const Page = async ({ params }: LocaleProps) => {
   return (
     <>
       <JsonLd data={coursesSchema(locale)} />
+      <JsonLd
+        data={breadcrumbSchema(locale, [
+          {
+            name: locale === "es" ? "Formación" : "Training",
+            url: `${process.env.SITE_URL ?? "https://www.codescouts.academy"}/${locale}/courses`,
+          },
+        ])}
+      />
       <Courses locale={locale} />
     </>
   );

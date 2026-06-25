@@ -3,7 +3,7 @@ import { getBlogPost, getPostsFromLang } from "@/lib/blog";
 import Post from "@/components/sections/Post";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
-import { blogPostSchema, generateBlogPostMeta } from "@/lib/meta";
+import { blogPostSchema, breadcrumbSchema, generateBlogPostMeta } from "@/lib/meta";
 import { LocaleProps } from "@/i18n";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -29,6 +29,18 @@ const Page = async ({ params }: Props) => {
   return (
     <>
       <JsonLd data={blogPostSchema(post, locale, slug)} />
+      <JsonLd
+        data={breadcrumbSchema(locale, [
+          {
+            name: locale === "es" ? "Blog" : "Blog",
+            url: `${process.env.SITE_URL ?? "https://www.codescouts.academy"}/${locale}/blog`,
+          },
+          {
+            name: post.title,
+            url: `${process.env.SITE_URL ?? "https://www.codescouts.academy"}/${locale}/blog/${slug}`,
+          },
+        ])}
+      />
       <Post post={post} relatedPosts={relatedPosts} />
     </>
   );

@@ -48,7 +48,7 @@ const ContactSection = () => {
               </a>
 
               <a
-                href="mailto:hola@codescouts.academy"
+                href={`mailto:${t("contact.email")}`}
                 className="flex items-center gap-4 p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
               >
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">

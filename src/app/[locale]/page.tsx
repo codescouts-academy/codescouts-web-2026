@@ -1,3 +1,4 @@
+import { JsonLd } from "@/components/JsonLd";
 import Layout from "@/components/layout/Layout";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
@@ -8,11 +9,14 @@ import Testimonials from "@/components/sections/Testimonials";
 import ContactSection from "@/components/sections/ContactSection";
 import { LocaleProps } from "@/i18n";
 import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
-import { generateHomeMeta } from "@/lib/meta";
+import { breadcrumbSchema, generateHomeMeta } from "@/lib/meta";
 
-const Page = () => {
+const Page = async ({ params }: LocaleProps) => {
+  const { locale } = await params;
+
   return (
     <Layout>
+      <JsonLd data={breadcrumbSchema(locale, [])} />
       <Hero />
       <About />
       <HowWeWork />

@@ -20,24 +20,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: page === "" ? ("weekly" as const) : ("monthly" as const),
         priority: page === "" ? 1 : 0.8,
         alternates: {
-          languages:
-            page === "blog"
-              ? { [locale]: pageUrl(locale, page) }
-              : {
-                  es: pageUrl("es", page),
-                  en: pageUrl("en", page),
-                },
+          languages: {
+            es: pageUrl("es", page),
+            en: pageUrl("en", page),
+          },
         },
       })),
   );
 
   const blogPages = Languages.flatMap((locale) =>
-    getPostsFromLang(locale).map((post) => ({
-      url: pageUrl(locale, `blog/${post.slug}`),
-      lastModified: new Date(post.date),
-      changeFrequency: "weekly" as const,
-      priority: 0.6,
-    })),
+    getPostsFromLang(locale).map((post) => {
+      const allLanguages = Languages.filter((l) => {
+        const slugExists = getPostsFromLang(l).some((p) => p.slug === post.slug);
+        return slugExists;
+      });
+
+      return {
+        url: pageUrl(locale, `blog/${post.slug}`),
+        lastModified: new Date(post.date),
+        changeFrequency: "weekly" as const,
+        priority: 0.6,
+        alternates: {
+          languages: Object.fromEntries(
+            allLanguages.map((l) => [l, pageUrl(l, `blog/${post.slug}`)]),
+          ),
+        },
+      };
+    }),
   );
 
   return [...staticPages, ...blogPages];

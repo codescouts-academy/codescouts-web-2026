@@ -1,7 +1,9 @@
 User-agent: *
-
 Allow: /images/
+Allow: /$
 Disallow: /es/legal/
 Disallow: /en/legal/
 
 Sitemap: https://www.codescouts.academy/sitemap.xml
+
+Crawl-Delay: 10

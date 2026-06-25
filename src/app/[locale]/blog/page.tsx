@@ -3,7 +3,7 @@ import BlogPosts from "@/components/sections/BlogPosts";
 import { LocaleProps } from "@/i18n";
 import { routing } from "@/i18n/routing";
 import { getPostsFromLang } from "@/lib/blog";
-import { blogsSchema, generateBlogListMeta } from "@/lib/meta";
+import { blogsSchema, breadcrumbSchema, generateBlogListMeta } from "@/lib/meta";
 import { Metadata } from "next";
 
 const Page = async ({ params }: LocaleProps) => {
@@ -14,6 +14,14 @@ const Page = async ({ params }: LocaleProps) => {
   return (
     <>
       <JsonLd data={blogsSchema(locale)} />
+      <JsonLd
+        data={breadcrumbSchema(locale, [
+          {
+            name: locale === "es" ? "Blog" : "Blog",
+            url: `${process.env.SITE_URL ?? "https://www.codescouts.academy"}/${locale}/blog`,
+          },
+        ])}
+      />
       <BlogPosts blogPosts={posts} />
     </>
   );

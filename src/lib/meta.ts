@@ -8,8 +8,8 @@ export const baseUrl =
 
 const defaultSocialImage = {
   url: `${baseUrl}/images/avatar.png`,
-  width: 400,
-  height: 400,
+  width: 500,
+  height: 500,
   alt: "CodeScouts",
 };
 
@@ -123,16 +123,21 @@ const buildMetadata = ({
 
 export const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "LocalBusiness"],
   "@id": `${baseUrl}/#organization`,
   name: "CodeScouts",
   url: baseUrl,
   logo: {
     "@type": "ImageObject",
     url: `${baseUrl}/images/avatar.png`,
-    width: 400,
-    height: 400,
+    width: 500,
+    height: 500,
   },
+  image: `${baseUrl}/images/avatar.png`,
+  description:
+    "Technical coaching, consultoría de software y formación técnica para equipos de desarrollo.",
+  email: "hello@codescouts.academy",
+  telephone: "+34-664-109-973",
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+34-664-109-973",
@@ -150,6 +155,9 @@ export const organizationSchema = {
     "https://twitter.com/code_scouts",
     "https://www.linkedin.com/company/codescouts",
   ],
+  knowsLanguage: ["es", "en"],
+  foundingDate: "2020",
+  numberOfEmployees: { "@type": "QuantitativeValue", minValue: 2, maxValue: 10 },
 };
 
 export const websiteSchema = {
@@ -196,6 +204,45 @@ export const coursesSchema = (locale: Language) => ({
     locale === "es"
       ? "Cursos de TDD, Clean Code, arquitectura de software y mas, bonificables por FUNDAE."
       : "TDD, Clean Code, software architecture courses and more, FUNDAE subsidized.",
+});
+
+export const breadcrumbSchema = (
+  locale: Language,
+  segments: { name: string; url: string }[],
+) => ({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": `${baseUrl}/${locale}/#breadcrumb`,
+  name: "Breadcrumb",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: locale === "es" ? "Inicio" : "Home",
+      item: pageUrl(locale),
+    },
+    ...segments.map((segment, index) => ({
+      "@type": "ListItem",
+      position: index + 2,
+      name: segment.name,
+      item: segment.url,
+    })),
+  ],
+});
+
+export const faqSchema = (
+  questions: { question: string; answer: string }[],
+) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: questions.map((q) => ({
+    "@type": "Question",
+    name: q.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: q.answer,
+    },
+  })),
 });
 
 export const blogPostSchema = (post: BlogPost, locale: Language, slug: string) => ({

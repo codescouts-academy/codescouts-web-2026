@@ -1,6 +1,5 @@
 import { JsonLd } from "@/components/JsonLd";
 import { ThemeProvider } from "@/components/theme-provider";
-import { routing } from "@/i18n/routing";
 import { baseUrl, organizationSchema, websiteSchema } from "@/lib/meta";
 import { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
@@ -26,9 +25,18 @@ export const metadata: Metadata = {
     default: "CodeScouts",
     template: "%s",
   },
+  description:
+    "Technical coaching, consultoría de software y formación técnica para equipos de desarrollo. Mejora la calidad de tu software con CodeScouts.",
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -37,7 +45,6 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
-      lang={routing.defaultLocale}
       suppressHydrationWarning
       className={`${inter.variable} ${jetBrainsMono.variable} scrollbar-thin scrollbar-thumb-main-grey-1 hover:scrollbar-thumb-muted-foreground scrollbar-track-transparent`}
     >

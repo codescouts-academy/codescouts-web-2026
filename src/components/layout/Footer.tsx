@@ -29,19 +29,19 @@ const Footer = () => {
 
   const services = [
     {
-      href: "#technical-coaching",
+      href: "technical-coaching",
       label: t("services.technicalCoaching.title"),
     },
     {
-      href: "#accelerated-program",
+      href: "accelerated-program",
       label: t("services.acceleratedProgram.title"),
     },
     {
-      href: "#cto-as-service",
+      href: "cto-as-service",
       label: t("services.ctoAsService.title"),
     },
     {
-      href: "#software-consulting",
+      href: "software-consulting",
       label: t("services.softwareConsulting.title"),
     },
   ];

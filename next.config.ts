@@ -15,18 +15,18 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/services/:slug+',
-        destination: '/services',
+        source: '/services/training',
+        destination: '/courses',
         permanent: false,
       },
       {
-        source: '/es/services/:slug+',
-        destination: '/es/services',
+        source: '/es/services/training',
+        destination: '/es/courses',
         permanent: false,
       },
       {
-        source: '/en/services/:slug+',
-        destination: '/en/services',
+        source: '/en/services/training',
+        destination: '/en/courses',
         permanent: false,
       },
       {

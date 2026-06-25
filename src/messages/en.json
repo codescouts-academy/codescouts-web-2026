@@ -112,6 +112,7 @@
     "ctoAsService": {
       "title": "CTO as a Service",
       "description": "Do you need to define or redefine your company's technology strategy and want to validate it with us? Do you need to know which technologies are best for your products? This service fits perfectly.",
+      "fullDescription": "If you need to define or redefine your company's technology strategy but don't have an internal CTO or want an external perspective to validate your decisions, this service is for you. We analyze your tech stack, processes, and team to design a clear roadmap, select optimal technologies for your products, and establish a sustainable growth strategy. We act as your external CTO on key decisions, without the commitment of a full-time hire.",
       "quote": "We help technology companies develop an effective strategy that allows them to grow quickly and sustainably over time, creating technological components that fit your objectives.",
       "benefit1": "Defined technology strategy",
       "benefit2": "Optimal technology selection",
@@ -121,6 +122,7 @@
     "softwareConsulting": {
       "title": "Software Consulting",
       "description": "We will discover what points you need to improve in your current software, we will also analyze the development methodology and help you improve it step by step, defining an iterative plan so you can evolve your product.",
+      "fullDescription": "Is your legacy code preventing you from evolving your product at the pace you need? We conduct a thorough review of your code, architecture, and development processes to identify the critical points limiting your growth. We design an iterative improvement plan with actions prioritized by impact, and accompany you during execution to ensure each improvement is properly implemented. We work with you, not for you.",
       "quote": "We help software companies solve technical problems that prevent efficiently achieving the software's objective",
       "benefit1": "Improvement points analysis",
       "benefit2": "Methodology review",
@@ -130,6 +132,8 @@
     "training": {
       "title": "Training",
       "description": "We have a wide variety of customized courses aimed at putting into practice what you really need in your day-to-day, executing the course in the most proactive way to speed up learning and implementation of knowledge.",
+      "fullDescription": "We offer a wide variety of customized courses focused on putting into practice what you really need in your day-to-day work. We deliver training in TDD, Clean Code, software architecture, Next.js, design patterns, DDD, and much more. All our courses are highly practical (over 70% hands-on time) and are taught in small groups to ensure personalized attention. Every course is tailored to your team's specific needs and technology stack.",
+      "quote": "We train your team with practical, customized courses that guarantee immediate application of knowledge",
       "benefit1": "Custom courses",
       "benefit2": "Practical learning",
       "benefit3": "Proactive methodology",

@@ -112,6 +112,7 @@
     "ctoAsService": {
       "title": "CTO como Servicio",
       "description": "Necesitas definir o re definir la estrategia tecnológica de tu empresa y quieres validarla con nosotros, necesitas saber qué tecnologías son las mejores para los productos que tienes, este servicio se ajusta a la perfección.",
+      "fullDescription": "Si necesitas definir o redefinir la estrategia tecnológica de tu empresa pero no tienes un CTO interno o quieres una visión externa que valide tus decisiones, este servicio es para ti. Analizaremos tu stack tecnológico, procesos y equipo para diseñar una hoja de ruta clara, seleccionar las tecnologías óptimas para tus productos y establecer una estrategia de crecimiento sostenible. Actuamos como tu CTO externo en las decisiones clave, sin el compromiso de una contratación a tiempo completo.",
       "quote": "Ayudamos a empresas tecnológicas a desarrollar una estrategia efectiva que les permita crecer de manera rápida y sostenible en el tiempo, creando componentes tecnológicos que se ajusten a tus objetivos.",
       "benefit1": "Estrategia tecnológica definida",
       "benefit2": "Selección de tecnologías óptimas",
@@ -121,6 +122,7 @@
     "softwareConsulting": {
       "title": "Consultoría de Software",
       "description": "Descubriremos cuales son los puntos que necesitas mejorar en tu software actual, analizaremos también la metodología de desarrollo y te ayudaremos a mejorarlo paso a paso, definiendo un plan iterativo para que puedas evolucionar tu producto.",
+      "fullDescription": "¿Tu código legacy te impide evolucionar tu producto al ritmo que necesitas? Realizamos una revisión exhaustiva de tu código, arquitectura y procesos de desarrollo para identificar los puntos críticos que están limitando tu crecimiento. Diseñamos un plan de mejora iterativo con acciones priorizadas por impacto, y te acompañamos durante la ejecución para asegurar que cada mejora se implemente correctamente. Trabajamos contigo, no para ti.",
       "quote": "Ayudamos a las empresas de software a solucionar problemas técnicos que impidan lograr eficientemente el objetivo de ese software",
       "benefit1": "Análisis de puntos de mejora",
       "benefit2": "Revisión de metodología",
@@ -130,6 +132,8 @@
     "training": {
       "title": "Formación",
       "description": "Disponemos de una gran variedad de cursos a medida orientados a poner en práctica lo que realmente necesitas en tu día a día, realizando la ejecución del curso de la manera más proactiva para agilizar el aprendizaje y la puesta en marcha de los conocimientos.",
+      "fullDescription": "Disponemos de una amplia variedad de cursos a medida orientados a poner en práctica lo que realmente necesitas en tu día a día. Impartimos formación en TDD, Clean Code, arquitectura de software, Next.js, patrones de diseño, DDD y mucho más. Todos nuestros cursos tienen un enfoque eminentemente práctico (más del 70% del tiempo es práctica) y se imparten en grupos reducidos para garantizar la atención personalizada. Además, son bonificables por FUNDAE.",
+      "quote": "Formamos a tu equipo con cursos prácticos y personalizados que garantizan la aplicación inmediata de los conocimientos",
       "benefit1": "Cursos a medida",
       "benefit2": "Aprendizaje práctico",
       "benefit3": "Metodología proactiva",

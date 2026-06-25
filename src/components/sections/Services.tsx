@@ -85,7 +85,6 @@ const Services = ({ locale }: { locale: Language }) => {
         t("services.training.benefit3"),
         t("services.training.benefit4"),
       ],
-      linkTo: "/courses",
     },
   ];
 
@@ -133,9 +132,8 @@ const Services = ({ locale }: { locale: Language }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`grid md:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
-                }`}
+                className={`grid md:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
+                  }`}
               >
                 {/* Content */}
                 <div className="space-y-6">
@@ -158,21 +156,29 @@ const Services = ({ locale }: { locale: Language }) => {
                     </blockquote>
                   )}
 
-                  {service.linkTo ? (
-                    <Button asChild className="glow">
-                      <Link href={`/${locale}${service.linkTo}`}>
-                        {t("services.exploreCourses")}
+                  <div className="flex flex-wrap gap-4">
+                    <Button asChild variant="outline">
+                      <Link href={`/${locale}/services/${service.id}`}>
+                        {locale === "es" ? "Más información" : "Learn more"}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
-                  ) : (
-                    <Button asChild className="glow">
-                      <Link href={`/${locale}/contact`}>
-                        {t("common.contact")}
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Link>
-                    </Button>
-                  )}
+                    {service.linkTo ? (
+                      <Button asChild className="glow">
+                        <Link href={`/${locale}${service.linkTo}`}>
+                          {t("services.exploreCourses")}
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Link>
+                      </Button>
+                    ) : (
+                      <Button asChild className="glow">
+                        <Link href={`/${locale}/contact`}>
+                          {t("common.contact")}
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Link>
+                      </Button>
+                    )}
+                  </div>
                 </div>
 
                 {/* Benefits Card */}

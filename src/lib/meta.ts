@@ -206,6 +206,180 @@ export const coursesSchema = (locale: Language) => ({
       : "TDD, Clean Code, software architecture courses and more, FUNDAE subsidized.",
 });
 
+import { SERVICE_SLUGS, ServiceSlug, slugToTranslationKey } from "@/lib/services";
+export { SERVICE_SLUGS, type ServiceSlug, slugToTranslationKey };
+
+const serviceDetailMeta: Record<
+  ServiceSlug,
+  Record<Language, { title: string; description: string; keywords: string[] }>
+> = {
+  "technical-coaching": {
+    es: {
+      title: "CodeScouts | Technical Coaching para equipos de desarrollo",
+      description:
+        "Technical coaching para equipos de software. Mejora la calidad del codigo, aumenta la productividad y transfiere conocimiento con coaches expertos in-company.",
+      keywords: [
+        "technical coaching equipos",
+        "coach tecnico empresas",
+        "mejora calidad codigo",
+        "transferencia conocimiento equipos",
+        "pair programming coaching",
+      ],
+    },
+    en: {
+      title: "CodeScouts | Technical Coaching for software teams",
+      description:
+        "Technical coaching for software teams. Improve code quality, boost productivity and transfer knowledge with expert in-company coaches.",
+      keywords: [
+        "technical coaching teams",
+        "software coach",
+        "code quality improvement",
+        "knowledge transfer teams",
+        "pair programming coaching",
+      ],
+    },
+  },
+  "accelerated-program": {
+    es: {
+      title: "CodeScouts | Programa Acelerado para equipos de software",
+      description:
+        "Programa de formacion intensiva para equipos de desarrollo. Ramp up acelerado con planes personalizados y coaches con mas de 10 anos de experiencia.",
+      keywords: [
+        "programa acelerado desarrollo",
+        "ramp up equipos software",
+        "formacion intensiva programacion",
+        "onboarding equipos tecnicos",
+      ],
+    },
+    en: {
+      title: "CodeScouts | Accelerated Program for software teams",
+      description:
+        "Intensive training program for development teams. Accelerated ramp-up with customized plans and coaches with 10+ years of experience.",
+      keywords: [
+        "accelerated program development",
+        "team ramp up software",
+        "intensive programming training",
+        "technical team onboarding",
+      ],
+    },
+  },
+  "cto-as-service": {
+    es: {
+      title: "CodeScouts | CTO como Servicio para empresas tecnologicas",
+      description:
+        "CTO as a Service para empresas que necesitan definir su estrategia tecnologica, seleccionar tecnologias optimas y crecer de forma sostenible.",
+      keywords: [
+        "cto as a service espana",
+        "director tecnologia outsourcing",
+        "estrategia tecnologica empresas",
+        "consultoria cto externalizado",
+      ],
+    },
+    en: {
+      title: "CodeScouts | CTO as a Service for tech companies",
+      description:
+        "CTO as a Service for companies that need to define their technology strategy, select optimal technologies and grow sustainably.",
+      keywords: [
+        "cto as a service spain",
+        "fractional cto",
+        "technology strategy consulting",
+        "outsourced chief technology officer",
+      ],
+    },
+  },
+  "software-consulting": {
+    es: {
+      title: "CodeScouts | Consultoria de Software y mejora de producto",
+      description:
+        "Consultoria de software para identificar puntos de mejora en tu codigo y procesos. Plan iterativo para evolucionar tu producto con garantias.",
+      keywords: [
+        "consultoria software empresas",
+        "mejora codigo legacy",
+        "revision arquitectura software",
+        "optimizacion producto digital",
+        "asesoria tecnica desarrollo",
+      ],
+    },
+    en: {
+      title: "CodeScouts | Software Consulting and product improvement",
+      description:
+        "Software consulting to identify improvement points in your code and processes. Iterative plan to evolve your product with confidence.",
+      keywords: [
+        "software consulting companies",
+        "legacy code improvement",
+        "software architecture review",
+        "digital product optimization",
+        "technical development advisory",
+      ],
+    },
+  },
+
+  training: {
+    es: {
+      title: "CodeScouts | Formacion para equipos de desarrollo",
+      description: "Formacion intensiva para equipos de desarrollo.",
+      keywords: ["formacion equipos", "cursos programacion"],
+    },
+    en: {
+      title: "CodeScouts | Training for software teams",
+      description: "Intensive training for software development teams.",
+      keywords: ["team training", "programming courses"],
+    },
+  },
+};
+
+export const generateServiceDetailMeta = (
+  slug: ServiceSlug,
+  locale: Language,
+): Metadata => {
+  const meta = serviceDetailMeta[slug]?.[locale];
+  const translationKey = slugToTranslationKey[slug];
+
+  return buildMetadata({
+    locale,
+    pathSegments: ["services", slug],
+    title: meta?.title ?? "CodeScouts",
+    description: meta?.description ?? "",
+    keywords: meta?.keywords,
+    other: {
+      "og:see_also": [
+        pageUrl(locale, "services"),
+        pageUrl(locale, "contact"),
+      ].join(","),
+    },
+  });
+};
+
+export const singleServiceSchema = (
+  slug: ServiceSlug,
+  locale: Language,
+) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${baseUrl}/${locale}/services/${slug}#service`,
+  provider: { "@id": `${baseUrl}/#organization` },
+  name:
+    locale === "es"
+      ? ({
+          "technical-coaching": "Technical Coaching",
+          "accelerated-program": "Programa Acelerado",
+          "cto-as-service": "CTO como Servicio",
+          "software-consulting": "Consultoria de Software",
+          "training": "Formacion",
+        } as Record<ServiceSlug, string>)[slug]
+      : ({
+          "technical-coaching": "Technical Coaching",
+          "accelerated-program": "Accelerated Program",
+          "cto-as-service": "CTO as a Service",
+          "software-consulting": "Software Consulting",
+          "training": "Training",
+        } as Record<ServiceSlug, string>)[slug],
+  description: serviceDetailMeta[slug]?.[locale]?.description ?? "",
+  areaServed: { "@type": "Country", name: "Spain" },
+  inLanguage: localeLanguage(locale),
+  url: pageUrl(locale, "services", slug),
+});
+
 export const breadcrumbSchema = (
   locale: Language,
   segments: { name: string; url: string }[],

@@ -67,6 +67,8 @@ const ClientsList = ({ locale }: { locale: Language }) => {
                     <img
                       src={client.logo}
                       alt={`${client.name} logo`}
+                      loading="lazy"
+                      decoding="async"
                       className={cn(
                         "max-h-24 max-w-[180px] object-contain filter brightness-0 opacity-70 group-hover:opacity-100 transition-opacity",
                         {

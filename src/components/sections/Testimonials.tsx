@@ -83,12 +83,12 @@ const Testimonials = () => {
                 <div className="flex items-center gap-4">
                   <img
                     src={currentTestimonial.image}
-                    alt={currentTestimonial.name}
+                    alt={`${currentTestimonial.name} - ${currentTestimonial.company}`}
+                    loading="lazy"
+                    decoding="async"
                     className="w-14 h-14 rounded-full object-cover border-2 border-primary/20 grayscale brightness-125"
                     width="56"
                     height="56"
-                    loading="lazy"
-                    decoding="async"
                     fetchPriority="low"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src =

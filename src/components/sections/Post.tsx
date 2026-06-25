@@ -44,6 +44,8 @@ const Post = ({
                   <img
                     src={post.coverImage}
                     alt={post.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-fit h-fit object-contain group-hover:brightness-110 group-hover:scale-105 transition-all duration-700"
                   />
                 </div>

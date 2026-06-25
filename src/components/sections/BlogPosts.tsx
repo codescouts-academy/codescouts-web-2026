@@ -67,6 +67,8 @@ const BlogPosts = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
                         <img
                           src={post.coverImage}
                           alt={post.title}
+                          loading="lazy"
+                          decoding="async"
                           className="h-[200px] w-[200px] p-2 object-contain object-center grayscale contrast-110 brightness-90 group-hover:brightness-110 group-hover:scale-105 transition-all duration-700"
                         />
                       </div>

@@ -8,6 +8,7 @@ import {
   LucideExternalLink,
   Youtube,
   MapPin,
+  Twitter,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
@@ -76,7 +77,7 @@ const Footer = () => {
               <a
                 href="https://www.linkedin.com/company/codescouts"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="LinkedIn CodeScouts"
                 title="LinkedIn CodeScouts"
@@ -92,6 +93,16 @@ const Footer = () => {
                 title="YouTube CodeScouts"
               >
                 <Youtube className="h-5 w-5" />
+              </a>
+              <a
+                href="https://x.com/code_scouts"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="X CodeScouts"
+                title="X CodeScouts"
+              >
+                <Twitter className="h-5 w-5" />
               </a>
             </div>
           </div>

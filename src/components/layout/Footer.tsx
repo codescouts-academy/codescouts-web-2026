@@ -162,10 +162,15 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <p className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm">
+                <a
+                  href={locale === "es" ? "https://es.wikipedia.org/wiki/Galicia" : "https://en.wikipedia.org/wiki/Galicia_(Spain)"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
                   <MapPin className="h-4 w-4" />
                   {t("contact.location")}
-                </p>
+                </a>
               </li>
             </ul>
           </div>
@@ -192,14 +197,7 @@ const Footer = () => {
           </div>
           <div className="flex flex-col gap-1">
             <p className="text-muted-foreground text-xs font-mono">
-              <a
-                href={locale === "es" ? "https://es.wikipedia.org/wiki/Galicia" : "https://en.wikipedia.org/wiki/Galicia_(Spain)"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-primary transition-colors"
-              >
-                {"// Built with ♥ from Galicia"}
-              </a>
+              {"// Built with ♥ from Galicia"}
             </p>
             <p className="text-muted-foreground text-xs font-mono">
               {"// +30 teams coached worldwide"}

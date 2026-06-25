@@ -24,6 +24,10 @@ export function generateStaticParams() {
 const Page = async ({ params }: Props) => {
   const { locale, slug } = await params;
 
+  if (slug === "training") {
+    redirect(`/${locale}/courses`);
+  }
+
   if (!SERVICE_SLUGS.includes(slug as ServiceSlug)) {
     notFound();
   }

@@ -192,7 +192,14 @@ const Footer = () => {
           </div>
           <div className="flex flex-col gap-1">
             <p className="text-muted-foreground text-xs font-mono">
-              {"// Built with ♥ from Galicia"}
+              <a
+                href={locale === "es" ? "https://es.wikipedia.org/wiki/Galicia" : "https://en.wikipedia.org/wiki/Galicia_(Spain)"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors"
+              >
+                {"// Built with ♥ from Galicia"}
+              </a>
             </p>
             <p className="text-muted-foreground text-xs font-mono">
               {"// +30 teams coached worldwide"}

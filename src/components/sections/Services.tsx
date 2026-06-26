@@ -159,7 +159,7 @@ const Services = ({ locale }: { locale: Language }) => {
                   <div className="flex flex-wrap gap-4">
                     <Button asChild variant="outline">
                       <Link href={`/${locale}/services/${service.id}`}>
-                        {locale === "es" ? "Más información" : "Learn more"}
+                        {t("services.learnMore", { service: service.title })}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>

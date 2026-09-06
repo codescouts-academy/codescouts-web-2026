@@ -1,7 +1,7 @@
 ---
 title: Test && Commit || Revert
 date: 2022-07-02T00:00:00.000Z
-summary: The TCR workflow (Test && Commit || Revert) means after each production code change you run tests. If the tests pass, it commits the changes.
+summary: Test && Commit || Revert (TCR) workflow - run tests after every production code change. Commit if passing, revert if failing. Learn this TDD-adjacent technique for faster feedback loops.
 image: /images/blog/test-commit-revert.png
 tags: [tcr, tdd, tests, commit]
 ---

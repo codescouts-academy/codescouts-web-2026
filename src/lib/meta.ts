@@ -1,6 +1,5 @@
 import { Language, Languages } from "@/i18n";
 import { BlogPost, getPostsFromLang } from "@/lib/blog";
-import { testimonials } from "@/lib/testimonials";
 import { Metadata } from "next";
 
 export const baseUrl =
@@ -84,6 +83,11 @@ const buildMetadata = ({
 }): Metadata => {
   const canonical = pageUrl(locale, ...pathSegments);
 
+  // x-default must point to a page that actually exists. Prefer the default
+  // locale, but fall back to the first available one (e.g. a post that only
+  // has an English translation).
+  const xDefaultLocale = languages.includes("es") ? "es" : languages[0];
+
   return {
     metadataBase: new URL(baseUrl),
     title,
@@ -97,7 +101,7 @@ const buildMetadata = ({
       canonical,
       languages: {
         ...resolveAlternateLocales(languages, ...pathSegments),
-        "x-default": pageUrl("es", ...pathSegments),
+        "x-default": pageUrl(xDefaultLocale, ...pathSegments),
       },
     },
     openGraph: {
@@ -598,19 +602,20 @@ export const generateClientsMeta = (locale: Language): Metadata =>
       locale === "es"
         ? "Descubre las empresas y equipos que han mejorado su desarrollo de software con CodeScouts."
         : "Discover the companies and teams that have improved their software development with CodeScouts.",
-    keywords: testimonials.flatMap((testimonial) =>
+    keywords:
       locale === "es"
         ? [
-            `testimonio ${testimonial.name}`,
-            `opinion ${testimonial.company}`,
-            `caso de exito ${testimonial.company}`,
+            "casos de exito technical coaching",
+            "clientes consultoria software",
+            "opiniones codescouts",
+            "referencias equipos desarrollo",
           ]
         : [
-            `testimonial ${testimonial.name}`,
-            `review ${testimonial.company}`,
-            `success story ${testimonial.company}`,
+            "technical coaching success stories",
+            "software consulting clients",
+            "codescouts reviews",
+            "development team references",
           ],
-    ),
     other: {
       "og:see_also": [pageUrl(locale, "services"), pageUrl(locale, "courses")].join(","),
     },
@@ -667,14 +672,29 @@ export const generateBlogListMeta = (locale: Language): Metadata => {
       locale === "es"
         ? "Articulos sobre TDD, Clean Code, arquitectura de software, metodologias agiles y coaching tecnico."
         : "Articles on TDD, Clean Code, software architecture, agile methodologies and technical coaching.",
-    keywords: posts.flatMap((post) => [post.title, ...(post.tags ?? [])]).filter(Boolean),
+    // Deduplicated topic tags only. Dumping every post title in here is
+    // keyword stuffing and Google has ignored the keywords meta since 2009.
+    keywords: [...new Set(posts.flatMap((post) => post.tags ?? []))].filter(Boolean),
     robots: hasPosts ? defaultRobots : noIndexRobots,
-    languages: hasPosts ? [locale] : [locale],
+    languages: (Languages as Language[]).filter(
+      (language) => getPostsFromLang(language).length > 0,
+    ),
     other: {
       "og:see_also": pageUrl(locale, "courses"),
     },
   });
 };
+
+/**
+ * Locales that actually contain a translation of this slug.
+ * hreflang must be RECIPROCAL: if /es/blog/solid/ does not point to
+ * /en/blog/solid/ (and vice versa), Google discards the whole cluster and
+ * treats both pages as competing duplicates.
+ */
+const localesWithPost = (slug: string): Language[] =>
+  (Languages as Language[]).filter((language) =>
+    getPostsFromLang(language).some((post) => post.slug === slug),
+  );
 
 export const generateBlogPostMeta = (
   post: BlogPost,
@@ -694,11 +714,12 @@ export const generateBlogPostMeta = (
       height: 630,
       alt: post.title,
     },
-    languages: [locale],
+    languages: localesWithPost(slug),
     other: {
       "article:published_time": post.date,
       "article:modified_time": post.date,
       "article:section": "blog",
+      ...(post.author ? { "article:author": post.author } : {}),
       ...(post.readingTime ? { "reading-time": `${post.readingTime} min` } : {}),
     },
   });

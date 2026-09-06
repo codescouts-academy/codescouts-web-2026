@@ -48,7 +48,7 @@ Algunas cosas que podemos hacer para que nuestro código sea más expresivo son:
 
 ![https://miro.medium.com/max/700/0*vqPi_IxbpwnqNV4S.jpg](https://miro.medium.com/max/700/0*vqPi_IxbpwnqNV4S.jpg)
 
-Si puede reutilizar el código que ya existe, ¿por qué molestarse en escribir las mismas cosas nuevamente? Las líneas de código que se ven exactamente iguales son duplicaciones. Esta regla está relacionada con [DRY]({{< ref "principios-de-la-buena-programacion.md#dry-dont-repeat-yourself" >}}) donde debemos asegurarnos de que un método solo tenga una única responsabilidad y no se repita. Pero, esta regla se trata más de la duplicación de conocimiento, no de la duplicación de código. La forma de Kent de decirlo es 'todo debe decirse **_una vez y solo una vez_**'.
+Si puede reutilizar el código que ya existe, ¿por qué molestarse en escribir las mismas cosas nuevamente? Las líneas de código que se ven exactamente iguales son duplicaciones. Esta regla está relacionada con [DRY](/es/blog/principios-de-la-buena-programacion/#dry-dont-repeat-yourself) donde debemos asegurarnos de que un método solo tenga una única responsabilidad y no se repita. Pero, esta regla se trata más de la duplicación de conocimiento, no de la duplicación de código. La forma de Kent de decirlo es 'todo debe decirse **_una vez y solo una vez_**'.
 
 Muchos programadores han observado que el ejercicio de eliminar la duplicación es una forma poderosa de generar buenos diseños.
 

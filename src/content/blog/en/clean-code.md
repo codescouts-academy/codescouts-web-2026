@@ -1,9 +1,9 @@
 ---
 title: Clean Code
-date: 2022-05-03T00:00:00.000Z
-summary: If you want to be like us, a Code Scout, you have to leave code better than you found it. Check out our blog post that talks about it.
+date: 2023-10-30T00:00:00.000Z
+summary: Clean Code principles to help you write code that is readable, understandable, and maintainable. Essential guidelines for software craftsmanship and professional development teams.
 image: /images/blog/clean-code.png
-tags: [cleancode, codigolimpio, codescouts]
+tags: [tcr, tdd, tests, commit]
 ---
 
 ## What is Clean Code? 🧹
@@ -18,8 +18,8 @@ Clean code is not a strict set of rules, but a series of principles that help pr
 ## General Rules ⚖️
 
 1. Follow the standard conventions of each language and the team.
-2. Keep it simple, stupid. Simpler is always better. Reduce complexity as much as possible [KISS]({{< ref "principios-de-la-buena-programacion.md#kiss-keep-it-simple-stupid-but-i-prefer-use-keep-it-stupidly-simple" >}}).
-3. Boy scout rule. Leave the camp cleaner than you found it. [Boy scouts rule]({{< ref "principios-de-la-buena-programacion.md#boy-scout-rule" >}})
+2. Keep it simple, stupid. Simpler is always better. Reduce complexity as much as possible [KISS](/en/blog/principios-de-la-buena-programacion/#kiss-keep-it-simple-stupid-but-i-prefer-use-keep-it-stupidly-simple).
+3. Boy scout rule. Leave the camp cleaner than you found it. [Boy scouts rule](/en/blog/principios-de-la-buena-programacion/#boy-scout-rule)
 4. Always look for the root problem.
 
 ## Design Rules 🏗️
@@ -28,14 +28,14 @@ Clean code is not a strict set of rules, but a series of principles that help pr
 2. Use polymorphism instead of if/else or switch/case.
 3. Avoid over-configuration.
 4. Use dependency injection.
-5. Follow the Law of Demeter. A class should know only its direct dependencies [Law of Demeter]({{< ref "object-calisthenics.md#un-punto-por-línea-o-_utilizar-la-ley-de-demeter_" >}}).
+5. Follow the Law of Demeter. A class should know only its direct dependencies [Law of Demeter](/en/blog/object-calisthenics/#un-punto-por-línea-o-_utilizar-la-ley-de-demeter_).
 
 ## Clean Code Tips 🧽
 
 1. Be consistent. If you do something one way, do all similar things the same way.
 2. Use explanatory variables.
 3. Encapsulate corner-case conditions. Corner-case conditions are hard to follow. Put their processing in one place.
-4. Use value objects instead of primitive types [Wrap primitives]({{< ref "object-calisthenics.md#envuelve-primitivos" >}}).
+4. Use value objects instead of primitive types [Wrap primitives](/en/blog/object-calisthenics/#envuelve-primitivos).
 5. Avoid logical dependency. Don’t write methods that only work correctly depending on something else in the same class.
 6. Avoid negative conditionals.
 
@@ -84,10 +84,10 @@ Clean code is not a strict set of rules, but a series of principles that help pr
 2. Use data structures.
 3. Avoid hybrid structures (half object, half data).
 4. Keep them small.
-5. Do one thing [Single responsibility]({{< ref "solid.md#s-----single-responsibility" >}}).
-6. Small number of instance variables [Avoid more than 2 instance attributes]({{< ref "object-calisthenics.md#evita-más-de-dos-atributos-de-instancia" >}}).
+5. Do one thing [Single responsibility](/en/blog/solid/#s-----single-responsibility).
+6. Small number of instance variables [Avoid more than 2 instance attributes](/en/blog/object-calisthenics/#evita-más-de-dos-atributos-de-instancia).
 7. The base class should know nothing about its derivatives.
-8. Prefer instance methods over static methods [Avoid static methods]({{< ref "object-calisthenics.md#clases-con-estado-evita-métodos-estáticos" >}}).
+8. Prefer instance methods over static methods [Avoid static methods](/en/blog/object-calisthenics/#clases-con-estado-evita-métodos-estáticos).
 
 ## Testing 🧪
 

@@ -1,7 +1,7 @@
 ---
 title: Clean Code
 date: 2022-05-03T00:00:00.000Z
-summary: Si quieres ser como nosotros, un Code Scouts, tienes que mantener el código mejor de como lo has encontrado, echa un vistazo a nuestro blog que habla de ello.
+summary: Principios de Clean Code para escribir código legible, understandable y mantenible. Directrices esenciales para el craftsmanship y equipos de desarrollo profesional.
 image: /images/blog/clean-code.png
 tags: [cleancode, codigolimpio, codescouts]
 ---
@@ -18,8 +18,8 @@ El clean code no es un conjunto de reglas estrictas, sino una serie de principio
 ## Reglas generales ⚖️
 
 1.  Siga las convenciones estándar de cada lenguaje y del equipo.
-2.  Mantenlo simple, estúpido. Más simple siempre es mejor. Reducir la complejidad tanto como sea posible [KISS]({{< ref "principios-de-la-buena-programacion.md#kiss-keep-it-simple-stupid-but-i-prefer-use-keep-it-stupidly-simple" >}}).
-3.  Regla de los boy scouts. Deje el campamento más limpio de lo que lo encontró. [Boy scouts rule]({{< ref "principios-de-la-buena-programacion.md#boy-scout-rule" >}})
+2.  Mantenlo simple, estúpido. Más simple siempre es mejor. Reducir la complejidad tanto como sea posible [KISS](/es/blog/principios-de-la-buena-programacion/#kiss-keep-it-simple-stupid-but-i-prefer-use-keep-it-stupidly-simple).
+3.  Regla de los boy scouts. Deje el campamento más limpio de lo que lo encontró. [Boy scouts rule](/es/blog/principios-de-la-buena-programacion/#boy-scout-rule)
 4.  Siempre busca el problema base.
 
 ## Reglas de diseño 🏗️
@@ -28,14 +28,14 @@ El clean code no es un conjunto de reglas estrictas, sino una serie de principio
 2.  Use el polimorfismo en lugar de if/else o switch/case.
 3.  Evite la configuración excesiva.
 4.  Utilice la inyección de dependencia.
-5.  Seguir la Ley de Demeter. Una clase debe conocer solo sus dependencias directas [Ley de demeter]({{< ref "object-calisthenics.md#un-punto-por-línea-o-_utilizar-la-ley-de-demeter_" >}}).
+5.  Seguir la Ley de Demeter. Una clase debe conocer solo sus dependencias directas [Ley de demeter](/es/blog/object-calisthenics/#un-punto-por-línea-o-_utilizar-la-ley-de-demeter_).
 
 ## Consejos para el código limpio 🧽
 
 1.  Sea consistente. Si haces algo de cierta manera, haz todas las cosas similares de la misma manera.
 2.  Utilice variables explicativas.
 3.  Encapsular las condiciones _corner cases_. Las condiciones de _corner cases_ son difíciles de seguir. Ponga el procesamiento para ellos en un solo lugar.
-4.  Utilice value objects en lugar tipo primitivo [Envuelve en tipos primitivos]({{< ref "object-calisthenics.md#envuelve-primitivos" >}}).
+4.  Utilice value objects en lugar tipo primitivo [Envuelve en tipos primitivos](/es/blog/object-calisthenics/#envuelve-primitivos).
 5.  Evite la dependencia lógica. No escriba métodos que funcionen correctamente dependiendo de otra cosa en la misma clase.
 6.  Evita los condicionales negativos.
 
@@ -84,10 +84,10 @@ El clean code no es un conjunto de reglas estrictas, sino una serie de principio
 2.  Use estructuras de datos.
 3.  Evita estructuras híbridas (mitad objeto y mitad datos).
 4.  Debe ser pequeño.
-5.  Que haga solo una cosa [Single responsability]({{< ref "solid.md#s-----single-responsibility" >}}).
-6.  Pequeño número de variables de instancia [Evita más de 2 atributos de instancia]({{< ref "object-calisthenics.md#evita-más-de-dos-atributos-de-instancia" >}}).
+5.  Que haga solo una cosa [Single responsability](/es/blog/solid/#s-----single-responsibility).
+6.  Pequeño número de variables de instancia [Evita más de 2 atributos de instancia](/es/blog/object-calisthenics/#evita-más-de-dos-atributos-de-instancia).
 7.  La clase base no debe saber nada acerca de sus derivados.
-8.  Use métodos no estáticos a métodos estáticos [Evita métidos estáticos]({{< ref "object-calisthenics.md#clases-con-estado-evita-métodos-estáticos" >}}).
+8.  Use métodos no estáticos a métodos estáticos [Evita métidos estáticos](/es/blog/object-calisthenics/#clases-con-estado-evita-métodos-estáticos).
 
 ## Pruebas 🧪
 

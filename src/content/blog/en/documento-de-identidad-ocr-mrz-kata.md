@@ -38,7 +38,7 @@ The goal of this kata is to write an algorithm that can read the information fro
 
 ## Assumptions
 
-Let’s assume we have implemented a component that can read the image and parse the information into a string. For this, you can use mocks, fakes, or dummy objects. If you are not sure how they work, I share a post that explains it well: [Mocks, Stubs, Spies and Fakes]({{< ref "fakes-spies-mocks-stubs-dummies.md" >}})
+Let’s assume we have implemented a component that can read the image and parse the information into a string. For this, you can use mocks, fakes, or dummy objects. If you are not sure how they work, I share a post that explains it well: [Mocks, Stubs, Spies and Fakes](/en/blog/fakes-spies-mocks-stubs-dummies/)
 
 ## Requirements
 

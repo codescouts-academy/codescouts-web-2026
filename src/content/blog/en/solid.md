@@ -1,7 +1,7 @@
 ---
 title: The SOLID Principles
 date: 2022-04-29T00:00:00.000Z
-summary: The SOLID principles are the foundation of object-oriented programming.
+summary: The SOLID principles (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) for writing maintainable, flexible object-oriented software.
 image: /images/blog/solid.png
 tags: [principles, principles, solid, codescouts]
 ---

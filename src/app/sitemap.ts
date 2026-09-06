@@ -5,8 +5,11 @@ import { MetadataRoute } from "next";
 
 const pages = ["", "contact", "clients", "services", "courses", "blog"] as const;
 
+// `trailingSlash: true` in next.config.ts means every page is served at a URL
+// ending in "/". The sitemap MUST match the canonical exactly, otherwise every
+// entry resolves through a 301 and Google stops trusting the sitemap.
 const pageUrl = (locale: Language, slug?: string) =>
-  `${baseUrl}/${locale}${slug ? `/${slug}` : ""}`;
+  `${baseUrl}/${locale}${slug ? `/${slug}` : ""}/`;
 
 export const dynamic = "force-static";
 

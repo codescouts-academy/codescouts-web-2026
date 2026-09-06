@@ -42,7 +42,7 @@ class Board {
 }
 ```
 
-The best solution is to extract methods using your preferred IDE to achieve a single indentation level in each method. That makes the code much easier to read and maintain. It also has the great advantage of keeping [single responsibility in each method]({{< ref "solid.md#s-----single-responsibility" >}}).
+The best solution is to extract methods using your preferred IDE to achieve a single indentation level in each method. That makes the code much easier to read and maintain. It also has the great advantage of keeping [single responsibility in each method](/en/blog/solid/#s-----single-responsibility).
 
 ```tsx
 class Board {

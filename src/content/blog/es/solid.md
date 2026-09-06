@@ -1,7 +1,7 @@
 ---
 title: Los principios solid
 date: 2022-04-29T00:00:00.000Z
-summary: Los principios SOLID son la base de la programación orientada a objetos
+summary: Los principios SOLID (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) para escribir software orientado a objetos mantenible y flexible.
 image: /images/blog/solid.png
 tags: [principles, principios, solid, codescouts]
 ---

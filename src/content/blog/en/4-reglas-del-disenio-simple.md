@@ -49,7 +49,7 @@ Some things we can do to make our code more expressive are:
 
 ![https://miro.medium.com/max/700/0*vqPi_IxbpwnqNV4S.jpg](https://miro.medium.com/max/700/0*vqPi_IxbpwnqNV4S.jpg)
 
-If you can reuse code that already exists, why bother writing the same thing again? Lines of code that look exactly alike are duplication. This rule is related to [DRY]({{< ref "principios-de-la-buena-programacion.md#dry-dont-repeat-yourself" >}}), where we should ensure that a method has a single responsibility and does not repeat itself. But this rule is more about duplication of knowledge than duplication of code. Kent’s way of putting it is: everything should be said **_once and only once_**.
+If you can reuse code that already exists, why bother writing the same thing again? Lines of code that look exactly alike are duplication. This rule is related to [DRY](/en/blog/principios-de-la-buena-programacion/#dry-dont-repeat-yourself), where we should ensure that a method has a single responsibility and does not repeat itself. But this rule is more about duplication of knowledge than duplication of code. Kent’s way of putting it is: everything should be said **_once and only once_**.
 
 Many developers have observed that the act of removing duplication is a powerful way to create good designs.
 

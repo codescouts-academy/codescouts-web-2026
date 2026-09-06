@@ -41,7 +41,7 @@ El objetivo de esta Kata es que escribas un algoritmo que sea capaz de leer la i
 
 ## Asunciones
 
-Vamos a asumir que hemos implementado un componente que es capaz de leer la imagen y parsear la información a una cadena de caracteres, para ello puedes usar Mocks, Faces o Dummy objects, si no sabes muy bien como funcionan, te comparto un post que lo explica muy bien: [Mocks, Stubs, Spies y Fakes]({{< ref "fakes-spies-mocks-stubs-dummies.md" >}})
+Vamos a asumir que hemos implementado un componente que es capaz de leer la imagen y parsear la información a una cadena de caracteres, para ello puedes usar Mocks, Faces o Dummy objects, si no sabes muy bien como funcionan, te comparto un post que lo explica muy bien: [Mocks, Stubs, Spies y Fakes](/es/blog/fakes-spies-mocks-stubs-dummies/)
 
 ## Requerimientos
 

@@ -1,39 +1,33 @@
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { routing } from "@/i18n/routing";
-import { baseUrl } from "@/lib/meta";
-import { DynamicLang } from "@/components/DynamicLang";
+import { organizationSchema, websiteSchema } from "@/lib/meta";
+import { JsonLd } from "@/components/JsonLd";
+import { ThemeProvider } from "@/components/theme-provider";
 import "../index.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
 type Props = {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
-  const lang = locale === "es" ? "es-ES" : "en-US";
-
-  return {
-    alternates: {
-      languages: {
-        "x-default": `${baseUrl}/es`,
-        es: `${baseUrl}/es`,
-        en: `${baseUrl}/en`,
-      },
-    },
-    other: {
-      language: lang,
-    },
-  };
-}
-
-export default async function LocaleLayout({
-  children,
-  params,
-}: Props) {
+export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) {
@@ -45,10 +39,23 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <NextIntlClientProvider messages={messages}>
-      <DynamicLang lang={locale === "es" ? "es" : "en"} />
-      {children}
-    </NextIntlClientProvider>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={`${inter.variable} ${jetBrainsMono.variable} scrollbar-thin scrollbar-thumb-main-grey-1 hover:scrollbar-thumb-muted-foreground scrollbar-track-transparent`}
+    >
+      <head>
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={websiteSchema} />
+      </head>
+      <body>
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
 

@@ -7,7 +7,7 @@ tags: [diseño, design, objectcalisthenics, codescouts]
 ---
 
 Hoy en día se habla mucho de los principios SOLID, pero unos años antes, Craig Larman introdujo unos patrones muy interesantes, estos son los patrones de **GRASP**, el acrónimo de **General Responsibility Assignment Software Patterns**.
-Desde mi opinión, muchos desarrolladores hoy en día referencian los principios [SOLID]({{< ref "solid.md" >}}) por costumbre o moda de hoy en día, y desconocen los patrones **GRASP** sin saber que estos son mucho más esenciales.
+Desde mi opinión, muchos desarrolladores hoy en día referencian los principios [SOLID](/es/blog/solid/) por costumbre o moda de hoy en día, y desconocen los patrones **GRASP** sin saber que estos son mucho más esenciales.
 
 ## Pero ¿Qué es un patrón? 🤔
 
@@ -125,7 +125,7 @@ Un método, solamente invocará a métodos de:
 
 ### Conclusiones
 
-Como pueden ver, estos conceptos creados por **[Craig Larman](https://www.craiglarman.com/)** tienen cierta relación con los principios **[SOLID]({{< ref "solid.md" >}})** por **[Uncle Bob](https://es.wikipedia.org/wiki/Robert_C._Martin)**, ambos dos conceptos fueron pensados basándose en la **programación orientada a objetos**, sin embargo, desde mi opinión, creo que es más esencial conocer bien los patrones **GRASP** más que los principios **SOLID** ya que estos primeros plantean conceptos más básicos y de sentido común que los principios **SOLID**, en otras palabras, los patrones **GRASP** plantean conceptos bases, imprescindibles de la programación orientada a objetos.
+Como pueden ver, estos conceptos creados por **[Craig Larman](https://www.craiglarman.com/)** tienen cierta relación con los principios **[SOLID](/es/blog/solid/)** por **[Uncle Bob](https://es.wikipedia.org/wiki/Robert_C._Martin)**, ambos dos conceptos fueron pensados basándose en la **programación orientada a objetos**, sin embargo, desde mi opinión, creo que es más esencial conocer bien los patrones **GRASP** más que los principios **SOLID** ya que estos primeros plantean conceptos más básicos y de sentido común que los principios **SOLID**, en otras palabras, los patrones **GRASP** plantean conceptos bases, imprescindibles de la programación orientada a objetos.
 
 Es decir... Los principios **SOLID** hablan más de un detalle de implementación en particular que los patrones **GRASP**.
 

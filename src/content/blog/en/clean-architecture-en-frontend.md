@@ -1,7 +1,7 @@
 ---
 title: Clean Architecture in Frontend
 date: 2023-10-30T00:00:00.000Z
-summary: Clean Architecture is a concept popularized by "Uncle Bob" that is based on structuring code in adjacent layers, so each layer only communicates with the layers immediately next to it.
+summary: Learn Clean Architecture for frontend applications - structuring code in adjacent layers, improving maintainability, and enabling technology switching without affecting other layers. Perfect for React, Vue, and other frontend teams.
 image: /images/blog/clean-architecture.png
 tags: [tcr, tdd, tests, commit]
 ---
@@ -23,6 +23,6 @@ Clean Architecture is a concept popularized by Robert Cecil Martin, known as "Un
 style="width:100%;height:415px;"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-I hope you enjoyed this explanation. If you’re interested in this topic, we recommend taking a look at the frontend architecture course we have prepared: [Frontend Architecture]({{< ref "courses/arquitectura-frontend.md" >}})
+I hope you enjoyed this explanation. If you’re interested in this topic, we recommend taking a look at the frontend architecture course we have prepared: [Frontend Architecture](/en/courses/)
 
 Best regards 👋

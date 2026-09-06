@@ -7,7 +7,7 @@ tags: [diseño, design, objectcalisthenics, codescouts]
 ---
 
 These days people talk a lot about SOLID principles, but a few years earlier Craig Larman introduced very interesting patterns called **GRASP**, which stands for **General Responsibility Assignment Software Patterns**.
-From my point of view, many developers today reference [SOLID]({{< ref "solid.md" >}}) by habit or fashion, and ignore **GRASP** patterns, not realizing that these are often much more fundamental.
+From my point of view, many developers today reference [SOLID](/en/blog/solid/) by habit or fashion, and ignore **GRASP** patterns, not realizing that these are often much more fundamental.
 
 ## What is a pattern? 🤔
 
@@ -118,7 +118,7 @@ A method should only invoke methods of:
 
 ### Conclusions
 
-As you can see, these concepts created by **[Craig Larman](https://www.craiglarman.com/)** are related to the principles of **[SOLID]({{< ref "solid.md" >}})** by **[Uncle Bob](https://es.wikipedia.org/wiki/Robert_C._Martin)**. Both concepts were designed around object-oriented programming. However, in my opinion, it is more essential to know GRASP patterns well than SOLID principles, since the former propose more basic, common-sense concepts that are essential to object-oriented programming.
+As you can see, these concepts created by **[Craig Larman](https://www.craiglarman.com/)** are related to the principles of **[SOLID](/en/blog/solid/)** by **[Uncle Bob](https://es.wikipedia.org/wiki/Robert_C._Martin)**. Both concepts were designed around object-oriented programming. However, in my opinion, it is more essential to know GRASP patterns well than SOLID principles, since the former propose more basic, common-sense concepts that are essential to object-oriented programming.
 
 In other words, SOLID principles speak more about implementation details than GRASP patterns.
 

@@ -42,7 +42,7 @@ class Board {
 }
 ```
 
-La mejor solución es extraer en métodos con tu IDE preferido para lograr un solo nivel de identación en los métodos, de esa manera va a ser más facil poder leer y mantener este código en el futuro; sin contar la gran ventaja que es mantener una [única responsabilidad en cada método]({{< ref "solid.md#s-----single-responsibility" >}})
+La mejor solución es extraer en métodos con tu IDE preferido para lograr un solo nivel de identación en los métodos, de esa manera va a ser más facil poder leer y mantener este código en el futuro; sin contar la gran ventaja que es mantener una [única responsabilidad en cada método](/es/blog/solid/#s-----single-responsibility)
 
 ```tsx
 class Board {

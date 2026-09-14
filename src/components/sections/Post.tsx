@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowLeft, User, Tag } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, User, Tag, ArrowRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import MarkdownRenderer from "@/components/blog/MarkdownRenderer";
@@ -12,9 +12,11 @@ import { BlogPost } from "@/lib/blog";
 const Post = ({
   post,
   relatedPosts,
+  relatedCourses = [],
 }: {
   post: BlogPost;
   relatedPosts: BlogPost[];
+  relatedCourses?: { slug: string; name: string; url: string }[];
 }) => {
   const locale = useLocale();
   const t = useTranslations();
@@ -103,6 +105,34 @@ const Post = ({
             <div className="prose-container">
               <MarkdownRenderer content={post.content} />
             </div>
+
+            {/* Related Courses */}
+            {relatedCourses.length > 0 && (
+              <section className="mt-16 pt-12 border-t border-border">
+                <h2 className="text-2xl font-bold mb-8">
+                  Cursos relacionados
+                </h2>
+                <div className="grid md:grid-cols-3 gap-6">
+                  {relatedCourses.map((course) => (
+                    <Link
+                      key={course.slug}
+                      href={course.url}
+                      className="group"
+                    >
+                      <article className="p-4 bg-primary/5 border border-primary/10 rounded-xl hover:border-primary/30 transition-colors">
+                        <h3 className="font-semibold group-hover:text-primary transition-colors line-clamp-2 mb-2">
+                          {course.name}
+                        </h3>
+                        <span className="text-sm text-primary inline-flex items-center gap-1">
+                          Ver curso
+                          <ArrowRight className="w-4 h-4" />
+                        </span>
+                      </article>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Related Posts */}
             {relatedPosts.length > 0 && (

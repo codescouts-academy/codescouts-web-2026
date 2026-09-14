@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   Code,
@@ -37,6 +37,7 @@ const Courses = ({ locale }: { locale: Language }) => {
   const courses = [
     {
       id: "legacy-code",
+      slug: "codigo-legacy",
       icon: Code,
       title: t("courses.legacyCode.title"),
       description: t("courses.legacyCode.description"),
@@ -46,6 +47,7 @@ const Courses = ({ locale }: { locale: Language }) => {
     },
     {
       id: "frontend-architecture",
+      slug: "arquitectura-frontend",
       icon: Layers,
       title: t("courses.frontendArchitecture.title"),
       description: t("courses.frontendArchitecture.description"),
@@ -55,6 +57,7 @@ const Courses = ({ locale }: { locale: Language }) => {
     },
     {
       id: "design-patterns",
+      slug: "patrones-de-diseno",
       icon: Puzzle,
       title: t("courses.designPatterns.title"),
       description: t("courses.designPatterns.description"),
@@ -64,6 +67,7 @@ const Courses = ({ locale }: { locale: Language }) => {
     },
     {
       id: "clean-code",
+      slug: "clean-code",
       icon: Sparkles,
       title: t("courses.cleanCode.title"),
       description: t("courses.cleanCode.description"),
@@ -73,6 +77,7 @@ const Courses = ({ locale }: { locale: Language }) => {
     },
     {
       id: "nextjs",
+      slug: "curso-nextjs",
       icon: Rocket,
       title: t("courses.nextJs.title"),
       description: t("courses.nextJs.description"),
@@ -82,6 +87,7 @@ const Courses = ({ locale }: { locale: Language }) => {
     },
     {
       id: "ddd",
+      slug: "domain-driven-design",
       icon: Box,
       title: t("courses.ddd.title"),
       description: t("courses.ddd.description"),
@@ -91,6 +97,7 @@ const Courses = ({ locale }: { locale: Language }) => {
     },
     {
       id: "tdd",
+      slug: "test-driven-development",
       icon: TestTube,
       title: t("courses.tdd.title"),
       description: t("courses.tdd.description"),
@@ -100,6 +107,7 @@ const Courses = ({ locale }: { locale: Language }) => {
     },
     {
       id: "react",
+      slug: "react-typescript",
       icon: FileCode,
       title: t("courses.react.title"),
       description: t("courses.react.description"),
@@ -109,6 +117,7 @@ const Courses = ({ locale }: { locale: Language }) => {
     },
     {
       id: "oop",
+      slug: "diseno-orientado-objetos",
       icon: Shapes,
       title: t("courses.oop.title"),
       description: t("courses.oop.description"),
@@ -211,7 +220,14 @@ const Courses = ({ locale }: { locale: Language }) => {
                         {course.level}
                       </span>
                     </div>
-                    <CardTitle className="text-xl">{course.title}</CardTitle>
+                    <CardTitle className="text-xl">
+                      <Link
+                        href={`/${locale}/courses/${course.slug}`}
+                        className="hover:text-primary transition-colors"
+                      >
+                        {course.title}
+                      </Link>
+                    </CardTitle>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Clock className="w-4 h-4" />
                       <span>
@@ -236,6 +252,17 @@ const Courses = ({ locale }: { locale: Language }) => {
                         </span>
                       ))}
                     </div>
+
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="w-full mt-4"
+                    >
+                      <Link href={`/${locale}/courses/${course.slug}`}>
+                        {t("courses.viewProgram")}
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
                   </CardContent>
                 </Card>
               </motion.div>

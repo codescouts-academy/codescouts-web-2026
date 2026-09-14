@@ -206,11 +206,120 @@ export const coursesSchema = (locale: Language) => ({
   inLanguage: localeLanguage(locale),
   description:
     locale === "es"
-      ? "Cursos de TDD, Clean Code, arquitectura de software y mas, bonificables por FUNDAE."
-      : "TDD, Clean Code, software architecture courses and more, FUNDAE subsidized.",
+      ? "Cursos de TDD, Clean Code, arquitectura frontend y más en Galicia y España: online en directo y presencial. Bonificables por FUNDAE."
+      : "TDD, Clean Code, frontend architecture courses and more in Spain: live online and onsite in Galicia. FUNDAE subsidized.",
+  numberOfItems: courseSlugs().length,
+  itemListElement: courseSlugs().map((slug, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    url: pageUrl(locale, "courses", slug),
+    name: COURSES[slug].content[locale].name,
+  })),
 });
 
+export const courseDetailSchema = (slug: CourseSlug, locale: Language) => {
+  const course = COURSES[slug];
+  const content = course.content[locale];
+  // Duration can be a range ("16-20"): ISO 8601 needs a single value,
+  // so schemas use the upper bound while the UI keeps showing the range.
+  const maxHours = course.durationHours.split("-").pop();
+  return {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "@id": `${baseUrl}/${locale}/courses/${slug}#course`,
+    name: content.h1,
+    description: content.metaDescription,
+    url: pageUrl(locale, "courses", slug),
+    provider: {
+      "@id": `${baseUrl}/#organization`,
+      "@type": "Organization",
+      name: "CodeScouts",
+      url: baseUrl,
+    },
+    inLanguage: localeLanguage(locale),
+    educationalLevel: course.level[locale],
+    timeRequired: `PT${maxHours}H`,
+    teaches: content.outcomes,
+    // Local SEO: the course is available everywhere in Spain (online)
+    // and onsite in Galicia. Both must be explicit so Google can match
+    // "curso X en Galicia" and "curso X España / online" queries.
+    areaServed: [
+      { "@type": "Country", name: "Spain" },
+      {
+        "@type": "AdministrativeArea",
+        name: "Galicia",
+        containedInPlace: { "@type": "Country", name: "Spain" },
+      },
+    ],
+    locationCreated: {
+      "@type": "Place",
+      name: "Santiago de Compostela, Galicia, España",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Santiago de Compostela",
+        addressRegion: "Galicia",
+        addressCountry: "ES",
+      },
+    },
+    hasCourseInstance: [
+      {
+        "@type": "CourseInstance",
+        name: content.name,
+        courseMode: "online",
+        inLanguage: localeLanguage(locale),
+        courseWorkload: `PT${maxHours}H`,
+      },
+      {
+        "@type": "CourseInstance",
+        name: content.name,
+        courseMode: "onsite",
+        inLanguage: localeLanguage(locale),
+        courseWorkload: `PT${maxHours}H`,
+        location: {
+          "@type": "Place",
+          name: "Galicia, España",
+          address: {
+            "@type": "PostalAddress",
+            addressRegion: "Galicia",
+            addressCountry: "ES",
+          },
+        },
+      },
+    ],
+  };
+};
+
+export const generateCourseDetailMeta = (
+  slug: CourseSlug,
+  locale: Language,
+): Metadata => {
+  const course = COURSES[slug];
+  const content = course.content[locale];
+  return buildMetadata({
+    locale,
+    pathSegments: ["courses", slug],
+    title: `${content.metaTitle} | CodeScouts`,
+    description: content.metaDescription,
+    keywords: content.keywords,
+    image: {
+      url: `${baseUrl}/images/avatar.png`,
+      width: 500,
+      height: 500,
+      alt: content.name,
+    },
+    other: {
+      "og:see_also": [pageUrl(locale, "courses"), pageUrl(locale, "contact")].join(
+        ",",
+      ),
+      "geo.region": "ES-GA",
+      "geo.placename": "Santiago de Compostela, Galicia",
+      "geo.position": "42.8782;-8.5448",
+    },
+  });
+};
+
 import { SERVICE_SLUGS, ServiceSlug, slugToTranslationKey } from "@/lib/services";
+import { COURSES, courseSlugs, CourseSlug } from "@/lib/courses";
 export { SERVICE_SLUGS, type ServiceSlug, slugToTranslationKey };
 
 const serviceDetailMeta: Record<
@@ -423,7 +532,12 @@ export const faqSchema = (
   })),
 });
 
-export const blogPostSchema = (post: BlogPost, locale: Language, slug: string) => ({
+export const blogPostSchema = (
+  post: BlogPost,
+  locale: Language,
+  slug: string,
+  relatedCourseUrls: string[] = [],
+) => ({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   headline: post.title,
@@ -440,6 +554,9 @@ export const blogPostSchema = (post: BlogPost, locale: Language, slug: string) =
   publisher: { "@id": `${baseUrl}/#organization` },
   inLanguage: localeLanguage(locale),
   keywords: post.tags?.join(", "),
+  ...(relatedCourseUrls.length > 0 && {
+    "seeAlso": relatedCourseUrls.join(","),
+  }),
   ...(post.readingTime && {
     timeRequired: `PT${post.readingTime}M`,
   }),
@@ -561,32 +678,38 @@ export const generateCoursesMeta = (locale: Language): Metadata =>
     pathSegments: ["courses"],
     title:
       locale === "es"
-        ? "CodeScouts | Formacion tecnica para equipos de desarrollo"
-        : "CodeScouts | Technical training for development teams",
+        ? "Cursos para equipos de desarrollo en Galicia y España | Online y Presencial | CodeScouts"
+        : "Training courses for development teams in Spain | Online & Onsite Galicia | CodeScouts",
     description:
       locale === "es"
-        ? "Cursos a medida de TDD, Clean Code, arquitectura de software, pair programming y extreme programming para equipos."
-        : "Custom TDD, Clean Code, software architecture, pair programming and extreme programming courses for teams.",
+        ? "Cursos a medida de TDD, Clean Code, arquitectura frontend, React y Next.js. Online en directo para toda España y presencial en Galicia. Bonificables por FUNDAE."
+        : "Custom TDD, Clean Code, frontend architecture, React and Next.js courses. Live online across Spain and onsite in Galicia. FUNDAE subsidized.",
     keywords:
       locale === "es"
         ? [
             "cursos programacion equipos",
-            "formacion tecnica desarrollo software",
+            "cursos programacion galicia",
+            "formacion tecnica desarrollo software españa",
             "curso tdd",
             "curso clean code",
-            "arquitectura software curso",
-            "pair programming curso",
+            "curso arquitectura frontend",
+            "cursos bonificables fundae",
+            "formacion presencial galicia",
+            "curso react online",
           ]
         : [
             "team programming courses",
-            "technical software development training",
+            "technical software development training spain",
             "tdd course",
             "clean code training",
-            "software architecture course",
-            "pair programming course",
+            "frontend architecture course",
+            "onsite training galicia",
           ],
     other: {
       "og:see_also": [pageUrl(locale, "services"), pageUrl(locale, "contact")].join(","),
+      "geo.region": "ES-GA",
+      "geo.placename": "Santiago de Compostela, Galicia",
+      "geo.position": "42.8782;-8.5448",
     },
   });
 

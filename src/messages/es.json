@@ -207,7 +207,8 @@
     },
     "ctaTitle": "¿Necesitas formación personalizada?",
     "ctaDescription": "Diseñamos programas a medida adaptados a las necesidades específicas de tu equipo y tecnologías",
-    "ctaButton": "Solicitar información"
+    "ctaButton": "Solicitar información",
+    "viewProgram": "Ver programa del curso"
   },
   "testimonials": {
     "title": "Lo que dicen nuestros clientes"

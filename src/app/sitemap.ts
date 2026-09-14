@@ -1,5 +1,6 @@
 import { Languages, Language } from "@/i18n";
 import { getPostsFromLang } from "@/lib/blog";
+import { COURSE_SLUGS } from "@/lib/courses";
 import { baseUrl } from "@/lib/meta";
 import { MetadataRoute } from "next";
 
@@ -52,5 +53,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  return [...staticPages, ...blogPages];
+  // Dedicated course landings: these are the money pages for transactional
+  // queries ("curso de X"). Same slug in both locales, like services.
+  const coursePages = Languages.flatMap((locale) =>
+    COURSE_SLUGS.map((slug) => ({
+      url: pageUrl(locale, `courses/${slug}`),
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+      alternates: {
+        languages: {
+          es: pageUrl("es", `courses/${slug}`),
+          en: pageUrl("en", `courses/${slug}`),
+        },
+      },
+    })),
+  );
+
+  return [...staticPages, ...coursePages, ...blogPages];
 }

@@ -3,7 +3,7 @@ title: Clean architecture en frontend
 date: 2023-10-30T00:00:00.000Z
 summary: Aprende Clean Architecture para aplicaciones frontend - estructurando código en capas contiguas, mejorando mantenibilidad y enabling cambio de tecnología sin afectar el resto. Ideal para equipos React, Vue y otros frontend.
 image: /images/blog/clean-architecture.png
-tags: [tcr, tdd, tests, commit]
+tags: [arquitectura, frontend, react, clean-architecture]
 ---
 
 ## Clean architecture en frontend
@@ -23,6 +23,6 @@ Clean Architecture es un nombre popularizado por Robert Cecil Martin, conocido c
 style="width:100%;height:415px;"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-Espero que hayas disfrutado de esta explicación, en caso que te interese este tema, te recomendamos que eches un vistazo a este curso que tenemos preparado de [Arquitectura frontend](/es/courses/)
+Espero que hayas disfrutado de esta explicación, en caso que te interese este tema, te recomendamos que eches un vistazo a este curso que tenemos preparado de [Arquitectura frontend](/es/courses/arquitectura-frontend/)
 
 Un saludo 👋

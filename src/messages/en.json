@@ -207,7 +207,8 @@
     },
     "ctaTitle": "Need personalized training?",
     "ctaDescription": "We design custom programs tailored to your team's needs and technologies",
-    "ctaButton": "Request information"
+    "ctaButton": "Request information",
+    "viewProgram": "View course program"
   },
   "testimonials": {
     "title": "What our clients say"

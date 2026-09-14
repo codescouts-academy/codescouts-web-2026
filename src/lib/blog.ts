@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { Language } from "@/i18n";
+import { COURSES, CourseSlug, courseSlugs } from "@/lib/courses";
 
 export interface BlogPost {
   slug: string;
@@ -70,6 +71,40 @@ export function getBlogPost(
   lang: Language = "es",
 ): BlogPost | undefined {
   return getPostsFromLang(lang).find((post) => post.slug === slug);
+}
+
+/**
+ * Map blog post tags to related course slugs.
+ *
+ * A course is "related" when at least one of its keyword strings
+ * (case-insensitive) appears in the post's tags.
+ * Returns slugs ordered by number of matching tags (most relevant first).
+ */
+export function getRelatedCourses(
+  postTags: string[],
+): CourseSlug[] {
+  const normalized = postTags.map((t) => t.toLowerCase());
+
+  return courseSlugs()
+    .map((slug) => {
+      const course = COURSES[slug];
+      const allKeywords = [
+        ...course.content.es.keywords,
+        ...course.content.en.keywords,
+        ...course.tags,
+      ];
+      const matches = normalized.filter((tag) =>
+        allKeywords.some(
+          (kw) =>
+            kw.toLowerCase().includes(tag) ||
+            tag.includes(kw.toLowerCase()),
+        ),
+      );
+      return { slug, score: matches.length };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .map((item) => item.slug);
 }
 
 /**

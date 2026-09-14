@@ -1,5 +1,10 @@
 import { redirect } from "next/navigation";
-import { getBlogPost, getPostsFromLang } from "@/lib/blog";
+import {
+  getBlogPost,
+  getPostsFromLang,
+  getRelatedCourses,
+} from "@/lib/blog";
+import { COURSES } from "@/lib/courses";
 import Post from "@/components/sections/Post";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
@@ -26,9 +31,28 @@ const Page = async ({ params }: Props) => {
     .filter((p) => p.tags?.some((tag) => post.tags?.includes(tag)))
     .slice(0, 3);
 
+  const relatedCourseSlugs = getRelatedCourses(
+    post.tags ?? [],
+  );
+  const relatedCourses = relatedCourseSlugs.map((slug) => ({
+    slug,
+    name:
+      locale === "es"
+        ? COURSES[slug].content.es.h1
+        : COURSES[slug].content.en.h1,
+    url: `${process.env.SITE_URL ?? "https://www.codescouts.academy"}/${locale}/courses/${slug}`,
+  }));
+
   return (
     <>
-      <JsonLd data={blogPostSchema(post, locale, slug)} />
+      <JsonLd
+        data={blogPostSchema(
+          post,
+          locale,
+          slug,
+          relatedCourses.map((c) => c.url),
+        )}
+      />
       <JsonLd
         data={breadcrumbSchema(locale, [
           {
@@ -41,7 +65,7 @@ const Page = async ({ params }: Props) => {
           },
         ])}
       />
-      <Post post={post} relatedPosts={relatedPosts} />
+      <Post post={post} relatedPosts={relatedPosts} relatedCourses={relatedCourses} />
     </>
   );
 };

@@ -30,7 +30,24 @@ const nextConfig: NextConfig = {
       // `trailingSlash: true` a slashless destination costs a SECOND 308 hop
       // (/blog/solid/ -> /es/blog/solid -> /es/blog/solid/). Redirect chains
       // dilute signals and waste crawl budget.
-      { source: '/courses/:slug+', destination: '/es/courses/', permanent: true },
+      //
+      // NOTE (SEO, Sep 2026): /:locale/courses/:slug+ detail landings now
+      // exist (see src/lib/courses.ts). Do NOT re-add collapsing redirects
+      // like `/es/courses/:slug+ -> /es/courses/` — they delete the exact
+      // pages Google needs to rank "curso de X" queries.
+      // Legacy English card IDs -> new Spanish SEO slugs. Keep in sync with
+      // LEGACY_COURSE_SLUG_REDIRECTS in src/lib/courses.ts.
+      { source: '/courses/frontend-architecture', destination: '/es/courses/arquitectura-frontend/', permanent: true },
+      { source: '/courses/legacy-code', destination: '/es/courses/codigo-legacy/', permanent: true },
+      { source: '/courses/design-patterns', destination: '/es/courses/patrones-de-diseno/', permanent: true },
+      { source: '/courses/clean-code', destination: '/es/courses/clean-code/', permanent: true },
+      { source: '/courses/nextjs', destination: '/es/courses/curso-nextjs/', permanent: true },
+      { source: '/courses/next', destination: '/es/courses/curso-nextjs/', permanent: true },
+      { source: '/courses/ddd', destination: '/es/courses/domain-driven-design/', permanent: true },
+      { source: '/courses/tdd', destination: '/es/courses/test-driven-development/', permanent: true },
+      { source: '/courses/react', destination: '/es/courses/react-typescript/', permanent: true },
+      { source: '/courses/oop', destination: '/es/courses/diseno-orientado-objetos/', permanent: true },
+      { source: '/courses/:slug+', destination: '/es/courses/:slug+/', permanent: true },
       { source: '/clients/:slug+', destination: '/es/clients/', permanent: true },
       { source: '/services/training', destination: '/es/courses/', permanent: true },
       { source: '/blog/:slug+', destination: '/es/blog/:slug+/', permanent: true },
@@ -49,8 +66,6 @@ const nextConfig: NextConfig = {
       // ---------------------------------------------------------------
       { source: '/es/services/training', destination: '/es/courses/', permanent: true },
       { source: '/en/services/training', destination: '/en/courses/', permanent: true },
-      { source: '/es/courses/:slug+', destination: '/es/courses/', permanent: true },
-      { source: '/en/courses/:slug+', destination: '/en/courses/', permanent: true },
       { source: '/es/clients/:slug+', destination: '/es/clients/', permanent: true },
       { source: '/en/clients/:slug+', destination: '/en/clients/', permanent: true },
     ];

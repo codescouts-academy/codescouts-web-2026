@@ -27,7 +27,7 @@ const slugify = (node: React.ReactNode): string =>
 
 const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
   return (
-    <div className="prose prose-invert prose-lg max-w-none">
+    <div className="prose prose-lg max-w-none">
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       components={{

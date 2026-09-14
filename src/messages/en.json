@@ -79,7 +79,10 @@
     "backToBlog": "Back to blog",
     "readingTime": "min read",
     "title": "Articles and resources for developers",
-    "description": "We share our knowledge about best practices, architecture, and software development"
+    "description": "We share our knowledge about best practices, architecture, and software development",
+    "relatedPosts": "Related articles",
+    "relatedCourses": "Related courses",
+    "viewCourse": "View course"
   },
   "services": {
     "title": "Our Services",

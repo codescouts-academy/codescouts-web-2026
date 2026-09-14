@@ -7,10 +7,18 @@ export const baseUrl =
 
 const defaultSocialImage = {
   url: `${baseUrl}/images/avatar.png`,
-  width: 500,
-  height: 500,
-  alt: "CodeScouts",
+  width: 1200,
+  height: 630,
+  alt: "CodeScouts — Technical coaching, consultoría y formación en Galicia",
 };
+
+/** Per-page OG image fallback for course/blog pages that don't have a custom one. */
+const pageSocialImage = (name: string) => ({
+  url: `${baseUrl}/images/avatar.png`,
+  width: 1200,
+  height: 630,
+  alt: `${name} | CodeScouts`,
+});
 
 const localeSegment = (locale: Language) => `/${locale}`;
 
@@ -139,7 +147,7 @@ export const organizationSchema = {
   },
   image: `${baseUrl}/images/avatar.png`,
   description:
-    "Technical coaching, consultoría de software y formación técnica para equipos de desarrollo.",
+    "Technical coaching, consultoría de software y formación técnica para equipos de desarrollo en Galicia y España.",
   email: "hello@codescouts.academy",
   telephone: "+34-664-109-973",
   contactPoint: {
@@ -148,6 +156,7 @@ export const organizationSchema = {
     email: "hello@codescouts.academy",
     contactType: "customer service",
     availableLanguage: ["Spanish", "English"],
+    areaServed: { "@type": "Country", name: "Spain" },
   },
   address: {
     "@type": "PostalAddress",
@@ -162,6 +171,24 @@ export const organizationSchema = {
   knowsLanguage: ["es", "en"],
   foundingDate: "2020",
   numberOfEmployees: { "@type": "QuantitativeValue", minValue: 2, maxValue: 10 },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00",
+    validFrom: "2020",
+  },
+  priceRange: "€€",
+  amenityFeature: [
+    {
+      "@type": "AdministrativeArea",
+      name: "Galicia",
+    },
+    {
+      "@type": "Country",
+      name: "Spain",
+    },
+  ],
 };
 
 export const websiteSchema = {
@@ -214,6 +241,28 @@ export const coursesSchema = (locale: Language) => ({
     position: index + 1,
     url: pageUrl(locale, "courses", slug),
     name: COURSES[slug].content[locale].name,
+    item: {
+      "@type": "Course",
+      "@id": `${baseUrl}/${locale}/courses/${slug}#course`,
+      name: COURSES[slug].content[locale].name,
+      url: pageUrl(locale, "courses", slug),
+      provider: { "@id": `${baseUrl}/#organization` },
+      inLanguage: localeLanguage(locale),
+      educationalLevel: COURSES[slug].level[locale],
+      timeRequired: `PT${COURSES[slug].durationHours.replace("-", "+")}H`,
+      areaServed: [{ "@type": "Country", name: "Spain" }],
+      hasCourseInstance: {
+        "@type": "CourseInstance",
+        courseMode: "online",
+        inLanguage: localeLanguage(locale),
+        courseWorkload: `PT${COURSES[slug].durationHours.split("-").pop()}H`,
+        courseSchedule: {
+          "@type": "Schedule",
+          repeatFrequency: "P1M",
+          "startDate": new Date().toISOString().split("T")[0],
+        },
+      },
+    },
   })),
 });
 
@@ -537,6 +586,7 @@ export const blogPostSchema = (
   locale: Language,
   slug: string,
   relatedCourseUrls: string[] = [],
+  videoUrl?: string,
 ) => ({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -557,6 +607,7 @@ export const blogPostSchema = (
   ...(relatedCourseUrls.length > 0 && {
     "seeAlso": relatedCourseUrls.join(","),
   }),
+  ...(videoUrl ? { "og:video": videoUrl, "og:video:type": "text/html" } : {}),
   ...(post.readingTime && {
     timeRequired: `PT${post.readingTime}M`,
   }),
@@ -596,12 +647,12 @@ export const generateHomeMeta = (locale: Language): Metadata =>
     locale,
     title:
       locale === "es"
-        ? "CodeScouts | Technical coaching para equipos de alto rendimiento"
-        : "CodeScouts | Technical coaching for high-performance teams",
+        ? "CodeScouts | Coaching técnico, consultoría y formación en Galicia"
+        : "CodeScouts | Technical coaching, consulting & training in Galicia",
     description:
       locale === "es"
-        ? "Mejora la calidad de tu software y acelera tu equipo de desarrollo con CodeScouts. Ofrecemos technical coaching, consultoria especializada, CTO as a Service y formacion tecnica para empresas."
-        : "Improve your software quality and accelerate your development team with CodeScouts. We offer technical coaching, specialized consulting, CTO as a Service and custom technical training for companies.",
+        ? "CodeScouts ayuda a equipos de software a alcanzar la excelencia técnica. Ofrecemos technical coaching, consultoría de software, CTO as a Service y cursos bonificables por FUNDAE en Galicia y España: online en directo y presencial."
+        : "CodeScouts helps software teams achieve technical excellence. We offer technical coaching, software consulting, CTO as a Service and FUNDAE-subsidized courses in Galicia and Spain: live online and onsite.",
     keywords:
       locale === "es"
         ? [
@@ -609,6 +660,8 @@ export const generateHomeMeta = (locale: Language): Metadata =>
             "consultoria software empresas",
             "cto as a service",
             "formacion tecnica equipos",
+            "cursos programacion galicia",
+            "cursos bonificables fundae",
             "extreme programming",
             "clean code",
             "tdd",
@@ -616,12 +669,15 @@ export const generateHomeMeta = (locale: Language): Metadata =>
             "pair programming",
             "mob programming",
             "calidad software",
+            "formacion presencial galicia",
           ]
         : [
             "technical coaching teams",
             "software consulting companies",
             "cto as a service",
             "technical training teams",
+            "programming courses galicia",
+            "funded training spain",
             "extreme programming",
             "clean code",
             "tdd",
@@ -635,8 +691,15 @@ export const generateHomeMeta = (locale: Language): Metadata =>
         ? {
             "contact:phone_number": "+34664109973",
             "contact:email": "hello@codescouts.academy",
+            "geo.region": "ES-GA",
+            "geo.placename": "Santiago de Compostela, Galicia",
+            "geo.position": "42.8782;-8.5448",
           }
-        : undefined,
+        : {
+            "geo.region": "ES-GA",
+            "geo.placename": "Santiago de Compostela, Galicia",
+            "geo.position": "42.8782;-8.5448",
+          },
   });
 
 export const generateServicesMeta = (locale: Language): Metadata =>
@@ -819,12 +882,89 @@ const localesWithPost = (slug: string): Language[] =>
     getPostsFromLang(language).some((post) => post.slug === slug),
   );
 
+export const videoObjectSchema = (
+  postTitle: string,
+  videoUrl: string,
+): object => ({
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: postTitle,
+  description: `Video about ${postTitle} | CodeScouts`,
+  thumbnailUrl: `${baseUrl}/images/avatar.png`,
+  uploadDate: new Date().toISOString(),
+  contentUrl: videoUrl,
+  embedUrl: videoUrl,
+  publisher: { "@id": `${baseUrl}/#organization` },
+});
+
+export const howToEnrollSchema = (locale: Language) => ({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name:
+    locale === "es"
+      ? "Cómo inscribirse en un curso de CodeScouts"
+      : "How to enroll in a CodeScouts course",
+  description:
+    locale === "es"
+      ? "Solicita información, recibe una llamada y confirma tu plaza en el curso."
+      : "Request information, receive a call, and confirm your seat in the course.",
+  totalTime: "PT7D",
+  step: [
+    {
+      "@type": "HowToStep",
+      name:
+        locale === "es" ? "Solicitar información" : "Request information",
+      text:
+        locale === "es"
+          ? "Contacta con CodeScouts indicando el curso que te interesa y tu disponibilidad."
+          : "Contact CodeScouts indicating the course that interests you and your availability.",
+    },
+    {
+      "@type": "HowToStep",
+      name:
+        locale === "es" ? "Llamada de asesoría" : "Advisory call",
+      text:
+        locale === "es"
+          ? "Recibe una llamada para resolver dudas y validar tu perfil."
+          : "Receive a call to resolve doubts and validate your profile.",
+    },
+    {
+      "@type": "HowToStep",
+      name:
+        locale === "es" ? "Confirmar y bonificar" : "Confirm and enroll",
+      text:
+        locale === "es"
+          ? "Confirma tu plaza y gestionamos la bonificación por FUNDAE."
+          : "Confirm your seat and we handle the FUNDAE subsidy.",
+    },
+  ],
+});
+
 export const generateBlogPostMeta = (
   post: BlogPost,
   locale: Language,
   slug: string,
-): Metadata =>
-  buildMetadata({
+  relatedCourseUrls: string[] = [],
+  videoUrl?: string,
+): Metadata => {
+  const section = post.tags?.[0] ?? "blog";
+  const related = [
+    ...relatedCourseUrls,
+    pageUrl(locale, "courses"),
+  ];
+  const other: Record<string, string> = {
+    "article:published_time": post.date,
+    "article:modified_time": post.date,
+    "article:section": section,
+    ...(post.author ? { "article:author": post.author } : {}),
+    ...(post.readingTime ? { "reading-time": `${post.readingTime} min` } : {}),
+    "og:see_also": related.join(","),
+  };
+  if (videoUrl) {
+    other["og:video"] = videoUrl;
+    other["og:video:type"] = "text/html";
+  }
+  return buildMetadata({
     locale,
     pathSegments: ["blog", slug],
     title: `${post.title} | CodeScouts`,
@@ -838,11 +978,6 @@ export const generateBlogPostMeta = (
       alt: post.title,
     },
     languages: localesWithPost(slug),
-    other: {
-      "article:published_time": post.date,
-      "article:modified_time": post.date,
-      "article:section": "blog",
-      ...(post.author ? { "article:author": post.author } : {}),
-      ...(post.readingTime ? { "reading-time": `${post.readingTime} min` } : {}),
-    },
+    other,
   });
+};

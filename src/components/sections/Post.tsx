@@ -23,7 +23,7 @@ const Post = ({
 
   return (
     <Layout>
-      <article className="py-6 md:py-20 grayscale">
+      <article className="py-6 md:py-20">
         <div className="section-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -110,7 +110,7 @@ const Post = ({
             {relatedCourses.length > 0 && (
               <section className="mt-16 pt-12 border-t border-border">
                 <h2 className="text-2xl font-bold mb-8">
-                  Cursos relacionados
+                  {t("blog.relatedCourses")}
                 </h2>
                 <div className="grid md:grid-cols-3 gap-6">
                   {relatedCourses.map((course) => (
@@ -124,7 +124,7 @@ const Post = ({
                           {course.name}
                         </h3>
                         <span className="text-sm text-primary inline-flex items-center gap-1">
-                          Ver curso
+                          {t("blog.viewCourse")}
                           <ArrowRight className="w-4 h-4" />
                         </span>
                       </article>
@@ -138,7 +138,7 @@ const Post = ({
             {relatedPosts.length > 0 && (
               <section className="mt-16 pt-12 border-t border-border">
                 <h2 className="text-2xl font-bold mb-8">
-                  Artículos relacionados
+                  {t("blog.relatedPosts")}
                 </h2>
                 <div className="grid md:grid-cols-3 gap-6">
                   {relatedPosts.map((relatedPost) => (

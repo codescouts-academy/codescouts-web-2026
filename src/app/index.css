@@ -168,7 +168,7 @@
 
   /* Code block styling for blog */
   .prose pre {
-    @apply rounded-lg border border-border bg-secondary p-4 overflow-x-auto;
+    @apply rounded-lg border-border bg-[#1e1e1e] p-4 overflow-x-auto;
   }
 
   .prose code {
@@ -176,7 +176,104 @@
   }
 
   .prose pre code {
-    @apply bg-transparent p-0;
+    @apply bg-transparent p-0 text-primary;
+  }
+
+  /* Dark prose theme for blog posts (replaces prose-invert) */
+  .prose {
+    color: hsl(60 9% 98%);
+    background-color: hsl(220 16% 4%);
+  }
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    color: hsl(60 9% 98%);
+  }
+  .prose p, .prose li, .prose span {
+    color: hsl(60 9% 90%);
+  }
+  .prose a {
+    color: hsl(48 96% 53%);
+  }
+  .prose strong {
+    color: hsl(60 9% 98%);
+  }
+  .prose em {
+    color: hsl(60 9% 85%);
+  }
+  .prose blockquote {
+    border-left-color: hsl(48 96% 53%);
+    background-color: hsl(48 96% 53% / 0.08);
+    color: hsl(60 9% 90%);
+  }
+  .prose hr {
+    border-color: hsl(220 14% 16%);
+  }
+
+  /* SyntaxHighlighter tokens — force the prism colors */
+  .prose .prism-code .token {
+    color: hsl(60 9% 98%) !important;
+    background: transparent !important;
+    font-style: normal !important;
+  }
+  .prose .prism-code .token.keyword,
+  .prose .prism-code .token.operator,
+  .prose .prism-code .token.boolean,
+  .prose .prism-code .token.atrule,
+  .prose .prism-code .token.rule {
+    color: hsl(48 96% 60%) !important;
+  }
+  .prose .prism-code .token.string,
+  .prose .prism-code .token.attr-value,
+  .prose .prism-code .token.url {
+    color: hsl(114 50% 65%) !important;
+  }
+  .prose .prism-code .token.function,
+  .prose .prism-code .token.class-name {
+    color: hsl(220 90% 65%) !important;
+  }
+  .prose .prism-code .token.number,
+  .prose .prism-code .token.property,
+  .prose .prism-code .token.variable {
+    color: hsl(38 96% 65%) !important;
+  }
+  .prose .prism-code .token.comment,
+  .prose .prism-code .token.prolog,
+  .prose .prism-code .token.doctype,
+  .prose .prism-code .token.cdata {
+    color: hsl(240 10% 50%) !important;
+    font-style: italic !important;
+  }
+  .prose .prism-code .token.punctuation {
+    color: hsl(220 9% 75%) !important;
+  }
+  .prose .prism-code .token.tag,
+  .prose .prism-code .token.selector {
+    color: hsl(0 72% 60%) !important;
+  }
+  .prose .prism-code .token.namespace {
+    opacity: 0.8 !important;
+  }
+  .prose .prism-code .token.entity {
+    color: hsl(48 96% 65%) !important;
+  }
+  .prose .prism-code .token.deleted,
+  .prose .prism-code .token.section {
+    color: hsl(0 72% 60%) !important;
+  }
+  .prose .prism-code .token.inserted {
+    color: hsl(114 50% 65%) !important;
+  }
+  .prose .prism-code .token.important,
+  .prose .prism-code .token.bold {
+    font-weight: 700 !important;
+    color: hsl(60 9% 98%) !important;
+  }
+  .prose .prism-code .token.italic {
+    font-style: italic !important;
+  }
+
+  /* SyntaxHighlighter wrapper must have dark bg */
+  .prose div[class*="language-"] {
+    @apply bg-[#1e1e1e];
   }
 
   /* Link hover effect */

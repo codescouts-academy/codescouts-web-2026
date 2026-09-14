@@ -50,7 +50,10 @@
     "backToBlog": "Volver al blog",
     "readingTime": "min de lectura",
     "title": "Artículos y recursos para desarrolladores",
-    "description": "Compartimos nuestro conocimiento sobre buenas prácticas, arquitectura y desarrollo de software"
+    "description": "Compartimos nuestro conocimiento sobre buenas prácticas, arquitectura y desarrollo de software",
+    "relatedPosts": "Artículos relacionados",
+    "relatedCourses": "Cursos relacionados",
+    "viewCourse": "Ver curso"
   },
   "howWeWork": {
     "title": "¿Cómo trabajamos?",

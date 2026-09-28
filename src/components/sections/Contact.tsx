@@ -46,7 +46,7 @@ const Contact = () => {
       href: "https://github.com/codescouts-academy",
       label: "GitHub",
     },
-    {
+        {
       icon: Linkedin,
       href: "https://linkedin.com/company/codescouts",
       label: "LinkedIn",

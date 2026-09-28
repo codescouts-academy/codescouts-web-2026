@@ -74,7 +74,7 @@ const Footer = () => {
               >
                 <Github className="h-5 w-5" />
               </a>
-              <a
+                            <a
                 href="https://www.linkedin.com/company/codescouts"
                 target="_blank"
                 rel="me noopener noreferrer"
@@ -196,15 +196,9 @@ const Footer = () => {
             <p className="text-muted-foreground text-xs font-mono">
               {`// ${process.env.NEXT_PUBLIC_COMMIT_MESSAGE ?? "feat: new release"}`}
             </p>
-            <p className="text-muted-foreground text-xs font-mono">
-              <a
-                href={`https://github.com/codescouts-academy/codescouts-web-2026/commit/${process.env.NEXT_PUBLIC_COMMIT_SHA}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+<p className="text-muted-foreground text-xs font-mono">
                 {`// ${process.env.NEXT_PUBLIC_COMMIT_SHA ?? "72f74d90a01aee6afaa4936abe00e5ac9ab8a4cb"}`}
-              </a>
-            </p>
+              </p>
           </div>
           <div className="flex flex-col gap-1">
             <p className="text-muted-foreground text-xs font-mono">

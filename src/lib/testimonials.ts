@@ -14,8 +14,8 @@ export const testimonials: Testimonial[] = [
     role: "Responsable del área de Nuevos Desarrollos",
     company: "Movicoders",
     text: {
-      es: "Durante nuestra colaboración, Damián nos ayudó a mejorar el nivel del equipo de forma significativa. Mediante dinámicas de mob-programming en sesiones técnicas y fomentando el debate, la reflexión y la participación. Nos acompañó en el proceso de definición de nuestra arquitectura, siendo una pieza clave en él.",
-      en: "During our collaboration, Damián helped significantly improve the team's skill level through mob-programming sessions and by encouraging debate, reflection, and participation. He guided us through defining our architecture, being a key part of the process.",
+       es: "Durante nuestra colaboración, El equipo de CodeScouts nos ayudó a mejorar el nivel del equipo de forma significativa. Mediante dinámicas de mob-programming en sesiones técnicas y fomentando el debate, la reflexión y la participación. Nos acompañó en el proceso de definición de nuestra arquitectura, siendo una pieza clave en él.",
+       en: "During our collaboration, the CodeScouts team helped significantly improve the team's skill level through mob-programming sessions and by encouraging debate, reflection, and participation. He guided us through defining our architecture, being a key part of the process.",
     },
     image: "/images/testimonials/juanjo-hernandez.png",
   },
@@ -24,8 +24,8 @@ export const testimonials: Testimonial[] = [
     role: "Ingeniero de software",
     company: "Movicoders",
     text: {
-      es: "Definitivamente conseguimos dar ese salto cualitativo. Gracias a Codescouts y en concreto a Damián y su profunda experiencia con javascript y react, desarrollamos una arquitectura frontend que nos facilitase el desarrollo en términos de estructuración de los proyectos.",
-      en: "We definitely achieved that qualitative leap. Thanks to Codescouts, and specifically Damián with his deep experience in JavaScript and React, we developed a frontend architecture that facilitated project structuring and development.",
+       es: "Definitivamente conseguimos dar ese salto cualitativo. Gracias a Codescouts y en concreto a El equipo de CodeScouts y su profunda experiencia con javascript y react, desarrollamos una arquitectura frontend que nos facilitase el desarrollo en términos de estructuración de los proyectos.",
+       en: "We definitely achieved that qualitative leap. Thanks to Codescouts, and specifically the CodeScouts team with his deep experience in JavaScript and React, we developed a frontend architecture that facilitated project structuring and development.",
     },
     image: "/images/testimonials/marcos-broto.png",
   },
@@ -64,8 +64,8 @@ export const testimonials: Testimonial[] = [
     role: "Senior Platform Architect",
     company: "Submer",
     text: {
-      es: "Hemos experimentado un significativo impulso en nuestro desarrollo, tanto a nivel tecnológico como metodológico, gracias a la colaboración con Damián. Su enfoque y habilidades han acelerado nuestro progreso, permitiéndonos simplificar y aplicar buenas prácticas en el desarrollo.",
-      en: "We've experienced significant progress in our development, both technologically and methodologically, thanks to collaborating with Damián. His approach and skills accelerated our progress, allowing us to simplify and apply best practices in development.",
+       es: "Hemos experimentado un significativo impulso en nuestro desarrollo, tanto a nivel tecnológico como metodológico, gracias a la colaboración con El equipo de CodeScouts. Su enfoque y habilidades han acelerado nuestro progreso, permitiéndonos simplificar y aplicar buenas prácticas en el desarrollo.",
+       en: "We've experienced significant progress in our development, both technologically and methodologically, thanks to collaborating with the CodeScouts team. His approach and skills accelerated our progress, allowing us to simplify and apply best practices in development.",
     },
     image: "/images/testimonials/jonathan-huet.png",
   }
@@ -75,8 +75,8 @@ export const testimonials: Testimonial[] = [
     role: "Senior Software Engineer",
     company: "Mirai",
     text: {
-      es: "Damián y Tomás demostraron un profundo conocimiento en desarrollo de software desde el principio. Su habilidad para simplificar conceptos complejos y ofrecer explicaciones claras hizo que cada sesión fuera accesible y entretenida para todos.",
-      en: "Damián and Tomás demonstrated deep software development knowledge from the start. Their ability to simplify complex concepts and provide clear explanations made each session accessible and engaging for everyone.",
+       es: "El equipo de CodeScouts y Tomás demostraron un profundo conocimiento en desarrollo de software desde el principio. Su habilidad para simplificar conceptos complejos y ofrecer explicaciones claras hizo que cada sesión fuera accesible y entretenida para todos.",
+       en: "The CodeScouts team and Tomás demonstrated deep software development knowledge from the start. Their ability to simplify complex concepts and provide clear explanations made each session accessible and engaging for everyone.",
     },
     image: "/images/testimonials/manuel-valladares.png",
   },
@@ -85,8 +85,8 @@ export const testimonials: Testimonial[] = [
     role: "Backend developer",
     company: "Mirai",
     text: {
-      es: "Superasteis mis expectativas con creces. Tanto Tomás como Damián son dos grandes profesionales a nivel técnico y a nivel enseñanza (cosa mucho mas difícil de encontrar desde mi punto de vista en el mundo técnico). He hecho otras formaciones con otras empresas y puedo decir que este formato me ha gustado mas que cualquiera.",
-      en: "You exceeded my expectations by far. Both Tomás and Damián are outstanding professionals, both technically and in teaching (which is much harder to find in the tech world, in my opinion). I've attended other training with different companies, and I can say I liked this format more than any other.",
+       es: "Superasteis mis expectativas con creces. Tanto Tomás como El equipo de CodeScouts son dos grandes profesionales a nivel técnico y a nivel enseñanza (cosa mucho mas difícil de encontrar desde mi punto de vista en el mundo técnico). He hecho otras formaciones con otras empresas y puedo decir que este formato me ha gustado mas que cualquiera.",
+       en: "You exceeded my expectations by far. Both Tomás and the CodeScouts team are outstanding professionals, both technically and in teaching (which is much harder to find in the tech world, in my opinion). I've attended other training with different companies, and I can say I liked this format more than any other.",
     },
     image: "/images/testimonials/juan-alvarez.png",
   },
@@ -95,8 +95,8 @@ export const testimonials: Testimonial[] = [
     role: "Head of Product",
     company: "Cluber",
     text: {
-      es: "Teníamos expectativas altas, pero diría que han sido superadas. El conocimiento de Damián y la forma de comunicarlo y trasladarlo al equipo ha sido excelente. Resaltar también la capacidad de trabajo y la implicación de Damián en el proyecto, no solo proponiendo si no también ejecutando tareas y pruebas de concepto.",
-      en: "We had high expectations, but I would say they have been exceeded. Damián’s expertise, along with his ability to communicate and share it effectively with the team, has been excellent. I would also like to highlight his work ethic and commitment to the project; he doesn't just propose ideas, but also executes tasks and proofs of concept.",
+      es: "Teníamos expectativas altas, pero diría que han sido superadas. El conocimiento de El equipo de CodeScouts y la forma de comunicarlo y trasladarlo al equipo ha sido excelente. Resaltar también la capacidad de trabajo y la implicación de El equipo de CodeScouts en el proyecto, no solo proponiendo si no también ejecutando tareas y pruebas de concepto.",
+      en: "We had high expectations, but I would say they have been exceeded. the CodeScouts team’s expertise, along with his ability to communicate and share it effectively with the team, has been excellent. I would also like to highlight his work ethic and commitment to the project; he doesn't just propose ideas, but also executes tasks and proofs of concept.",
     },
     image: "/images/testimonials/ruben-vega.png",
   },

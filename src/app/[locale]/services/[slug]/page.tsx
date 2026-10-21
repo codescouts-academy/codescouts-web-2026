@@ -1,13 +1,14 @@
 import { notFound, redirect } from "next/navigation";
 import type { Metadata } from "next";
-import { LocaleProps } from "@/i18n";
+import { Language, LocaleProps } from "@/i18n";
 import { routing } from "@/i18n/routing";
 import { JsonLd } from "@/components/JsonLd";
 import ServiceDetail from "@/components/sections/ServiceDetail";
-import { SERVICE_SLUGS, ServiceSlug } from "@/lib/services";
 import {
   breadcrumbSchema,
   generateServiceDetailMeta,
+  SERVICE_PAGE_SLUGS,
+  serviceName,
   singleServiceSchema,
 } from "@/lib/meta";
 
@@ -15,9 +16,15 @@ type Props = LocaleProps & {
   params: Promise<{ slug: string }>;
 };
 
+type ServicePageSlug = (typeof SERVICE_PAGE_SLUGS)[number];
+
+const isServicePage = (slug: string): slug is ServicePageSlug =>
+  (SERVICE_PAGE_SLUGS as readonly string[]).includes(slug);
+
+// `training` is not prerendered: it 308s to /courses/ (see next.config.ts).
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    SERVICE_SLUGS.map((slug) => ({ locale, slug })),
+    SERVICE_PAGE_SLUGS.map((slug) => ({ locale, slug })),
   );
 }
 
@@ -25,32 +32,23 @@ const Page = async ({ params }: Props) => {
   const { locale, slug } = await params;
 
   if (slug === "training") {
-    redirect(`/${locale}/courses`);
+    redirect(`/${locale}/courses/`);
   }
 
-  if (!SERVICE_SLUGS.includes(slug as ServiceSlug)) {
+  if (!isServicePage(slug)) {
     notFound();
   }
 
   return (
     <>
-      <JsonLd data={singleServiceSchema(slug as ServiceSlug, locale as any)} />
+      <JsonLd data={singleServiceSchema(slug, locale as Language)} />
       <JsonLd
-        data={breadcrumbSchema(locale as any, [
-          {
-            name:
-              locale === "es" ? "Servicios" : "Services",
-            url: `${process.env.SITE_URL ?? "https://www.codescouts.academy"
-              }/${locale}/services`,
-          },
-          {
-            name: slug,
-            url: `${process.env.SITE_URL ?? "https://www.codescouts.academy"
-              }/${locale}/services/${slug}`,
-          },
+        data={breadcrumbSchema(locale as Language, [
+          { name: locale === "es" ? "Servicios" : "Services", path: ["services"] },
+          { name: serviceName(slug, locale as Language), path: ["services", slug] },
         ])}
       />
-      <ServiceDetail locale={locale as any} slug={slug as ServiceSlug} />
+      <ServiceDetail locale={locale as Language} slug={slug} />
     </>
   );
 };
@@ -60,9 +58,9 @@ export default Page;
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
 
-  if (!SERVICE_SLUGS.includes(slug as ServiceSlug)) {
+  if (!isServicePage(slug)) {
     return {};
   }
 
-  return generateServiceDetailMeta(slug as ServiceSlug, locale as any);
+  return generateServiceDetailMeta(slug, locale as Language);
 }

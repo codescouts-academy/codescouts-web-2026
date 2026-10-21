@@ -9,6 +9,7 @@ import { Language } from "@/i18n";
 import { Highlight } from "@/components/ui/highlight";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Testimonials from "@/components/sections/Testimonials";
 
@@ -64,11 +65,11 @@ const ClientsList = ({ locale }: { locale: Language }) => {
                 {/* Logo Header */}
                 <div className="h-40 bg-card flex items-center justify-center p-6 border-b border-border/50 group-hover:bg-primary/5 transition-colors">
                   {client.logo ? (
-                    <img
+                    <Image
                       src={client.logo}
                       alt={`${client.name} logo`}
-                      loading="lazy"
-                      decoding="async"
+                      width={180}
+                      height={96}
                       className={cn(
                         "max-h-24 max-w-[180px] object-contain filter brightness-0 opacity-70 group-hover:opacity-100 transition-opacity",
                         {

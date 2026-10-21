@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
 import { Calendar, Clock, ArrowLeft, User, Tag, ArrowRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -25,12 +25,9 @@ const Post = ({
     <Layout>
       <article className="py-6 md:py-20">
         <div className="section-container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto"
-          >
+          {/* No entrance animation here: an `opacity: 0` start hides the
+              cover and H1 (the LCP candidates) until JS hydrates. */}
+          <div className="max-w-4xl mx-auto">
             {/* Back Button */}
             <Button asChild variant="ghost" size="sm" className="mb-8">
               <Link href={`/${locale}/blog`}>
@@ -42,13 +39,16 @@ const Post = ({
             {/* Header */}
             <header className="mb-12">
               {post.coverImage && (
-                <div className="aspect-video rounded-2xl overflow-hidden flex justify-center items-center">
-                  <img
+                <div className="relative aspect-video rounded-2xl overflow-hidden">
+                  {/* Above the fold: this is the page's LCP image. */}
+                  <Image
                     src={post.coverImage}
                     alt={post.title}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-fit h-fit object-contain group-hover:brightness-110 group-hover:scale-105 transition-all duration-700"
+                    fill
+                    preload
+                    fetchPriority="high"
+                    sizes="(min-width: 896px) 896px, 100vw"
+                    className="object-contain"
                   />
                 </div>
               )}
@@ -106,6 +106,30 @@ const Post = ({
               <MarkdownRenderer content={post.content} />
             </div>
 
+            {/* Team CTA: the bridge from a technical post to a company lead. */}
+            {relatedCourses.length > 0 && (
+              <aside className="mt-16 p-8 rounded-2xl bg-primary/10 border border-primary/20">
+                <h2 className="text-2xl font-bold mb-3">
+                  {t("blog.teamCtaTitle")}
+                </h2>
+                <p className="text-muted-foreground mb-6">
+                  {t("blog.teamCtaText")}
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Button asChild>
+                    <Link href={relatedCourses[0].url}>
+                      {t("blog.teamCtaCourse")}: {relatedCourses[0].name}
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline">
+                    <Link href={`/${locale}/contact/`}>
+                      {t("blog.teamCtaContact")}
+                    </Link>
+                  </Button>
+                </div>
+              </aside>
+            )}
+
             {/* Related Courses */}
             {relatedCourses.length > 0 && (
               <section className="mt-16 pt-12 border-t border-border">
@@ -160,7 +184,7 @@ const Post = ({
                 </div>
               </section>
             )}
-          </motion.div>
+          </div>
         </div>
       </article>
     </Layout>

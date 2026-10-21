@@ -33,8 +33,6 @@ const Page = async ({ params }: Props) => {
   }
 
   const content = course.content[locale as "es" | "en"];
-  const siteUrl =
-    process.env.SITE_URL ?? "https://www.codescouts.academy";
 
   return (
     <>
@@ -42,14 +40,8 @@ const Page = async ({ params }: Props) => {
       <JsonLd data={faqSchema(content.faqs)} />
       <JsonLd
         data={breadcrumbSchema(locale as Language, [
-          {
-            name: locale === "es" ? "Formación" : "Training",
-            url: `${siteUrl}/${locale}/courses`,
-          },
-          {
-            name: content.name,
-            url: `${siteUrl}/${locale}/courses/${slug}`,
-          },
+          { name: locale === "es" ? "Cursos" : "Courses", path: ["courses"] },
+          { name: content.name, path: ["courses", slug] },
         ])}
       />
       <CourseDetail locale={locale as Language} slug={slug as CourseSlug} />

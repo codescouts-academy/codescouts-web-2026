@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>CodeScouts Blog</title>
+    <description>Articles on TDD, Clean Code, software architecture and technical coaching for development teams.</description>
+    <link>https://www.codescouts.academy/en/blog/</link>
+    <language>en</language>
+    <lastBuildDate>Tue, 15 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://www.codescouts.academy/feed-en.xml" rel="self" type="application/rss+xml"/>
+    
+    <item>
+      <title>The definitive prompt: turn any AI into a Technical Coach</title>
+      <description>A comprehensive, team-tested prompt that transforms GitHub Copilot, Cursor, ChatGPT or Claude into a senior technical coach using CodeScouts&apos; eXtreme Programming methodology. Copy, paste, and your assistant goes from generating code to coaching like a 10+ year senior.</description>
+      <link>https://www.codescouts.academy/en/blog/technical-coach-prompt/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/technical-coach-prompt/</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>coaching</category>
+      <category>tdd</category>
+      <category>clean-code</category>
+      <category>extreme-programming</category>
+      <category>pair-programming</category>
+      <category>prompt</category>
+      <category>copilot</category>
+    </item>
+    <item>
+      <title>React Server Components in production: the architecture you need for 2026</title>
+      <description>Next.js App Router has transformed how we think about frontend architecture, but Server Components without design introduce invisible coupling. We analyze the mental model, the patterns that scale, and the most common architectural mistakes in production.</description>
+      <link>https://www.codescouts.academy/en/blog/react-server-components/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/react-server-components/</guid>
+      <pubDate>Sat, 12 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>react</category>
+      <category>nextjs</category>
+      <category>server-components</category>
+      <category>architecture</category>
+      <category>frontend</category>
+      <category>scalability</category>
+    </item>
+    <item>
+      <title>AI coding agents: how to keep Clean Code when AI writes your code</title>
+      <description>AI agents generate code at incredible speed, but without disciplines like TDD, Clean Code and refactoring, that code becomes technical debt instantly. We analyze how to integrate GitHub Copilot, Cursor and Claude Code without sacrificing architecture or maintainability.</description>
+      <link>https://www.codescouts.academy/en/blog/ai-coding-agents/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/ai-coding-agents/</guid>
+      <pubDate>Thu, 10 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>ai</category>
+      <category>tdd</category>
+      <category>clean-code</category>
+      <category>refactoring</category>
+      <category>architecture</category>
+      <category>cursor</category>
+    </item>
+    <item>
+      <title>GOF Design Patterns</title>
+      <description>A complete guide to GOF design patterns, creational, structural, and behavioral.</description>
+      <link>https://www.codescouts.academy/en/blog/patrones-de-disenio/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/patrones-de-disenio/</guid>
+      <pubDate>Wed, 29 Oct 2025 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>GOF</category>
+      <category>gang of four</category>
+      <category>design patterns</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>ID Document - OCR/MRZ Kata</title>
+      <description>A mid/advanced kata to practice TDD and optional mocks in a real-world algorithm. The kata consists of implementing an algorithm that converts an ID image into a character string with structured information, then parses that string into an object with the ID data.</description>
+      <link>https://www.codescouts.academy/en/blog/documento-de-identidad-ocr-mrz-kata/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/documento-de-identidad-ocr-mrz-kata/</guid>
+      <pubDate>Wed, 21 Aug 2024 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>tdd</category>
+      <category>ocr</category>
+      <category>mrz</category>
+      <category>kata</category>
+    </item>
+    <item>
+      <title>RabbitMQ in 5 Minutes</title>
+      <description>Want to learn the key RabbitMQ concepts? I explain what RabbitMQ is in 5 minutes.</description>
+      <link>https://www.codescouts.academy/en/blog/rabbitmq-en-5-minutos/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/rabbitmq-en-5-minutos/</guid>
+      <pubDate>Fri, 10 May 2024 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>rabbitmq</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>Clean Architecture in Frontend</title>
+      <description>Learn Clean Architecture for frontend applications - structuring code in adjacent layers, improving maintainability, and enabling technology switching without affecting other layers. Perfect for React, Vue, and other frontend teams.</description>
+      <link>https://www.codescouts.academy/en/blog/clean-architecture-en-frontend/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/clean-architecture-en-frontend/</guid>
+      <pubDate>Mon, 30 Oct 2023 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>architecture</category>
+      <category>frontend</category>
+      <category>react</category>
+      <category>clean-architecture</category>
+    </item>
+    <item>
+      <title>Clean Code</title>
+      <description>Clean Code principles to help you write code that is readable, understandable, and maintainable. Essential guidelines for software craftsmanship and professional development teams.</description>
+      <link>https://www.codescouts.academy/en/blog/clean-code/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/clean-code/</guid>
+      <pubDate>Mon, 30 Oct 2023 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>tcr</category>
+      <category>tdd</category>
+      <category>tests</category>
+      <category>commit</category>
+    </item>
+    <item>
+      <title>ReactJS Azure CDN or Azure App Service</title>
+      <description>There are several advantages to hosting a React JS application on Azure CDN instead of Azure App Service.</description>
+      <link>https://www.codescouts.academy/en/blog/reactjs-in-azure-cdn-vs-azure-app-service/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/reactjs-in-azure-cdn-vs-azure-app-service/</guid>
+      <pubDate>Fri, 20 Jan 2023 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>azure</category>
+      <category>cdn</category>
+      <category>app service</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>Fakes Spies Mocks Stubs Dummies</title>
+      <description>Whenever I ask the difference between these test doubles, no one can answer clearly. This time I&apos;ll make sure you understand them once and for all.</description>
+      <link>https://www.codescouts.academy/en/blog/fakes-spies-mocks-stubs-dummies/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/fakes-spies-mocks-stubs-dummies/</guid>
+      <pubDate>Sat, 19 Nov 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>testdoubles</category>
+      <category>tdd</category>
+      <category>dobles-de-test</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>Test-Driven Development</title>
+      <description>Also known as TDD (test-driven development), it is a programming practice that consists of writing tests first (usually unit tests), then writing the source code that makes the test pass, and finally refactoring the implemented code.</description>
+      <link>https://www.codescouts.academy/en/blog/test-driven-development/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/test-driven-development/</guid>
+      <pubDate>Wed, 06 Jul 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>diseño</category>
+      <category>design</category>
+      <category>tdd</category>
+      <category>test-driven-design</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>Types of Tests</title>
+      <description>There are many types of testing we can use to confirm that our software continues to work correctly after introducing new changes to the source code.</description>
+      <link>https://www.codescouts.academy/en/blog/tipos-de-tests/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/tipos-de-tests/</guid>
+      <pubDate>Tue, 05 Jul 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>test</category>
+      <category>unit test</category>
+      <category>integration test</category>
+      <category>e2e</category>
+      <category>ui</category>
+      <category>test pyramid</category>
+    </item>
+    <item>
+      <title>GRASP Patterns, the Old SOLID</title>
+      <description>These days people talk a lot about SOLID principles, but a few years earlier Craig Larman introduced very interesting patterns. Let’s review them!</description>
+      <link>https://www.codescouts.academy/en/blog/grasp/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/grasp/</guid>
+      <pubDate>Sun, 03 Jul 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>diseño</category>
+      <category>design</category>
+      <category>objectcalisthenics</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>Test &amp;&amp; Commit || Revert</title>
+      <description>Test &amp;&amp; Commit || Revert (TCR) workflow - run tests after every production code change. Commit if passing, revert if failing. Learn this TDD-adjacent technique for faster feedback loops.</description>
+      <link>https://www.codescouts.academy/en/blog/test-commit-or-revert/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/test-commit-or-revert/</guid>
+      <pubDate>Sat, 02 Jul 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>tcr</category>
+      <category>tdd</category>
+      <category>tests</category>
+      <category>commit</category>
+    </item>
+    <item>
+      <title>Object Calisthenics</title>
+      <description>If you want a good software design, you should follow these 10 rules to ensure it.</description>
+      <link>https://www.codescouts.academy/en/blog/object-calisthenics/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/object-calisthenics/</guid>
+      <pubDate>Mon, 02 May 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>diseño</category>
+      <category>design</category>
+      <category>objectcalisthenics</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>React 18, What’s New</title>
+      <description>The new version of React is out. If you want to know the new features, we explain them in one minute!</description>
+      <link>https://www.codescouts.academy/en/blog/reactjs-18-novedades/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/reactjs-18-novedades/</guid>
+      <pubDate>Sun, 01 May 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>react</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>4 Rules of Simple Design</title>
+      <description>4 simple design rules are a set of guidelines that help us write clean, well-designed code. These rules were proposed by Kent Beck, one of the pioneers of Extreme Programming, and are based on the idea that a design is simple when it follows these rules in order of importance.</description>
+      <link>https://www.codescouts.academy/en/blog/4-reglas-del-disenio-simple/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/4-reglas-del-disenio-simple/</guid>
+      <pubDate>Sat, 30 Apr 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>4rules</category>
+      <category>diseño</category>
+      <category>4reglas</category>
+      <category>design</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>The SOLID Principles</title>
+      <description>The SOLID principles (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) for writing maintainable, flexible object-oriented software.</description>
+      <link>https://www.codescouts.academy/en/blog/solid/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/solid/</guid>
+      <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>principles</category>
+      <category>principles</category>
+      <category>solid</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>Mob Programming</title>
+      <description>A group of bright people working on the same thing, at the same time, in the same place, using the same computer.</description>
+      <link>https://www.codescouts.academy/en/blog/mob-programming/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/mob-programming/</guid>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>mobprogramming</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>Good Programming Principles</title>
+      <description>After years of experience, the industry has coined many acronyms referring to best practices, and we often reference them, such as KISS, DRY, YAGNI, and more.</description>
+      <link>https://www.codescouts.academy/en/blog/principios-de-la-buena-programacion/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/principios-de-la-buena-programacion/</guid>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>principles</category>
+      <category>principios</category>
+      <category>codescouts</category>
+    </item>
+  </channel>
+</rss>

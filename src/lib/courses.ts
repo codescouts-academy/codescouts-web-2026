@@ -10,13 +10,18 @@ import { Language } from "@/i18n";
  * Course structured data. This catalogue is the single source of truth for
  * those landing pages (both locales).
  *
- * Local-SEO strategy (Online + Presencial Galicia):
+ * SEO strategy (B2B: companies buying training for their dev teams):
+ * - metaTitle: primary keyword first + "para equipos", ≤ 50 chars and
+ *   WITHOUT the brand (" | CodeScouts" is appended by code).
+ * - metaDescription: 140–158 chars, keyword + team/business benefit +
+ *   modality + FUNDAE (es) + soft CTA.
  * - Every course is taught live-online for all of Spain AND onsite in
- *   Galicia (Santiago de Compostela, A Coruña, Vigo).
- * - That wording is repeated in meta titles/descriptions, intros and FAQs
- *   so pages can surface for "curso X en Galicia", "curso X España" and
- *   "curso X online".
+ *   Galicia (Santiago de Compostela, A Coruña, Vigo). Modality is mentioned
+ *   in intros and FAQs but does not define the course, so it stays out of
+ *   titles.
  * - All courses are FUNDAE-bonificable (key Spanish B2B training query).
+ * - `keywords` are not emitted as a meta tag: they feed getRelatedCourses()
+ *   (substring match against blog post tags), so keep topic terms there.
  */
 
 export const COURSE_SLUGS = [
@@ -95,31 +100,35 @@ const localFaqs = (
   cityLine: string,
 ): CourseFaq[] => [
   {
-    question: `¿El ${courseName} es online o presencial?`,
-    answer: `Ambos. ${FORMAT_ES} Los grupos son reducidos (máximo 12 personas) para garantizar atención personalizada en cualquier formato.`,
-  },
-  {
-    question: `¿Busco un ${courseName} en Galicia, tenéis convocatoria cerca?`,
-    answer: `Sí. Somos de Santiago de Compostela y nos desplazamos a ${cityLine} para impartirlo en tus oficinas. También lo impartimos online en directo con la misma carga práctica. Escríbenos y organizamos fechas.`,
+    question: `¿El ${courseName} es online o presencial en nuestras oficinas?`,
+    answer: `Ambos. ${FORMAT_ES} Somos de Santiago de Compostela y nos desplazamos a ${cityLine} para impartirlo en vuestras oficinas; para equipos en el resto de España lo impartimos online en directo con la misma carga práctica. Los grupos son reducidos (máximo 12 personas) para garantizar atención personalizada en cualquier formato.`,
   },
   {
     question: "¿El curso es bonificable por FUNDAE?",
-    answer: `Sí. ${FUNDAE_ES} Te ayudamos con la gestión de la bonificación.`,
+    answer: `Sí. ${FUNDAE_ES} Os ayudamos con la gestión de la bonificación para que la empresa solo tenga que preocuparse de la formación.`,
   },
 ];
 
-const localFaqsEn = (
-  courseName: string,
-): CourseFaq[] => [
+const localFaqsEn = (courseName: string): CourseFaq[] => [
   {
-    question: `Is the ${courseName} online or onsite?`,
-    answer: `Both. ${FORMAT_EN} Groups are small (max 12 people) to guarantee personal attention in either format.`,
+    question: `Is the ${courseName} online or onsite at our offices?`,
+    answer: `Both. ${FORMAT_EN} We are based in Santiago de Compostela and travel to your offices in Galicia; teams elsewhere in Spain take it live online with the same amount of hands-on practice. Groups are small (max 12 people) to guarantee personal attention in either format.`,
   },
   {
     question: "Is the course eligible for FUNDAE subsidies?",
-    answer: `Yes. ${FUNDAE_EN} We help you with the paperwork.`,
+    answer: `Yes. ${FUNDAE_EN} We help you with the paperwork so the company only has to focus on the training.`,
   },
 ];
+
+const durationFaq = (hours: string): CourseFaq => ({
+  question: "¿Cuánto dura el curso y cómo se organizan las sesiones?",
+  answer: `${hours} horas de formación en directo. Las fechas y el horario de las sesiones se acuerdan con la empresa para que encajen con la planificación del equipo y no frenen la entrega.`,
+});
+
+const durationFaqEn = (hours: string): CourseFaq => ({
+  question: "How long is the course and how are sessions scheduled?",
+  answer: `${hours} hours of live training. Dates and session times are agreed with your company so they fit the team's planning and don't stall delivery.`,
+});
 
 export const COURSES: Record<CourseSlug, CourseDefinition> = {
   "arquitectura-frontend": {
@@ -132,27 +141,25 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
     content: {
       es: {
         name: "Arquitectura Frontend",
-        h1: "Curso de Arquitectura Frontend para equipos",
-        metaTitle:
-          "Curso de Arquitectura Frontend en Galicia y España | Online y Presencial",
+        h1: "Curso de Arquitectura Frontend para equipos de desarrollo",
+        metaTitle: "Curso de Arquitectura Frontend para equipos",
         metaDescription:
-          "Curso de arquitectura frontend con React: arquitectura sostenible, escalabilidad y testing. Online para España y presencial en Galicia. Bonificable FUNDAE.",
+          "Curso de arquitectura frontend para equipos React: un frontend escalable, testeable y fácil de evolucionar. Online o presencial. FUNDAE. Pide tu propuesta.",
         keywords: [
-          "curso arquitectura frontend",
-          "curso arquitectura frontend galicia",
-          "curso arquitectura frontend españa",
+          "curso de arquitectura frontend",
           "curso arquitectura frontend online",
-          "curso react arquitectura",
-          "formacion frontend empresas",
-          "curso frontend santiago compostela",
-          "clean architecture frontend curso",
+          "arquitectura frontend",
+          "arquitectura react",
+          "clean architecture",
+          "formación frontend para empresas",
+          "escalabilidad",
         ],
         intro: [
-          `Cuando el proyecto frontend crece, añadir funcionalidades sin romper lo existente se vuelve un desafío. Este curso de arquitectura frontend enseña a tu equipo a diseñar una arquitectura React sostenible, escalable y testeable. ${FORMAT_ES}`,
-          `Es un curso 100% práctico: más del 70% del tiempo programando sobre casos reales, con pair y mob programming. ${FUNDAE_ES}`,
+          `Cuando un frontend crece, cada nueva funcionalidad cuesta más, el equipo teme refactorizar y la velocidad de entrega cae. Este curso de arquitectura frontend enseña a tu equipo a diseñar una arquitectura React sostenible, escalable y testeable, aplicada a vuestro propio producto. ${FORMAT_ES}`,
+          `Es un curso 100% práctico: más del 70% del tiempo programando sobre casos reales, con pair y mob programming. El equipo termina con criterios compartidos sobre dónde va cada pieza de código y con un plan de migración gradual desde vuestra arquitectura actual, sin reescribir desde cero. ${FUNDAE_ES}`,
         ],
         idealFor:
-          "Equipos que trabajan con React en proyectos medianos o grandes y sufren acoplamiento, miedo a refactorizar o velocidad de entrega decreciente. Ideal para empresas en Galicia y España que quieren escalar su frontend sin reescribirlo cada dos años.",
+          "CTOs y tech leads de empresas con productos React medianos o grandes cuyo equipo sufre acoplamiento, miedo a refactorizar o una velocidad de entrega que no deja de bajar. Pensado para escalar el frontend, y el número de equipos que trabajan en él, sin reescribirlo cada dos años.",
         syllabus: [
           {
             title: "Fundamentos de arquitectura frontend",
@@ -195,10 +202,11 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
               "Nivel intermedio: componentes, hooks y consumo de APIs. No hace falta experiencia previa en arquitectura; el curso parte de código realista y lo evoluciona paso a paso.",
           },
           {
-            question: "¿Trabajamos sobre nuestro propio código?",
+            question: "¿Se adapta el curso al código de nuestro equipo?",
             answer:
-              "Sí, es lo recomendado. Analizamos tu frontend actual y aplicamos los patrones del curso sobre él, para que el equipo salga con mejoras reales ya implementadas, no solo teoría.",
+              "Sí, es lo recomendado. Analizamos vuestro frontend actual y aplicamos los patrones del curso sobre él, para que el equipo salga con mejoras reales ya implementadas, no solo teoría.",
           },
+          durationFaq("Entre 16 y 20"),
           ...localFaqs(
             "curso de arquitectura frontend",
             "Santiago de Compostela, A Coruña o Vigo",
@@ -207,23 +215,23 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       },
       en: {
         name: "Frontend Architecture",
-        h1: "Frontend Architecture course for teams",
-        metaTitle:
-          "Frontend Architecture Course (React) | Online Spain & Onsite Galicia",
+        h1: "Frontend Architecture course for development teams",
+        metaTitle: "Frontend Architecture Course for Teams",
         metaDescription:
-          "Frontend architecture course with React: sustainable architecture, scalability and testing. Live online across Spain and onsite in Galicia.",
+          "Frontend architecture course for React teams: a scalable, testable frontend that is easy to evolve. Live online or onsite, FUNDAE-eligible. Get in touch.",
         keywords: [
           "frontend architecture course",
-          "react architecture training",
-          "clean architecture frontend course",
-          "frontend course spain",
+          "frontend architecture",
+          "react architecture",
+          "clean architecture",
+          "scalability",
         ],
         intro: [
-          `As your frontend grows, shipping features without breaking existing ones gets harder. This frontend architecture course teaches your team to design a sustainable, scalable and testable React architecture. ${FORMAT_EN}`,
-          `It is a 100% hands-on course: 70%+ of the time coding on realistic cases with pair and mob programming. ${FUNDAE_EN}`,
+          `As a frontend grows, every new feature costs more, the team is afraid to refactor and delivery speed drops. This frontend architecture course teaches your team to design a sustainable, scalable and testable React architecture, applied to your own product. ${FORMAT_EN}`,
+          `It is a 100% hands-on course: 70%+ of the time coding on realistic cases with pair and mob programming. The team leaves with shared criteria on where every piece of code belongs and a gradual migration plan from your current architecture, with no rewrite from scratch. ${FUNDAE_EN}`,
         ],
         idealFor:
-          "Teams working with React on medium or large projects who suffer from coupling, fear of refactoring or declining delivery speed.",
+          "CTOs and tech leads at companies with medium or large React products whose team suffers from coupling, fear of refactoring or steadily declining delivery speed. Built to scale the frontend, and the number of teams working on it, without rewriting it every two years.",
         syllabus: [
           {
             title: "Frontend architecture fundamentals",
@@ -263,8 +271,14 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
           {
             question: "What React level does the team need?",
             answer:
-              "Intermediate: components, hooks and API consumption. No prior architecture experience required.",
+              "Intermediate: components, hooks and API consumption. No prior architecture experience required; the course starts from realistic code and evolves it step by step.",
           },
+          {
+            question: "Can the course be adapted to our team's codebase?",
+            answer:
+              "Yes, and we recommend it. We analyze your current frontend and apply the course patterns to it, so the team leaves with real improvements already in place, not just theory.",
+          },
+          durationFaqEn("16 to 20"),
           ...localFaqsEn("frontend architecture course"),
         ],
       },
@@ -282,24 +296,24 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       es: {
         name: "Código Legacy",
         h1: "Curso de Código Legacy y refactoring para equipos",
-        metaTitle:
-          "Curso de Código Legacy y Refactoring en España | Online y Galicia",
+        metaTitle: "Curso de Código Legacy y Refactoring para equipos",
         metaDescription:
-          "Curso para trabajar con código legacy: red de seguridad con tests, refactoring y SOLID. Online para España y presencial en Galicia. Bonificable FUNDAE.",
+          "Curso de código legacy y refactoring para equipos: tests de caracterización y modernización sin reescribir. Online o presencial. FUNDAE. Pide tu propuesta.",
         keywords: [
-          "curso codigo legacy",
-          "curso refactoring",
-          "curso codigo legacy galicia",
-          "curso refactoring españa",
-          "formacion legacy code empresas",
-          "modernizar codigo legacy curso",
+          "curso de código legacy",
+          "curso de refactoring",
+          "código legacy",
+          "legacy code",
+          "refactoring",
+          "deuda técnica",
+          "formación código legacy para empresas",
         ],
         intro: [
-          `Si añadir funcionalidades, actualizar dependencias o seguir las tendencias tecnológicas es un dolor de cabeza, tu equipo necesita técnicas de trabajo con código legacy. Este curso enseña a crear una red de seguridad con tests y a eliminar el acoplamiento que impide evolucionar. ${FORMAT_ES}`,
-          `Practicamos sobre código legacy realista con las técnicas de Michael Feathers, refactoring y SOLID. ${FUNDAE_ES}`,
+          `Si añadir funcionalidades o actualizar dependencias se ha convertido en un riesgo para el negocio, tu equipo necesita técnicas específicas para trabajar con código legacy. Este curso enseña a crear una red de seguridad con tests y a romper el acoplamiento que impide evolucionar el producto. ${FORMAT_ES}`,
+          `Practicamos sobre código legacy realista (o sobre el vuestro) con las técnicas de Michael Feathers, refactoring y SOLID, y terminamos con un plan de modernización iterativo que no obliga a parar el negocio. ${FUNDAE_ES}`,
         ],
         idealFor:
-          "Equipos atrapados en código heredado que quieren volver a entregar con confianza. Muy habitual en empresas consolidadas de Galicia y España con productos de varios años de vida.",
+          "Empresas con productos de varios años de vida cuyo equipo ha perdido la confianza para tocar el código heredado: cada cambio rompe algo, las estimaciones se disparan y nadie quiere actualizar dependencias. El objetivo es volver a entregar con seguridad sin una reescritura big-bang.",
         syllabus: [
           {
             title: "Anatomía del código legacy",
@@ -342,10 +356,11 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
               "No, al contrario: el curso empieza precisamente por cómo añadir tests a código que no los tiene. Si ya tenéis tests, los aprovechamos como base.",
           },
           {
-            question: "¿Vale para cualquier lenguaje?",
+            question: "¿Se adapta al lenguaje y al código de nuestro equipo?",
             answer:
-              "Sí. Las técnicas son agnósticas (las practicamos en TypeScript/JavaScript y son trasladables a Java, C#, PHP...). Adaptamos los ejercicios a vuestro stack.",
+              "Sí. Las técnicas son agnósticas (las practicamos en TypeScript/JavaScript y son trasladables a Java, C#, PHP...). Adaptamos los ejercicios a vuestro stack y, si lo preferís, trabajamos sobre fragmentos de vuestro propio código legacy.",
           },
+          durationFaq("20"),
           ...localFaqs(
             "curso de código legacy",
             "Santiago de Compostela, A Coruña o Vigo",
@@ -355,20 +370,22 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       en: {
         name: "Legacy Code",
         h1: "Legacy Code and refactoring course for teams",
-        metaTitle: "Legacy Code & Refactoring Course | Online Spain, Onsite Galicia",
+        metaTitle: "Legacy Code & Refactoring Course for Teams",
         metaDescription:
-          "Course on working with legacy code: safety nets with tests, refactoring and SOLID. Live online across Spain and onsite in Galicia.",
+          "Legacy code and refactoring course for teams: characterization tests, breaking dependencies and modernizing without a rewrite. Online or onsite. Get in touch.",
         keywords: [
           "legacy code course",
           "refactoring course",
-          "working with legacy code training",
+          "working with legacy code",
+          "refactoring",
+          "technical debt",
         ],
         intro: [
-          `If adding features or updating dependencies is a headache, your team needs legacy-code techniques. This course teaches how to build a test safety net and remove the coupling that blocks evolution. ${FORMAT_EN}`,
-          `We practice on realistic legacy code with Feathers-style techniques, refactoring and SOLID. ${FUNDAE_EN}`,
+          `If adding features or updating dependencies has become a business risk, your team needs specific techniques for working with legacy code. This course teaches how to build a test safety net and break the coupling that blocks the product from evolving. ${FORMAT_EN}`,
+          `We practice on realistic legacy code (or yours) with Michael Feathers' techniques, refactoring and SOLID, and finish with an iterative modernization plan that doesn't require stopping the business. ${FUNDAE_EN}`,
         ],
         idealFor:
-          "Teams stuck in inherited codebases that want to ship with confidence again.",
+          "Companies with products several years old whose team has lost the confidence to touch inherited code: every change breaks something, estimates explode and nobody wants to update dependencies. The goal is to ship safely again without a big-bang rewrite.",
         syllabus: [
           {
             title: "Anatomy of legacy code",
@@ -406,10 +423,16 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
         ],
         faqs: [
           {
-            question: "Do we need existing tests?",
+            question: "Do we need existing tests to take the course?",
             answer:
-              "No — the course starts with how to add tests to untested code.",
+              "No, quite the opposite: the course starts precisely with how to add tests to code that has none. If you already have tests, we use them as a starting point.",
           },
+          {
+            question: "Can it be adapted to our team's language and code?",
+            answer:
+              "Yes. The techniques are language-agnostic (we practice in TypeScript/JavaScript and they transfer to Java, C#, PHP...). We adapt the exercises to your stack and, if you prefer, work on excerpts of your own legacy code.",
+          },
+          durationFaqEn("20"),
           ...localFaqsEn("legacy code course"),
         ],
       },
@@ -427,23 +450,23 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       es: {
         name: "Patrones de Diseño",
         h1: "Curso de Patrones de Diseño para equipos",
-        metaTitle:
-          "Curso de Patrones de Diseño en España | Online y Presencial Galicia",
+        metaTitle: "Curso de Patrones de Diseño para equipos",
         metaDescription:
-          "Curso de patrones de diseño GoF: software que evoluciona con poco esfuerzo y equipos alineados. Online para España y presencial en Galicia. FUNDAE.",
+          "Curso de patrones de diseño para equipos: patrones GoF con práctica intensiva y un vocabulario técnico común. Online o presencial. FUNDAE. Pide tu propuesta.",
         keywords: [
-          "curso patrones de diseño",
+          "curso de patrones de diseño",
+          "patrones de diseño",
           "curso design patterns",
-          "curso patrones diseño galicia",
-          "curso patrones diseño online",
-          "formacion patrones gof empresas",
+          "patrones gof",
+          "gang of four",
+          "formación patrones de diseño para empresas",
         ],
         intro: [
-          `Los patrones de diseño son el vocabulario compartido que permite crear software que evoluciona con esfuerzo razonable y unificar la forma de trabajar entre equipos. Este curso los enseña con práctica intensiva, no con diagramas UML memorizados. ${FORMAT_ES}`,
-          `Cada patrón se implementa, se testea y se discute cuándo NO usarlo. ${FUNDAE_ES}`,
+          `Cuando cada desarrollador resuelve los mismos problemas a su manera, el código se vuelve difícil de revisar y de evolucionar. Los patrones de diseño dan al equipo un vocabulario compartido para crear software que evoluciona con esfuerzo razonable. Este curso de patrones de diseño los enseña con práctica intensiva, no con diagramas UML memorizados. ${FORMAT_ES}`,
+          `Cada patrón se implementa, se testea y se discute cuándo NO usarlo, para evitar tanto el código acoplado como el sobrediseño. ${FUNDAE_ES}`,
         ],
         idealFor:
-          "Equipos con base de POO que quieren diseñar con criterio, hablar el mismo idioma técnico y dejar de reinventar soluciones en cada proyecto.",
+          "Equipos con base de programación orientada a objetos que quieren diseñar con criterio, hablar el mismo idioma técnico en las code reviews y dejar de reinventar soluciones en cada proyecto.",
         syllabus: [
           {
             title: "Principios detrás de los patrones",
@@ -485,6 +508,12 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
             answer:
               "No. Cada patrón se programa en katas y ejercicios, se testea y se refactoriza. La teoría ocupa menos del 30% del tiempo.",
           },
+          {
+            question: "¿Qué conocimientos previos necesita el equipo?",
+            answer:
+              "Base de programación orientada a objetos. Si el equipo aún no la tiene consolidada, recomendamos empezar por el curso de Diseño Orientado a Objetos.",
+          },
+          durationFaq("16"),
           ...localFaqs(
             "curso de patrones de diseño",
             "Santiago de Compostela, A Coruña o Vigo",
@@ -494,16 +523,21 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       en: {
         name: "Design Patterns",
         h1: "Design Patterns course for teams",
-        metaTitle: "Design Patterns Course (GoF) | Online Spain, Onsite Galicia",
+        metaTitle: "Design Patterns Course for Teams",
         metaDescription:
-          "GoF design patterns course: evolvable software and aligned teams. Live online across Spain and onsite in Galicia.",
-        keywords: ["design patterns course", "gof patterns training"],
+          "Design patterns course for teams: GoF patterns through intensive practice and a shared technical vocabulary. Live online or onsite. Ask us for a proposal.",
+        keywords: [
+          "design patterns course",
+          "design patterns",
+          "gof patterns",
+          "gang of four",
+        ],
         intro: [
-          `Design patterns are the shared vocabulary for building software that evolves with reasonable effort. This course teaches them through intensive practice, not memorized UML. ${FORMAT_EN}`,
-          `Every pattern is implemented, tested, and debated — including when NOT to use it. ${FUNDAE_EN}`,
+          `When every developer solves the same problems their own way, code becomes hard to review and evolve. Design patterns give the team a shared vocabulary for building software that evolves with reasonable effort. This design patterns course teaches them through intensive practice, not memorized UML. ${FORMAT_EN}`,
+          `Every pattern is implemented, tested and debated, including when NOT to use it, to avoid both coupled code and overdesign. ${FUNDAE_EN}`,
         ],
         idealFor:
-          "OOP teams that want principled design and a shared technical language.",
+          "Teams with an object-oriented background that want principled design, a shared technical language in code reviews and to stop reinventing solutions on every project.",
         syllabus: [
           {
             title: "Principles behind patterns",
@@ -534,7 +568,20 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
           "Overdesign avoidance criteria",
           "Example catalog in your domain",
         ],
-        faqs: [...localFaqsEn("design patterns course")],
+        faqs: [
+          {
+            question: "Is it a theoretical course?",
+            answer:
+              "No. Every pattern is coded in katas and exercises, tested and refactored. Theory takes up less than 30% of the time.",
+          },
+          {
+            question: "What prior knowledge does the team need?",
+            answer:
+              "A foundation in object-oriented programming. If the team doesn't have it yet, we recommend starting with the Object-Oriented Design course.",
+          },
+          durationFaqEn("16"),
+          ...localFaqsEn("design patterns course"),
+        ],
       },
     },
   },
@@ -549,24 +596,24 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
     content: {
       es: {
         name: "Clean Code",
-        h1: "Curso de Clean Code para equipos",
-        metaTitle: "Curso de Clean Code en España | Online y Presencial en Galicia",
+        h1: "Curso de Clean Code para equipos de desarrollo",
+        metaTitle: "Curso de Clean Code para equipos de desarrollo",
         metaDescription:
-          "Curso de clean code: código claro, autoexplicativo y fácil de mantener, con mucha práctica. Online para España y presencial en Galicia. FUNDAE.",
+          "Curso de clean code para equipos: código legible y fácil de mantener, code smells y code reviews eficaces. Online o presencial, bonificable FUNDAE. Infórmate.",
         keywords: [
-          "curso clean code",
-          "curso codigo limpio",
-          "curso clean code galicia",
-          "curso clean code online",
-          "curso clean code españa",
-          "formacion clean code empresas",
+          "curso de clean code",
+          "clean code",
+          "clean-code",
+          "código limpio",
+          "code smells",
+          "formación clean code para empresas",
         ],
         intro: [
-          `El código se lee diez veces más de lo que se escribe. Este curso de clean code enseña las técnicas definitivas para escribir código claro, autoexplicativo y fácil de mantener, con un altísimo volumen de práctica desde el primer minuto. ${FORMAT_ES}`,
-          `Refactorizamos código real del equipo aplicando nombres expresivos, funciones pequeñas, las 4 reglas del diseño simple y code smells. ${FUNDAE_ES}`,
+          `El código se lee diez veces más de lo que se escribe, y el código difícil de leer se paga en bugs, onboarding lento y code reviews interminables. Este curso de clean code enseña a tu equipo a escribir código claro, autoexplicativo y fácil de mantener, con un altísimo volumen de práctica desde el primer minuto. ${FORMAT_ES}`,
+          `Refactorizamos código real del equipo aplicando nombres expresivos, funciones pequeñas, las 4 reglas del diseño simple y la detección de code smells, y acordamos una guía de estilo viva para el día a día. ${FUNDAE_ES}`,
         ],
         idealFor:
-          "Cualquier equipo de desarrollo, desde junior hasta senior: es la base sobre la que se construyen TDD, refactoring y arquitectura. Perfecto como primer curso de un plan de formación en Galicia o España.",
+          "Cualquier equipo de desarrollo, de junior a senior: es la base sobre la que se construyen TDD, refactoring y arquitectura. Perfecto como primer curso del plan de formación técnica de la empresa.",
         syllabus: [
           {
             title: "Nombres y expresividad",
@@ -608,6 +655,12 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
             answer:
               "Es el curso ideal para juniors y también recicla a seniors: todo el mundo escribe código a diario y la legibilidad impacta en todo lo demás (TDD, reviews, onboarding).",
           },
+          {
+            question: "¿Trabajamos con código de nuestro propio proyecto?",
+            answer:
+              "Sí. Además de katas, refactorizamos fragmentos de código real del equipo, para que lo aprendido se aplique desde el primer día y no se quede en ejemplos de libro.",
+          },
+          durationFaq("16"),
           ...localFaqs(
             "curso de clean code",
             "Santiago de Compostela, A Coruña o Vigo",
@@ -616,17 +669,17 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       },
       en: {
         name: "Clean Code",
-        h1: "Clean Code course for teams",
-        metaTitle: "Clean Code Course | Online Spain, Onsite Galicia",
+        h1: "Clean Code course for development teams",
+        metaTitle: "Clean Code Course for Development Teams",
         metaDescription:
-          "Clean Code course: clear, self-explanatory and maintainable code with heavy practice. Live online across Spain and onsite in Galicia.",
-        keywords: ["clean code course", "clean code training"],
+          "Clean code course for development teams: readable, maintainable code, code smells and effective code reviews. Live online or onsite. Ask us for a proposal.",
+        keywords: ["clean code course", "clean code", "clean-code", "code smells"],
         intro: [
-          `Code is read ten times more than it is written. This clean code course teaches the definitive techniques for clear, self-explanatory, maintainable code — with a very high volume of practice. ${FORMAT_EN}`,
-          `${FUNDAE_EN}`,
+          `Code is read ten times more than it is written, and hard-to-read code is paid for in bugs, slow onboarding and endless code reviews. This clean code course teaches your team to write clear, self-explanatory, maintainable code, with a very high volume of practice from minute one. ${FORMAT_EN}`,
+          `We refactor the team's real code applying expressive names, small functions, the 4 rules of simple design and code smell detection, and agree on a living style guide for day-to-day work. ${FUNDAE_EN}`,
         ],
         idealFor:
-          "Any development team, junior to senior: the foundation for TDD, refactoring and architecture.",
+          "Any development team, junior to senior: it is the foundation for TDD, refactoring and architecture. A perfect first course in a company's technical training plan.",
         syllabus: [
           {
             title: "Names and expressiveness",
@@ -657,7 +710,20 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
           "Readability-focused reviews",
           "Living team style guide",
         ],
-        faqs: [...localFaqsEn("clean code course")],
+        faqs: [
+          {
+            question: "Is it suitable for junior developers?",
+            answer:
+              "It is the ideal course for juniors and a great refresher for seniors: everyone writes code daily and readability impacts everything else (TDD, reviews, onboarding).",
+          },
+          {
+            question: "Do we work with code from our own project?",
+            answer:
+              "Yes. Besides katas, we refactor excerpts of the team's real code so what they learn applies from day one instead of staying in textbook examples.",
+          },
+          durationFaqEn("16"),
+          ...localFaqsEn("clean code course"),
+        ],
       },
     },
   },
@@ -675,24 +741,25 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
     content: {
       es: {
         name: "Next.js",
-        h1: "Curso de Next.js para equipos",
-        metaTitle: "Curso de Next.js en España | Online y Presencial en Galicia",
+        h1: "Curso de Next.js para equipos de desarrollo",
+        metaTitle: "Curso de Next.js para equipos de desarrollo",
         metaDescription:
-          "Curso de Next.js: App Router, SSR, SSG y despliegue en producción. Online para España y presencial en Galicia. Bonificable FUNDAE.",
+          "Curso de Next.js para equipos: App Router, Server Components, caché y despliegue en producción con criterio. Online o presencial. FUNDAE. Pide tu propuesta.",
         keywords: [
+          "curso de next.js",
           "curso nextjs",
-          "curso next.js",
-          "curso nextjs galicia",
-          "curso nextjs online",
-          "curso nextjs españa",
-          "formacion nextjs empresas",
+          "next.js",
+          "nextjs",
+          "server components",
+          "app router",
+          "formación next.js para empresas",
         ],
         intro: [
-          `Next.js es el framework React con la mejor experiencia de desarrollo y todo lo necesario para producción: SSR, SSG, streaming y despliegues automáticos. Este curso lleva a tu equipo de React a producción con Next.js con criterio arquitectónico. ${FORMAT_ES}`,
-          `Construimos una aplicación real de principio a fin: routing, data fetching, caché, formularios y deploy. ${FUNDAE_ES}`,
+          `Next.js es el framework React con la mejor experiencia de desarrollo y todo lo necesario para producción: SSR, SSG, streaming y despliegues automáticos. Pero usarlo sin criterio sale caro en rendimiento y mantenimiento. Este curso de Next.js lleva a tu equipo de React a producción con Next.js con criterio arquitectónico. ${FORMAT_ES}`,
+          `Construimos una aplicación real de principio a fin: routing, data fetching, caché, formularios y despliegue. ${FUNDAE_ES}`,
         ],
         idealFor:
-          "Equipos con base de React que quieren adoptar Next.js (o usarlo bien) para proyectos productivos en empresas de Galicia y España.",
+          "Equipos con base de React que van a adoptar Next.js, o que ya lo usan y quieren hacerlo bien: App Router, Server Components y caché sin sorpresas en producción.",
         syllabus: [
           {
             title: "App Router a fondo",
@@ -733,6 +800,12 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
             answer:
               "Sí, nivel intermedio de React (componentes, hooks, props). Si el equipo aún no domina React, recomendamos empezar por el curso de React con TypeScript.",
           },
+          {
+            question: "¿Cubre el App Router y los Server Components?",
+            answer:
+              "Sí, es el eje del curso: layouts y rutas con App Router, Server y Client Components, data fetching y caché, Server Actions y despliegue en producción con Vercel o infraestructura propia.",
+          },
+          durationFaq("16"),
           ...localFaqs(
             "curso de Next.js",
             "Santiago de Compostela, A Coruña o Vigo",
@@ -741,16 +814,22 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       },
       en: {
         name: "Next.js",
-        h1: "Next.js course for teams",
-        metaTitle: "Next.js Course | Online Spain, Onsite Galicia",
+        h1: "Next.js course for development teams",
+        metaTitle: "Next.js Course for Development Teams",
         metaDescription:
-          "Next.js course: App Router, SSR, SSG and production deployment. Live online across Spain and onsite in Galicia.",
-        keywords: ["nextjs course", "next.js training"],
-        intro: [
-          `Next.js gives you the best React development experience with everything production needs. This course takes your team from React to production Next.js. ${FORMAT_EN}`,
-          `${FUNDAE_EN}`,
+          "Next.js course for teams: App Router, Server Components, caching and production deployment done right. Live online or onsite in Galicia. Ask for a proposal.",
+        keywords: [
+          "next.js course",
+          "nextjs course",
+          "server components",
+          "app router",
         ],
-        idealFor: "Teams with React foundations adopting Next.js for production projects.",
+        intro: [
+          `Next.js gives you the best React development experience and everything production needs: SSR, SSG, streaming and automatic deployments. But using it without clear criteria is costly in performance and maintenance. This Next.js course takes your team from React to production Next.js with sound architectural judgment. ${FORMAT_EN}`,
+          `We build a real application end to end: routing, data fetching, caching, forms and deployment. ${FUNDAE_EN}`,
+        ],
+        idealFor:
+          "Teams with React foundations about to adopt Next.js, or already using it and wanting to do it right: App Router, Server Components and caching with no surprises in production.",
         syllabus: [
           {
             title: "App Router in depth",
@@ -781,7 +860,20 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
           "Measured technical SEO and performance",
           "Working deployment pipeline",
         ],
-        faqs: [...localFaqsEn("Next.js course")],
+        faqs: [
+          {
+            question: "Does the team need to know React first?",
+            answer:
+              "Yes, intermediate React (components, hooks, props). If the team isn't comfortable with React yet, we recommend starting with the React with TypeScript course.",
+          },
+          {
+            question: "Does it cover the App Router and Server Components?",
+            answer:
+              "Yes, they are the core of the course: App Router layouts and routes, Server and Client Components, data fetching and caching, Server Actions and production deployment on Vercel or your own infrastructure.",
+          },
+          durationFaqEn("16"),
+          ...localFaqsEn("Next.js course"),
+        ],
       },
     },
   },
@@ -797,22 +889,23 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       es: {
         name: "Domain Driven Design",
         h1: "Curso de Domain Driven Design (DDD) para equipos",
-        metaTitle: "Curso de DDD en España | Domain Driven Design Online y Galicia",
+        metaTitle: "Curso de DDD (Domain Driven Design) para equipos",
         metaDescription:
-          "Curso de Domain Driven Design: modelar el dominio, bounded contexts y código expresivo fácil de testear. Online España y presencial Galicia. FUNDAE.",
+          "Curso de Domain Driven Design para equipos: bounded contexts, agregados y código que refleja el negocio y es fácil de testear. Online o presencial. FUNDAE.",
         keywords: [
-          "curso ddd",
-          "curso domain driven design",
-          "curso ddd galicia",
-          "curso ddd online",
-          "curso domain driven design españa",
+          "curso de ddd",
+          "curso de domain driven design",
+          "ddd",
+          "domain driven design",
+          "bounded context",
+          "event storming",
         ],
         intro: [
-          `¿Cuesta diseñar el dominio y escribir tests unitarios útiles? DDD hace tu código expresivo y modular. Este curso enseña lenguaje ubicuo, bounded contexts, agregados y eventos de dominio con práctica sobre vuestro propio dominio. ${FORMAT_ES}`,
-          `${FUNDAE_ES}`,
+          `Cuando el código no refleja el negocio, cada cambio de requisitos cuesta más de lo que debería y los tests unitarios aportan poco. Domain Driven Design alinea el código con el dominio y lo hace expresivo, modular y fácil de testear. Este curso de DDD enseña lenguaje ubicuo, bounded contexts, agregados y eventos de dominio con práctica sobre vuestro propio dominio. ${FORMAT_ES}`,
+          `Empezamos con event storming para entender el negocio y bajamos al DDD táctico en código: value objects, repositorios, servicios de dominio y CQRS pragmático solo donde aporta. ${FUNDAE_ES}`,
         ],
         idealFor:
-          "Equipos con dominios complejos (finanzas, logística, salud, e-commerce) donde el modelo de dominio es ventaja competitiva, en Galicia y toda España.",
+          "Empresas con dominios complejos (finanzas, logística, salud, e-commerce) donde el modelo de dominio es ventaja competitiva y el equipo técnico necesita hablar el mismo idioma que negocio.",
         syllabus: [
           {
             title: "Lenguaje ubicuo y descubrimiento",
@@ -854,6 +947,12 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
             answer:
               "Lo analizamos el primer día: DDD brilla en dominios complejos. Si vuestro dominio es más CRUD, os diremos qué partes (value objects, lenguaje ubicuo) aportan sin sobrediseñar.",
           },
+          {
+            question: "¿Qué nivel necesita el equipo?",
+            answer:
+              "Es un curso avanzado: conviene que el equipo tenga base de diseño orientado a objetos y testing. Si no es así, recomendamos empezar por los cursos de Diseño Orientado a Objetos o TDD.",
+          },
+          durationFaq("16"),
           ...localFaqs(
             "curso de Domain Driven Design",
             "Santiago de Compostela, A Coruña o Vigo",
@@ -863,15 +962,21 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       en: {
         name: "Domain Driven Design",
         h1: "Domain Driven Design (DDD) course for teams",
-        metaTitle: "DDD Course (Domain Driven Design) | Online Spain, Galicia",
+        metaTitle: "Domain Driven Design (DDD) Course for Teams",
         metaDescription:
-          "Domain Driven Design course: model your domain, bounded contexts and testable expressive code. Online Spain, onsite Galicia.",
-        keywords: ["ddd course", "domain driven design training"],
-        intro: [
-          `Struggling to design your domain and write useful unit tests? DDD makes code expressive and modular — perfect for unit testing. ${FORMAT_EN}`,
-          `${FUNDAE_EN}`,
+          "Domain Driven Design course for teams: bounded contexts, aggregates and code that mirrors the business and is easy to test. Online or onsite. Get in touch.",
+        keywords: [
+          "ddd course",
+          "domain driven design course",
+          "bounded contexts",
+          "event storming",
         ],
-        idealFor: "Teams with complex domains where the domain model is a competitive advantage.",
+        intro: [
+          `When code doesn't reflect the business, every requirement change costs more than it should and unit tests add little value. Domain Driven Design aligns code with the domain and makes it expressive, modular and easy to test. This DDD course teaches ubiquitous language, bounded contexts, aggregates and domain events, practicing on your own domain. ${FORMAT_EN}`,
+          `We start with event storming to understand the business and move down to tactical DDD in code: value objects, repositories, domain services and pragmatic CQRS only where it pays off. ${FUNDAE_EN}`,
+        ],
+        idealFor:
+          "Companies with complex domains (finance, logistics, healthcare, e-commerce) where the domain model is a competitive advantage and the tech team needs to speak the same language as the business.",
         syllabus: [
           {
             title: "Ubiquitous language and discovery",
@@ -902,7 +1007,20 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
           "Expressive testable code",
           "Gradual adoption roadmap",
         ],
-        faqs: [...localFaqsEn("Domain Driven Design course")],
+        faqs: [
+          {
+            question: "Isn't DDD overkill for our project?",
+            answer:
+              "We assess it on day one: DDD shines in complex domains. If your domain is mostly CRUD, we'll tell you which parts (value objects, ubiquitous language) add value without overdesigning.",
+          },
+          {
+            question: "What level does the team need?",
+            answer:
+              "It is an advanced course: the team should have a foundation in object-oriented design and testing. If not, we recommend starting with the Object-Oriented Design or TDD courses.",
+          },
+          durationFaqEn("16"),
+          ...localFaqsEn("Domain Driven Design course"),
+        ],
       },
     },
   },
@@ -923,23 +1041,25 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       es: {
         name: "Test-Driven Development",
         h1: "Curso de TDD (Test-Driven Development) para equipos",
-        metaTitle: "Curso de TDD en España | Online y Presencial en Galicia",
+        metaTitle: "Curso de TDD para equipos: Test-Driven Development",
         metaDescription:
-          "Curso de TDD: escribir tests primero, refactoring y diseño emergente. Online para España y presencial en Galicia. Bonificable FUNDAE.",
+          "Curso de TDD para equipos: Red-Green-Refactor, dobles de prueba y tests que guían el diseño para reducir bugs en producción. Online o presencial. FUNDAE.",
         keywords: [
-          "curso tdd",
+          "curso de tdd",
           "curso test driven development",
-          "curso tdd galicia",
-          "curso tdd online",
-          "curso testing españa",
-          "curso tdd empresas",
+          "tdd",
+          "test driven development",
+          "testing",
+          "tests unitarios",
+          "dobles de prueba",
+          "tcr",
         ],
         intro: [
-          `TDD consiste en escribir primero los tests y después el código que los hace pasar, para terminar refactorizando. Este curso convierte TDD en hábito del equipo con katas, pair programming y las variantes clásicas (inside-out, outside-in) y TCR. ${FORMAT_ES}`,
-          `El equipo sale escribiendo tests útiles que guían el diseño, no tests frágiles que lastran. ${FUNDAE_ES}`,
+          `TDD consiste en escribir primero los tests, después el código que los hace pasar y, por último, refactorizar. Este curso de TDD convierte esa disciplina en un hábito del equipo con katas, pair programming, las variantes clásicas (inside-out, outside-in) y TCR. ${FORMAT_ES}`,
+          `El equipo sale escribiendo tests útiles que guían el diseño y reducen los bugs en producción, no tests frágiles que lastran cada cambio. ${FUNDAE_ES}`,
         ],
         idealFor:
-          "Equipos que quieren reducir bugs, documentar con tests y diseñar mejor. Es el curso con mayor retorno para empresas de software en Galicia y España.",
+          "Empresas que quieren reducir bugs en producción, refactorizar con confianza y tener documentación viva en forma de tests. Es el curso con mayor retorno para equipos de producto que entregan a menudo.",
         syllabus: [
           {
             title: "El ciclo Red-Green-Refactor",
@@ -981,6 +1101,12 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
             answer:
               "Al principio, un poco; a partir de la segunda semana el equipo recupera velocidad con menos bugs y menos miedo a cambiar. Medimos el progreso durante el curso para demostrarlo con datos.",
           },
+          {
+            question: "¿Sirve si nuestro código actual no tiene tests?",
+            answer:
+              "Sí. El último bloque trata cómo aplicar TDD en código legacy y qué no testear. Si el problema principal es el código heredado, el curso de Código Legacy lo aborda en profundidad.",
+          },
+          durationFaq("16"),
           ...localFaqs(
             "curso de TDD",
             "Santiago de Compostela, A Coruña o Vigo",
@@ -990,15 +1116,22 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       en: {
         name: "Test-Driven Development",
         h1: "TDD (Test-Driven Development) course for teams",
-        metaTitle: "TDD Course | Online Spain, Onsite Galicia",
+        metaTitle: "TDD Course for Teams: Test-Driven Development",
         metaDescription:
-          "TDD course: tests first, refactoring and emergent design. Live online across Spain and onsite in Galicia.",
-        keywords: ["tdd course", "test driven development training"],
-        intro: [
-          `TDD means writing tests first, then the code that passes them, then refactoring. This course makes TDD a team habit with katas and pair programming. ${FORMAT_EN}`,
-          `${FUNDAE_EN}`,
+          "TDD course for teams: Red-Green-Refactor, test doubles and tests that guide design to cut production bugs. Live online or onsite. Ask us for a proposal.",
+        keywords: [
+          "tdd course",
+          "test driven development course",
+          "unit testing",
+          "test doubles",
+          "test-commit-revert",
         ],
-        idealFor: "Teams that want fewer bugs, living documentation and better design.",
+        intro: [
+          `TDD means writing tests first, then the code that makes them pass, and finally refactoring. This TDD course turns that discipline into a team habit with katas, pair programming, the classic styles (inside-out, outside-in) and TCR. ${FORMAT_EN}`,
+          `The team leaves writing useful tests that guide design and reduce production bugs, not brittle tests that slow down every change. ${FUNDAE_EN}`,
+        ],
+        idealFor:
+          "Companies that want fewer production bugs, confident refactoring and living documentation in the form of tests. It is the highest-return course for product teams that ship often.",
         syllabus: [
           {
             title: "The Red-Green-Refactor cycle",
@@ -1029,7 +1162,20 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
           "Safe refactoring",
           "Team testing strategy",
         ],
-        faqs: [...localFaqsEn("TDD course")],
+        faqs: [
+          {
+            question: "Does TDD slow development down?",
+            answer:
+              "A little at first; from the second week the team regains speed with fewer bugs and less fear of change. We measure progress during the course to show it with data.",
+          },
+          {
+            question: "Is it useful if our current code has no tests?",
+            answer:
+              "Yes. The last block covers applying TDD to legacy code and what not to test. If inherited code is the main problem, the Legacy Code course covers it in depth.",
+          },
+          durationFaqEn("16"),
+          ...localFaqsEn("TDD course"),
+        ],
       },
     },
   },
@@ -1045,23 +1191,23 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       es: {
         name: "React con TypeScript",
         h1: "Curso de React con TypeScript para equipos",
-        metaTitle: "Curso de React con TypeScript en España | Online y Galicia",
+        metaTitle: "Curso de React con TypeScript para equipos",
         metaDescription:
-          "Curso de React con TypeScript: aplicaciones empresariales de calidad, hooks y buenas prácticas. Online España y presencial Galicia. FUNDAE.",
+          "Curso de React con TypeScript para equipos: hooks, tipado que evita bugs, testing y una estructura que escala. Online o presencial. FUNDAE. Pide tu propuesta.",
         keywords: [
-          "curso react",
+          "curso de react",
           "curso react typescript",
-          "curso react galicia",
-          "curso react online",
-          "curso react españa",
-          "formacion react empresas",
+          "react",
+          "typescript",
+          "hooks",
+          "formación react para empresas",
         ],
         intro: [
-          `React es la librería frontend más usada del mundo. Este curso asegura que tu equipo adquiera las competencias profesionales para construir software de alta calidad con React y TypeScript: componentes, hooks, composición y testing. ${FORMAT_ES}`,
-          `Ideal como base antes del curso de Arquitectura Frontend o Next.js. ${FUNDAE_ES}`,
+          `React es la librería frontend más usada del mundo, pero sin buenas prácticas compartidas cada desarrollador la usa a su manera y la calidad del producto lo acusa. Este curso de React con TypeScript asegura que tu equipo adquiera las competencias profesionales para construir software de alta calidad: componentes, hooks, composición, tipado y testing. ${FORMAT_ES}`,
+          `Es la base ideal antes de los cursos de Arquitectura Frontend o Next.js. ${FUNDAE_ES}`,
         ],
         idealFor:
-          "Equipos que adoptan React o quieren profesionalizar su uso en empresas de Galicia y España, incluyendo migraciones desde otras librerías.",
+          "Empresas que adoptan React o quieren profesionalizar su uso en el equipo, incluidas las migraciones desde otras librerías y los equipos con perfiles mixtos.",
         syllabus: [
           {
             title: "Fundamentos sólidos",
@@ -1103,6 +1249,12 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
             answer:
               "No es imprescindible: incluimos los fundamentos de TypeScript aplicados a React. Con base de JavaScript es suficiente.",
           },
+          {
+            question: "¿Sirve para un equipo que ya usa React?",
+            answer:
+              "Sí. El curso va de nivel básico a intermedio: con equipos que ya trabajan con React nos centramos en hooks, tipado y testing para corregir antipatrones y unificar la forma de trabajar.",
+          },
+          durationFaq("16"),
           ...localFaqs(
             "curso de React con TypeScript",
             "Santiago de Compostela, A Coruña o Vigo",
@@ -1112,15 +1264,21 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       en: {
         name: "React with TypeScript",
         h1: "React with TypeScript course for teams",
-        metaTitle: "React with TypeScript Course | Online Spain, Onsite Galicia",
+        metaTitle: "React with TypeScript Course for Teams",
         metaDescription:
-          "React with TypeScript course: quality enterprise apps, hooks and best practices. Online Spain, onsite Galicia.",
-        keywords: ["react course", "react typescript training"],
-        intro: [
-          `React is the world's most used frontend library. This course gives your team professional-grade React and TypeScript skills. ${FORMAT_EN}`,
-          `${FUNDAE_EN}`,
+          "React with TypeScript course for teams: hooks, types that prevent bugs, testing and a project structure that scales. Live online or onsite. Get in touch.",
+        keywords: [
+          "react course",
+          "react typescript course",
+          "react hooks",
+          "typescript",
         ],
-        idealFor: "Teams adopting React or professionalizing its use.",
+        intro: [
+          `React is the world's most used frontend library, but without shared good practices every developer uses it their own way and product quality suffers. This React with TypeScript course gives your team the professional skills to build high-quality software: components, hooks, composition, typing and testing. ${FORMAT_EN}`,
+          `It is the ideal foundation before the Frontend Architecture or Next.js courses. ${FUNDAE_EN}`,
+        ],
+        idealFor:
+          "Companies adopting React or professionalizing its use across the team, including migrations from other libraries and teams with mixed backgrounds.",
         syllabus: [
           {
             title: "Solid foundations",
@@ -1151,7 +1309,20 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
           "Scalable structure",
           "Ready for advanced courses",
         ],
-        faqs: [...localFaqsEn("React with TypeScript course")],
+        faqs: [
+          {
+            question: "Does the team need to know TypeScript first?",
+            answer:
+              "It isn't essential: we include TypeScript fundamentals applied to React. A JavaScript foundation is enough.",
+          },
+          {
+            question: "Is it useful for a team that already uses React?",
+            answer:
+              "Yes. The course goes from beginner to intermediate: with teams already working in React we focus on hooks, typing and testing to fix antipatterns and align how everyone works.",
+          },
+          durationFaqEn("16"),
+          ...localFaqsEn("React with TypeScript course"),
+        ],
       },
     },
   },
@@ -1167,22 +1338,24 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       es: {
         name: "Diseño Orientado a Objetos",
         h1: "Curso de Diseño Orientado a Objetos para equipos",
-        metaTitle: "Curso de POO y SOLID en España | Online y Presencial Galicia",
+        metaTitle: "Curso de Diseño Orientado a Objetos y SOLID",
         metaDescription:
-          "Curso de diseño orientado a objetos: SOLID, GRASP y modelado con mucha práctica. Online para España y presencial en Galicia. FUNDAE.",
+          "Curso de diseño orientado a objetos y SOLID para equipos: encapsulación, composición y GRASP con mucha práctica. Online o presencial. FUNDAE. Infórmate.",
         keywords: [
-          "curso programacion orientada a objetos",
+          "curso de diseño orientado a objetos",
+          "curso de programación orientada a objetos",
           "curso poo",
           "curso solid",
-          "curso oop galicia",
-          "curso diseño orientado a objetos online",
+          "principios solid",
+          "grasp",
+          "object calisthenics",
         ],
         intro: [
-          `Dominar la programación orientada a objetos es la base de todo lo demás: patrones, SOLID, DDD y arquitectura. Este curso explica de forma clara y con muchísima práctica cómo diseñar con objetos: encapsulación, polimorfismo, composición y los principios SOLID y GRASP. ${FORMAT_ES}`,
-          `${FUNDAE_ES}`,
+          `Dominar la programación orientada a objetos es la base de todo lo demás: patrones, SOLID, DDD y arquitectura. Sin ella, el código del equipo acaba lleno de herencia frágil y clases que hacen demasiado. Este curso de diseño orientado a objetos explica de forma clara y con muchísima práctica cómo diseñar con objetos: encapsulación, polimorfismo, composición y los principios SOLID y GRASP. ${FORMAT_ES}`,
+          `Trabajamos con ejemplos y contraejemplos sobre código real del equipo y terminamos con Object Calisthenics para fijar hábitos de buen diseño. ${FUNDAE_ES}`,
         ],
         idealFor:
-          "Equipos con desarrolladores junior o perfiles de otros paradigmas que necesitan una base sólida de diseño OO antes de avanzar a patrones, TDD o DDD.",
+          "Equipos con desarrolladores junior o perfiles que vienen de otros paradigmas y necesitan una base sólida de diseño orientado a objetos antes de avanzar a patrones, TDD o DDD.",
         syllabus: [
           {
             title: "Los 4 pilares",
@@ -1224,6 +1397,12 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
             answer:
               "Normalmente TypeScript, adaptable a Java, C# o PHP según vuestro stack. Los principios son los mismos.",
           },
+          {
+            question: "¿Qué nivel necesita el equipo?",
+            answer:
+              "Es un curso de nivel básico: basta con que el equipo programe con soltura en algún lenguaje. Es la base recomendada antes de los cursos de Patrones de Diseño, TDD o DDD.",
+          },
+          durationFaq("16"),
           ...localFaqs(
             "curso de diseño orientado a objetos",
             "Santiago de Compostela, A Coruña o Vigo",
@@ -1233,16 +1412,22 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
       en: {
         name: "Object-Oriented Design",
         h1: "Object-Oriented Design course for teams",
-        metaTitle: "OOP & SOLID Course | Online Spain, Onsite Galicia",
+        metaTitle: "Object-Oriented Design & SOLID Course for Teams",
         metaDescription:
-          "Object-oriented design course: SOLID, GRASP and modeling with heavy practice. Online Spain, onsite Galicia.",
-        keywords: ["oop course", "solid principles training"],
+          "Object-oriented design and SOLID course for teams: encapsulation, composition and GRASP with heavy hands-on practice. Live online or onsite. Get in touch.",
+        keywords: [
+          "object-oriented design course",
+          "oop course",
+          "solid principles",
+          "grasp",
+          "object calisthenics",
+        ],
         intro: [
-          `Mastering OOP is the foundation of patterns, SOLID, DDD and architecture. This hands-on course covers encapsulation, polymorphism, composition and SOLID/GRASP. ${FORMAT_EN}`,
-          `${FUNDAE_EN}`,
+          `Mastering object-oriented programming is the foundation of everything else: patterns, SOLID, DDD and architecture. Without it, the team's code ends up full of fragile inheritance and classes that do too much. This object-oriented design course explains clearly, with lots of practice, how to design with objects: encapsulation, polymorphism, composition and the SOLID and GRASP principles. ${FORMAT_EN}`,
+          `We work through examples and counterexamples on the team's real code and finish with Object Calisthenics to lock in good design habits. ${FUNDAE_EN}`,
         ],
         idealFor:
-          "Teams with junior developers or other-paradigm backgrounds needing solid OO foundations.",
+          "Teams with junior developers or people coming from other paradigms who need solid object-oriented design foundations before moving on to patterns, TDD or DDD.",
         syllabus: [
           {
             title: "The 4 pillars",
@@ -1273,7 +1458,20 @@ export const COURSES: Record<CourseSlug, CourseDefinition> = {
           "Foundation for patterns and DDD",
           "Shared design language",
         ],
-        faqs: [...localFaqsEn("object-oriented design course")],
+        faqs: [
+          {
+            question: "Which programming language is it taught in?",
+            answer:
+              "Usually TypeScript, adaptable to Java, C# or PHP depending on your stack. The principles are the same.",
+          },
+          {
+            question: "What level does the team need?",
+            answer:
+              "It is a beginner-level course: the team just needs to program fluently in some language. It is the recommended foundation before the Design Patterns, TDD or DDD courses.",
+          },
+          durationFaqEn("16"),
+          ...localFaqsEn("object-oriented design course"),
+        ],
       },
     },
   },

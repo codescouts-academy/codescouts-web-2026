@@ -1,33 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
   xmlns:atom="http://www.w3.org/2005/Atom"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/"
   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>CodeScouts Blog</title>
-    <description>Technical coaching, TDD, Clean Code, software architecture and more.</description>
-    <link>https://www.codescouts.academy/es/blog</link>
+    <title>Blog de CodeScouts</title>
+    <description>Artículos sobre TDD, Clean Code, arquitectura de software y technical coaching para equipos de desarrollo.</description>
+    <link>https://www.codescouts.academy/es/blog/</link>
     <language>es</language>
-    <lastBuildDate>Thu, 25 Jun 2026 20:14:22 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://www.codescouts.academy/feed.xml" rel="self" type="application/rss+xml"/>
     
     <item>
-      <title>GOF Design Patterns</title>
-      <description>A complete guide to GOF design patterns, creational, structural, and behavioral.</description>
-      <link>https://www.codescouts.academy/en/blog/patrones-de-disenio</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/patrones-de-disenio</guid>
-      <pubDate>Wed, 29 Oct 2025 00:00:00 GMT</pubDate>
+      <title>El prompt definitivo: transforma cualquier IA en un Technical Coach</title>
+      <description>Un prompt completo, testado con +5 equipos, que convierte GitHub Copilot, Cursor, ChatGPT o Claude en un technical coach con la metodología de eXtreme Programming de CodeScouts. Copia, pega y tu asistente pasa de responder código a guiarte como un coach senior con 10+ años de experiencia.</description>
+      <link>https://www.codescouts.academy/es/blog/technical-coach-prompt/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/technical-coach-prompt/</guid>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
       <dc:creator>CodeScouts</dc:creator>
-      <category>GOF</category>
-      <category>gang of four</category>
-      <category>design patterns</category>
-      <category>codescouts</category>
+      <category>coaching</category>
+      <category>tdd</category>
+      <category>clean-code</category>
+      <category>extreme-programming</category>
+      <category>pair-programming</category>
+      <category>prompt</category>
+      <category>copilot</category>
+    </item>
+    <item>
+      <title>React Server Components en producción: la arquitectura que necesitas para 2026</title>
+      <description>El App Router de Next.js ha transformado cómo pensamos la arquitectura frontend, pero Server Components sin diseño introducen acoplamiento invisible. Analizamos el modelo mental, los patrones que escalan y los errores arquitectónicos más comunes en producción.</description>
+      <link>https://www.codescouts.academy/es/blog/react-server-components/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/react-server-components/</guid>
+      <pubDate>Sat, 12 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>react</category>
+      <category>nextjs</category>
+      <category>server-components</category>
+      <category>architecture</category>
+      <category>frontend</category>
+      <category>escalabilidad</category>
+    </item>
+    <item>
+      <title>AI coding agents: cómo mantener Clean Code cuando la IA escribe tu código</title>
+      <description>Los agentes de IA generan código a velocidad increíble, pero sin disciplinas como TDD, Clean Code y refactoring, ese código se convierte en deuda técnica de inmediato. Analizamos cómo integrar GitHub Copilot, Cursor y Claude Code sin sacrificar la arquitectura ni la mantenibilidad.</description>
+      <link>https://www.codescouts.academy/es/blog/ai-coding-agents/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/ai-coding-agents/</guid>
+      <pubDate>Thu, 10 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>ai</category>
+      <category>tdd</category>
+      <category>clean-code</category>
+      <category>refactoring</category>
+      <category>architecture</category>
+      <category>cursor</category>
     </item>
     <item>
       <title>GOF Design patterns</title>
       <description>Guia completa acerca de los patrones de diseño de GOF, creacionales, comportamiento y estructurales.</description>
-      <link>https://www.codescouts.academy/es/blog/patrones-de-disenio</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/patrones-de-disenio</guid>
+      <link>https://www.codescouts.academy/es/blog/patrones-de-disenio/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/patrones-de-disenio/</guid>
       <pubDate>Wed, 29 Oct 2025 00:00:00 GMT</pubDate>
       <dc:creator>CodeScouts</dc:creator>
       <category>GOF</category>
@@ -36,114 +66,56 @@
       <category>codescouts</category>
     </item>
     <item>
-      <title>ID Document - OCR/MRZ Kata</title>
-      <description>A mid/advanced kata to practice TDD and optional mocks in a real-world algorithm. The kata consists of implementing an algorithm that converts an ID image into a character string with structured information, then parses that string into an object with the ID data.</description>
-      <link>https://www.codescouts.academy/en/blog/documento-de-identidad-ocr-mrz-kata</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/documento-de-identidad-ocr-mrz-kata</guid>
-      <pubDate>Wed, 21 Aug 2024 00:00:00 GMT</pubDate>
-      <dc:creator>CodeScouts</dc:creator>
-      <category>tdd</category>
-      <category>ocr</category>
-      <category>mrz</category>
-      <category>kata</category>
-    </item>
-    <item>
       <title>Documento de identidad - OCR/MRZ Kata</title>
       <description>Kata nivel medio/avanzado para practicar TDD y Mocks (opcional) en un algoritmo del mundo real. Esta Kata consiste en implementar un algoritmo que traduzca una imagen de un DNI a una cadena de caracteres con la información estructurada, y a partir de esta cadena parsearlo a un objeto con la información del DNI.</description>
-      <link>https://www.codescouts.academy/es/blog/documento-de-identidad-ocr-mrz-kata</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/documento-de-identidad-ocr-mrz-kata</guid>
+      <link>https://www.codescouts.academy/es/blog/documento-de-identidad-ocr-mrz-kata/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/documento-de-identidad-ocr-mrz-kata/</guid>
       <pubDate>Wed, 21 Aug 2024 00:00:00 GMT</pubDate>
       <dc:creator>CodeScouts</dc:creator>
       <category>tdd</category>
       <category>ocr</category>
       <category>mrz</category>
       <category>kata</category>
-    </item>
-    <item>
-      <title>RabbitMQ in 5 Minutes</title>
-      <description>Want to learn the key RabbitMQ concepts? I explain what RabbitMQ is in 5 minutes.</description>
-      <link>https://www.codescouts.academy/en/blog/rabbitmq-en-5-minutos</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/rabbitmq-en-5-minutos</guid>
-      <pubDate>Fri, 10 May 2024 00:00:00 GMT</pubDate>
-      <dc:creator>CodeScouts</dc:creator>
-      <category>rabbitmq</category>
-      <category>codescouts</category>
     </item>
     <item>
       <title>RabbitMQ en 5 minutos</title>
       <description>¿Quieres aprender los conceptos clave de RabbitMQ?, te explico qué es RabbitMQ en 5 minutos.</description>
-      <link>https://www.codescouts.academy/es/blog/rabbitmq-en-5-minutos</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/rabbitmq-en-5-minutos</guid>
+      <link>https://www.codescouts.academy/es/blog/rabbitmq-en-5-minutos/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/rabbitmq-en-5-minutos/</guid>
       <pubDate>Fri, 10 May 2024 00:00:00 GMT</pubDate>
       <dc:creator>CodeScouts</dc:creator>
       <category>rabbitmq</category>
       <category>codescouts</category>
     </item>
     <item>
-      <title>Clean Architecture in Frontend</title>
-      <description>Clean Architecture is a concept popularized by &quot;Uncle Bob&quot; that is based on structuring code in adjacent layers, so each layer only communicates with the layers immediately next to it.</description>
-      <link>https://www.codescouts.academy/en/blog/clean-architecture-en-frontend</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/clean-architecture-en-frontend</guid>
-      <pubDate>Mon, 30 Oct 2023 00:00:00 GMT</pubDate>
-      <dc:creator>CodeScouts</dc:creator>
-      <category>tcr</category>
-      <category>tdd</category>
-      <category>tests</category>
-      <category>commit</category>
-    </item>
-    <item>
       <title>Clean architecture en frontend</title>
-      <description>Clean Architecture es un nombre popularizado “Uncle Bob” que se basa en la premisa de estructurar el código en capas contiguas, es decir, que solo tienen comunicación con las capas que están inmediatamente a sus lados.</description>
-      <link>https://www.codescouts.academy/es/blog/clean-architecture-en-frontend</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/clean-architecture-en-frontend</guid>
+      <description>Aprende Clean Architecture para aplicaciones frontend - estructurando código en capas contiguas, mejorando mantenibilidad y enabling cambio de tecnología sin afectar el resto. Ideal para equipos React, Vue y otros frontend.</description>
+      <link>https://www.codescouts.academy/es/blog/clean-architecture-en-frontend/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/clean-architecture-en-frontend/</guid>
       <pubDate>Mon, 30 Oct 2023 00:00:00 GMT</pubDate>
       <dc:creator>CodeScouts</dc:creator>
-      <category>tcr</category>
-      <category>tdd</category>
-      <category>tests</category>
-      <category>commit</category>
-    </item>
-    <item>
-      <title>ReactJS Azure CDN or Azure App Service</title>
-      <description>There are several advantages to hosting a React JS application on Azure CDN instead of Azure App Service.</description>
-      <link>https://www.codescouts.academy/en/blog/reactjs-in-azure-cdn-vs-azure-app-service</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/reactjs-in-azure-cdn-vs-azure-app-service</guid>
-      <pubDate>Fri, 20 Jan 2023 00:00:00 GMT</pubDate>
-      <dc:creator>CodeScouts</dc:creator>
-      <category>azure</category>
-      <category>cdn</category>
-      <category>app service</category>
-      <category>codescouts</category>
+      <category>arquitectura</category>
+      <category>frontend</category>
+      <category>react</category>
+      <category>clean-architecture</category>
     </item>
     <item>
       <title>ReactJs Azure CDN o Azure App service</title>
       <description>Hay varias ventajas en alojar una aplicación React JS en un Azure CDN en lugar de un Azure App Service.</description>
-      <link>https://www.codescouts.academy/es/blog/reactjs-in-azure-cdn-vs-azure-app-service</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/reactjs-in-azure-cdn-vs-azure-app-service</guid>
+      <link>https://www.codescouts.academy/es/blog/reactjs-in-azure-cdn-vs-azure-app-service/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/reactjs-in-azure-cdn-vs-azure-app-service/</guid>
       <pubDate>Fri, 20 Jan 2023 00:00:00 GMT</pubDate>
       <dc:creator>CodeScouts</dc:creator>
       <category>azure</category>
       <category>cdn</category>
       <category>app service</category>
-      <category>codescouts</category>
-    </item>
-    <item>
-      <title>Fakes Spies Mocks Stubs Dummies</title>
-      <description>Whenever I ask the difference between these test doubles, no one can answer clearly. This time I&apos;ll make sure you understand them once and for all.</description>
-      <link>https://www.codescouts.academy/en/blog/fakes-spies-mocks-stubs-dummies</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/fakes-spies-mocks-stubs-dummies</guid>
-      <pubDate>Sat, 19 Nov 2022 00:00:00 GMT</pubDate>
-      <dc:creator>CodeScouts</dc:creator>
-      <category>testdoubles</category>
-      <category>tdd</category>
-      <category>dobles-de-test</category>
       <category>codescouts</category>
     </item>
     <item>
       <title>Fakes Spies Mocks Stubs Dummies</title>
       <description>Cada vez que pregunto la diferencia entre estos tipos de test dobles, nadie sabe responderlo claramente, esta vez te aseguro que no quedarán dudas.</description>
-      <link>https://www.codescouts.academy/es/blog/fakes-spies-mocks-stubs-dummies</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/fakes-spies-mocks-stubs-dummies</guid>
+      <link>https://www.codescouts.academy/es/blog/fakes-spies-mocks-stubs-dummies/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/fakes-spies-mocks-stubs-dummies/</guid>
       <pubDate>Sat, 19 Nov 2022 00:00:00 GMT</pubDate>
       <dc:creator>CodeScouts</dc:creator>
       <category>testdoubles</category>
@@ -153,22 +125,9 @@
     </item>
     <item>
       <title>Test-Driven Development</title>
-      <description>Also known as TDD (test-driven development), it is a programming practice that consists of writing tests first (usually unit tests), then writing the source code that makes the test pass, and finally refactoring the implemented code.</description>
-      <link>https://www.codescouts.academy/en/blog/test-driven-development</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/test-driven-development</guid>
-      <pubDate>Wed, 06 Jul 2022 00:00:00 GMT</pubDate>
-      <dc:creator>CodeScouts</dc:creator>
-      <category>diseño</category>
-      <category>design</category>
-      <category>tdd</category>
-      <category>test-driven-design</category>
-      <category>codescouts</category>
-    </item>
-    <item>
-      <title>Test-Driven Development</title>
       <description>También conocido como TDD (desarrollo dirigido por tests) es una práctica de programación que consiste en escribir primero los tests (generalmente unitarias) y después escribir el código fuente que pase la prueba satisfactoriamente y, por último, refactorizar el código escrito.</description>
-      <link>https://www.codescouts.academy/es/blog/test-driven-development</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/test-driven-development</guid>
+      <link>https://www.codescouts.academy/es/blog/test-driven-development/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/test-driven-development/</guid>
       <pubDate>Wed, 06 Jul 2022 00:00:00 GMT</pubDate>
       <dc:creator>CodeScouts</dc:creator>
       <category>diseño</category>
@@ -176,26 +135,12 @@
       <category>tdd</category>
       <category>test-driven-design</category>
       <category>codescouts</category>
-    </item>
-    <item>
-      <title>Types of Tests</title>
-      <description>There are many types of testing we can use to confirm that our software continues to work correctly after introducing new changes to the source code.</description>
-      <link>https://www.codescouts.academy/en/blog/tipos-de-tests</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/tipos-de-tests</guid>
-      <pubDate>Tue, 05 Jul 2022 00:00:00 GMT</pubDate>
-      <dc:creator>CodeScouts</dc:creator>
-      <category>test</category>
-      <category>unit test</category>
-      <category>integration test</category>
-      <category>e2e</category>
-      <category>ui</category>
-      <category>test pyramid</category>
     </item>
     <item>
       <title>Tipos de tests</title>
       <description>Existen muchos tipos de testing, o pruebas de software, que podemos usar para confirmar que nuestro software continúa funcionando correctamente tras introducir cambios nuevos sobre nuestro código fuente.</description>
-      <link>https://www.codescouts.academy/es/blog/tipos-de-tests</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/tipos-de-tests</guid>
+      <link>https://www.codescouts.academy/es/blog/tipos-de-tests/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/tipos-de-tests/</guid>
       <pubDate>Tue, 05 Jul 2022 00:00:00 GMT</pubDate>
       <dc:creator>CodeScouts</dc:creator>
       <category>test</category>
@@ -206,22 +151,10 @@
       <category>test pyramid</category>
     </item>
     <item>
-      <title>GRASP Patterns, the Old SOLID</title>
-      <description>These days people talk a lot about SOLID principles, but a few years earlier Craig Larman introduced very interesting patterns. Let’s review them!</description>
-      <link>https://www.codescouts.academy/en/blog/grasp</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/grasp</guid>
-      <pubDate>Sun, 03 Jul 2022 00:00:00 GMT</pubDate>
-      <dc:creator>CodeScouts</dc:creator>
-      <category>diseño</category>
-      <category>design</category>
-      <category>objectcalisthenics</category>
-      <category>codescouts</category>
-    </item>
-    <item>
       <title>Patrones GRASP, el viejo SOLID</title>
       <description>Hoy en día se habla mucho de los principios SOLID, pero unos cuantos años antes, Craig Larman introdujo unos patrones muy interesantes, veámoslos!</description>
-      <link>https://www.codescouts.academy/es/blog/grasp</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/grasp</guid>
+      <link>https://www.codescouts.academy/es/blog/grasp/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/grasp/</guid>
       <pubDate>Sun, 03 Jul 2022 00:00:00 GMT</pubDate>
       <dc:creator>CodeScouts</dc:creator>
       <category>diseño</category>
@@ -231,9 +164,9 @@
     </item>
     <item>
       <title>Test &amp;&amp; Commit || Revert</title>
-      <description>The TCR workflow (Test &amp;&amp; Commit || Revert) means after each production code change you run tests. If the tests pass, it commits the changes.</description>
-      <link>https://www.codescouts.academy/en/blog/test-commit-or-revert</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/en/blog/test-commit-or-revert</guid>
+      <description>Flujo de trabajo Test &amp;&amp; Commit || Revert (TCR) - ejecuta tests después de cada cambio en código productivo. Aprobar = commit, fallar = revert. Técnica adjunta a TDD para bucles de retroalimentación más rápidos.</description>
+      <link>https://www.codescouts.academy/es/blog/test-commit-or-revert/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/test-commit-or-revert/</guid>
       <pubDate>Sat, 02 Jul 2022 00:00:00 GMT</pubDate>
       <dc:creator>CodeScouts</dc:creator>
       <category>tcr</category>
@@ -242,16 +175,83 @@
       <category>commit</category>
     </item>
     <item>
-      <title>Test &amp;&amp; Commit || Revert</title>
-      <description>El flujo de trabajo TCR (Test &amp;&amp; Commit || Revert) consiste en que tras cada cambio en el código de producción se lanzan los tests. Si los test pasan, se ejecuta un commit con los cambios.</description>
-      <link>https://www.codescouts.academy/es/blog/test-commit-or-revert</link>
-      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/test-commit-or-revert</guid>
-      <pubDate>Sat, 02 Jul 2022 00:00:00 GMT</pubDate>
+      <title>Clean Code</title>
+      <description>Principios de Clean Code para escribir código legible, understandable y mantenible. Directrices esenciales para el craftsmanship y equipos de desarrollo profesional.</description>
+      <link>https://www.codescouts.academy/es/blog/clean-code/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/clean-code/</guid>
+      <pubDate>Tue, 03 May 2022 00:00:00 GMT</pubDate>
       <dc:creator>CodeScouts</dc:creator>
-      <category>tcr</category>
-      <category>tdd</category>
-      <category>tests</category>
-      <category>commit</category>
+      <category>cleancode</category>
+      <category>codigolimpio</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>Object Calisthenics</title>
+      <description>Si quieres tener un buen diseño de software, seguramente tienes que seguir estas 10 reglas para garantizarlo.</description>
+      <link>https://www.codescouts.academy/es/blog/object-calisthenics/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/object-calisthenics/</guid>
+      <pubDate>Mon, 02 May 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>diseño</category>
+      <category>design</category>
+      <category>objectcalisthenics</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>React 18: Novedades</title>
+      <description>Salió la nueva versión de React js, si quieres saber más acerca de las novedades que trae esta versión, te lo explicamos en 1 minuto!</description>
+      <link>https://www.codescouts.academy/es/blog/reactjs-18-novedades/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/reactjs-18-novedades/</guid>
+      <pubDate>Sun, 01 May 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>react</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>4 Reglas del diseño simple</title>
+      <description>4 reglas de diseño simple es un conjunto de reglas que nos ayudan a escribir código limpio y bien diseñado. Estas reglas fueron propuestas por Kent Beck, uno de los pioneros de Extreme Programming, y se basan en la idea de que un diseño es simple cuando sigue estas reglas en orden de importancia.</description>
+      <link>https://www.codescouts.academy/es/blog/4-reglas-del-disenio-simple/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/4-reglas-del-disenio-simple/</guid>
+      <pubDate>Sat, 30 Apr 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>4rules</category>
+      <category>diseño</category>
+      <category>4reglas</category>
+      <category>design</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>Los principios solid</title>
+      <description>Los principios SOLID (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) para escribir software orientado a objetos mantenible y flexible.</description>
+      <link>https://www.codescouts.academy/es/blog/solid/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/solid/</guid>
+      <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>principles</category>
+      <category>principios</category>
+      <category>solid</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>Mob programming</title>
+      <description>Un grupo de gente brillante trabajando en lo mismo, al mismo tiempo, en el mismo lugar y en la misma computadora.</description>
+      <link>https://www.codescouts.academy/es/blog/mob-programming/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/mob-programming/</guid>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>mobprogramming</category>
+      <category>codescouts</category>
+    </item>
+    <item>
+      <title>Principios de la buena programación</title>
+      <description>Tras años de experiencia, la industria ha acuñado numerosos acrónimos que hacen referencia a buenas prácticas, y a los que a menudo hacemos referencia, como... KISS, DRY, YAGNI, etc.</description>
+      <link>https://www.codescouts.academy/es/blog/principios-de-la-buena-programacion/</link>
+      <guid isPermaLink="true">https://www.codescouts.academy/es/blog/principios-de-la-buena-programacion/</guid>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 GMT</pubDate>
+      <dc:creator>CodeScouts</dc:creator>
+      <category>principles</category>
+      <category>principios</category>
+      <category>codescouts</category>
     </item>
   </channel>
 </rss>

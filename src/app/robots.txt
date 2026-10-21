@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /es/legal/
-Disallow: /en/legal/
+
+# /legal/ is NOT disallowed on purpose: it carries `noindex`, and Google can
+# only see that tag if it is allowed to crawl the page.
 
 Sitemap: https://www.codescouts.academy/sitemap.xml

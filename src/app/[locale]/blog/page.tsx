@@ -16,10 +16,7 @@ const Page = async ({ params }: LocaleProps) => {
       <JsonLd data={blogsSchema(locale)} />
       <JsonLd
         data={breadcrumbSchema(locale, [
-          {
-            name: locale === "es" ? "Blog" : "Blog",
-            url: `${process.env.SITE_URL ?? "https://www.codescouts.academy"}/${locale}/blog`,
-          },
+          { name: "Blog", path: ["blog"] },
         ])}
       />
       <BlogPosts blogPosts={posts} />

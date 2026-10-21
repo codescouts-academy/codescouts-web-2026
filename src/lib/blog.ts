@@ -9,7 +9,10 @@ export interface BlogPost {
   title: string;
   summary: string;
   content: string;
+  /** ISO 8601 publication date. */
   date: string;
+  /** ISO 8601 last meaningful update; falls back to `date`. */
+  updated: string;
   author?: string;
   coverImage?: string;
   tags?: string[];
@@ -18,6 +21,17 @@ export interface BlogPost {
 }
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
+
+/**
+ * gray-matter parses unquoted YAML dates into `Date` objects, which then leak
+ * into meta tags as `Date.toString()` ("Sat Apr 30 2022 ..."). Normalise every
+ * frontmatter date to an ISO string.
+ */
+function toIsoDate(value: unknown): string | undefined {
+  if (!value) return undefined;
+  const date = value instanceof Date ? value : new Date(String(value));
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
+}
 
 /**
  * Calculate reading time based on content length
@@ -40,19 +54,26 @@ export function getPostsFromLang(lang: Language): BlogPost[] {
   return fs
     .readdirSync(langDir)
     .filter((file) => file.endsWith(".md"))
-    .map((file) => {
+    .map((file): BlogPost | undefined => {
       const slug = file.replace(/\.md$/, "");
       const fullPath = path.join(langDir, file);
       const raw = fs.readFileSync(fullPath, "utf-8");
 
       const { data, content } = matter(raw);
 
+      // Drafts are reviewed by the team before publishing: never render,
+      // list or sitemap them.
+      if (data.draft === true) return undefined;
+
+      const date = toIsoDate(data.date) ?? new Date(0).toISOString();
+
       return {
         slug,
         lang,
         title: data.title,
-        summary: data.summary,
-        date: data.date,
+        summary: String(data.summary ?? "").trim(),
+        date,
+        updated: toIsoDate(data.updated) ?? date,
         author: data.author,
         coverImage: data.image,
         tags: data.tags ?? [],
@@ -60,6 +81,7 @@ export function getPostsFromLang(lang: Language): BlogPost[] {
         readingTime: calculateReadingTime(content),
       } satisfies BlogPost;
     })
+    .filter((post): post is BlogPost => post !== undefined)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 

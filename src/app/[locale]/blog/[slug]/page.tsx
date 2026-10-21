@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import {
   getBlogPost,
   getPostsFromLang,
@@ -13,7 +13,6 @@ import {
   breadcrumbSchema,
   generateBlogPostMeta,
   videoObjectSchema,
-  howToEnrollSchema,
 } from "@/lib/meta";
 import { LocaleProps } from "@/i18n";
 import { JsonLd } from "@/components/JsonLd";
@@ -22,15 +21,12 @@ type PageProps = LocaleProps & {
   params: Promise<{ slug: string }>;
 };
 
-/** Detect a YouTube embed URL in markdown content. */
-function extractYouTubeUrl(content: string): string | undefined {
+/** Detect a YouTube video ID in markdown content. */
+function extractYouTubeId(content: string): string | undefined {
   const match = content.match(
     /(?:youtube\.com\/embed\/|youtube\.com\/v\/|youtu\.be\/|iframe.*src="?[^"]*youtube\.com\/embed\/)([A-Za-z0-9_-]{11})/,
   );
-  if (match) {
-    return `https://www.youtube.com/watch?v=${match[1]}`;
-  }
-  return undefined;
+  return match?.[1];
 }
 
 const Page = async ({ params }: PageProps) => {
@@ -39,7 +35,7 @@ const Page = async ({ params }: PageProps) => {
   const post = getBlogPost(slug || "", locale || "en");
 
   if (!post) {
-    redirect(`/${locale}/blog`);
+    notFound();
   }
 
   const posts = getPostsFromLang(locale);
@@ -55,28 +51,19 @@ const Page = async ({ params }: PageProps) => {
       locale === "es"
         ? COURSES[slug].content.es.h1
         : COURSES[slug].content.en.h1,
-    url: `/${locale}/courses/${slug}`,
+    url: `/${locale}/courses/${slug}/`,
   }));
 
-  const videoUrl = extractYouTubeUrl(post.content);
+  const videoId = extractYouTubeId(post.content);
 
   return (
     <>
-      <JsonLd data={blogPostSchema(post, locale, slug, relatedCourses.map((c) => c.url), videoUrl)} />
-      {videoUrl && (
-        <JsonLd data={videoObjectSchema(post.title, videoUrl)} />
-      )}
-      <JsonLd data={howToEnrollSchema(locale)} />
+      <JsonLd data={blogPostSchema(post, locale, slug)} />
+      {videoId && <JsonLd data={videoObjectSchema(post, videoId)} />}
       <JsonLd
         data={breadcrumbSchema(locale, [
-          {
-            name: locale === "es" ? "Blog" : "Blog",
-            url: `/${locale}/blog`,
-          },
-          {
-            name: post.title,
-            url: `/${locale}/blog/${slug}`,
-          },
+          { name: "Blog", path: ["blog"] },
+          { name: post.title, path: ["blog", slug] },
         ])}
       />
       <Post post={post} relatedPosts={relatedPosts} relatedCourses={relatedCourses} />
@@ -87,6 +74,8 @@ const Page = async ({ params }: PageProps) => {
 export default Page;
 
 export const dynamic = "force-static";
+// Unknown slugs must 404, not render on demand.
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   const locales = routing.locales.map((locale) => ({ locale }));
@@ -102,17 +91,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getBlogPost(slug, locale);
 
   if (!post) {
-    return { title: "Post not found" };
+    return {};
   }
 
-  const relatedCourseSlugs = getRelatedCourses(post.tags ?? []);
-  const videoUrl = extractYouTubeUrl(post.content);
-
-  return generateBlogPostMeta(
-    post,
-    locale,
-    slug,
-    relatedCourseSlugs.map((s) => `/${locale}/courses/${s}`),
-    videoUrl,
-  );
+  return generateBlogPostMeta(post, locale, slug, extractYouTubeId(post.content));
 }

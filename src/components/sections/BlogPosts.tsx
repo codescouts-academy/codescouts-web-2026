@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 import Link from "next/link";
 import { BlogPost } from "@/lib/blog";
 import { Highlight } from "@/components/ui/highlight";
@@ -64,11 +65,11 @@ const BlogPosts = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
                   <Card className="h-full group hover:border-primary/50 transition-all duration-300 bg-card/50 backdrop-blur-sm overflow-hidden">
                     {post.coverImage && (
                       <div className="flex justify-center items-center aspect-auto overflow-hidden">
-                        <img
+                        <Image
                           src={post.coverImage}
                           alt={post.title}
-                          loading="lazy"
-                          decoding="async"
+                          width={200}
+                          height={200}
                           className="h-[200px] w-[200px] p-2 object-contain object-center contrast-110 brightness-90 group-hover:brightness-110 group-hover:scale-105 transition-all duration-700"
                         />
                       </div>

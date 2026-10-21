@@ -1,7 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface MarkdownRendererProps {
   content: string;
@@ -166,12 +165,13 @@ const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
           }
 
           return (
-            <div className="my-6 rounded-xl overflow-hidden">
-              <div className="bg-[#1e1e1e] px-4 py-2 text-xs text-muted-foreground border-b border-border/50 font-mono">
+            <div className="code-block my-6 rounded-xl overflow-hidden border">
+              <div className="code-block-header px-4 py-2 text-xs border-b font-mono">
                 {match[1]}
               </div>
+              {/* Token colors come from CSS variables so they follow the theme. */}
               <SyntaxHighlighter
-                style={oneDark}
+                useInlineStyles={false}
                 language={match[1]}
                 PreTag="div"
                 customStyle={{

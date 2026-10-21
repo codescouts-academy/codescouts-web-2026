@@ -68,9 +68,21 @@
     --shadow-lg: 0 10px 40px hsl(0 0% 0% / 0.5);
 
     /* Code block colors */
-    --code-bg: 220 16% 8%;
-    --code-border: 220 14% 18%;
+    --code-bg: 222 24% 9%;
+    --code-header-bg: 222 24% 7%;
+    --code-border: 222 16% 18%;
     --code-text: 48 96% 70%;
+    --code-fg: 220 25% 88%;
+    --code-muted: 222 12% 50%;
+    --code-punctuation: 220 15% 62%;
+    --code-keyword: 45 95% 62%;
+    --code-operator: 190 70% 68%;
+    --code-string: 95 50% 66%;
+    --code-function: 210 95% 72%;
+    --code-class: 270 75% 78%;
+    --code-property: 199 75% 78%;
+    --code-number: 22 92% 68%;
+    --code-tag: 355 80% 70%;
 
     /* Sidebar */
     --sidebar-background: 220 16% 6%;
@@ -111,6 +123,21 @@
     --border: 220 14% 90%;
     --input: 220 14% 90%;
     --ring: 220 16% 10%;
+
+    --code-bg: 220 25% 98%;
+    --code-header-bg: 220 18% 94%;
+    --code-border: 220 14% 88%;
+    --code-fg: 222 28% 18%;
+    --code-muted: 220 9% 52%;
+    --code-punctuation: 220 12% 42%;
+    --code-keyword: 330 75% 45%;
+    --code-operator: 190 80% 32%;
+    --code-string: 150 60% 30%;
+    --code-function: 220 80% 48%;
+    --code-class: 265 60% 50%;
+    --code-property: 205 85% 36%;
+    --code-number: 25 90% 42%;
+    --code-tag: 355 70% 46%;
   }
 }
 
@@ -168,7 +195,8 @@
 
   /* Code block styling for blog */
   .prose pre {
-    @apply rounded-lg border-border bg-[#1e1e1e] p-4 overflow-x-auto;
+    @apply rounded-lg border-border p-4 overflow-x-auto;
+    background-color: hsl(var(--code-bg));
   }
 
   .prose code {
@@ -179,101 +207,120 @@
     @apply bg-transparent p-0 text-primary;
   }
 
-  /* Dark prose theme for blog posts (replaces prose-invert) */
+  /* Prose theme for blog posts, driven by the theme tokens */
   .prose {
-    color: hsl(60 9% 98%);
-    background-color: hsl(220 16% 4%);
+    color: hsl(var(--foreground));
   }
-  .prose h1, .prose h2, .prose h3, .prose h4 {
-    color: hsl(60 9% 98%);
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose strong {
+    color: hsl(var(--foreground));
   }
-  .prose p, .prose li, .prose span {
-    color: hsl(60 9% 90%);
+  .prose p, .prose li {
+    color: hsl(var(--foreground) / 0.9);
   }
   .prose a {
-    color: hsl(48 96% 53%);
-  }
-  .prose strong {
-    color: hsl(60 9% 98%);
+    color: hsl(var(--primary));
   }
   .prose em {
-    color: hsl(60 9% 85%);
+    color: hsl(var(--foreground) / 0.85);
   }
   .prose blockquote {
-    border-left-color: hsl(48 96% 53%);
-    background-color: hsl(48 96% 53% / 0.08);
-    color: hsl(60 9% 90%);
+    border-left-color: hsl(var(--accent));
+    background-color: hsl(var(--accent) / 0.08);
+    color: hsl(var(--foreground) / 0.9);
   }
   .prose hr {
-    border-color: hsl(220 14% 16%);
+    border-color: hsl(var(--border));
   }
 
-  /* SyntaxHighlighter tokens — force the prism colors */
-  .prose .prism-code .token {
-    color: hsl(60 9% 98%) !important;
-    background: transparent !important;
-    font-style: normal !important;
+  /* Fenced code blocks (SyntaxHighlighter with useInlineStyles={false}) */
+  .code-block {
+    background-color: hsl(var(--code-bg));
+    border-color: hsl(var(--code-border));
   }
-  .prose .prism-code .token.keyword,
-  .prose .prism-code .token.operator,
-  .prose .prism-code .token.boolean,
-  .prose .prism-code .token.atrule,
-  .prose .prism-code .token.rule {
-    color: hsl(48 96% 60%) !important;
+  .code-block-header {
+    background-color: hsl(var(--code-header-bg));
+    border-color: hsl(var(--code-border));
+    color: hsl(var(--code-muted));
   }
-  .prose .prism-code .token.string,
-  .prose .prism-code .token.attr-value,
-  .prose .prism-code .token.url {
-    color: hsl(114 50% 65%) !important;
+  .code-block > div[class*="language-"] {
+    background-color: hsl(var(--code-bg));
+    color: hsl(var(--code-fg));
+    font-family: theme("fontFamily.mono");
+    line-height: 1.6;
+    overflow-x: auto;
   }
-  .prose .prism-code .token.function,
-  .prose .prism-code .token.class-name {
-    color: hsl(220 90% 65%) !important;
+  .code-block code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
   }
-  .prose .prism-code .token.number,
-  .prose .prism-code .token.property,
-  .prose .prism-code .token.variable {
-    color: hsl(38 96% 65%) !important;
+  .code-block .token.keyword,
+  .code-block .token.boolean,
+  .code-block .token.atrule,
+  .code-block .token.rule,
+  .code-block .token.important {
+    color: hsl(var(--code-keyword));
   }
-  .prose .prism-code .token.comment,
-  .prose .prism-code .token.prolog,
-  .prose .prism-code .token.doctype,
-  .prose .prism-code .token.cdata {
-    color: hsl(240 10% 50%) !important;
-    font-style: italic !important;
+  .code-block .token.operator,
+  .code-block .token.arrow,
+  .code-block .token.spread {
+    color: hsl(var(--code-operator));
   }
-  .prose .prism-code .token.punctuation {
-    color: hsl(220 9% 75%) !important;
+  .code-block .token.string,
+  .code-block .token.char,
+  .code-block .token.template-string,
+  .code-block .token.attr-value,
+  .code-block .token.url,
+  .code-block .token.inserted {
+    color: hsl(var(--code-string));
   }
-  .prose .prism-code .token.tag,
-  .prose .prism-code .token.selector {
-    color: hsl(0 72% 60%) !important;
+  .code-block .token.function,
+  .code-block .token.method {
+    color: hsl(var(--code-function));
   }
-  .prose .prism-code .token.namespace {
-    opacity: 0.8 !important;
+  .code-block .token.class-name,
+  .code-block .token.builtin,
+  .code-block .token.maybe-class-name {
+    color: hsl(var(--code-class));
   }
-  .prose .prism-code .token.entity {
-    color: hsl(48 96% 65%) !important;
+  .code-block .token.property,
+  .code-block .token.property-access,
+  .code-block .token.attr-name,
+  .code-block .token.parameter {
+    color: hsl(var(--code-property));
   }
-  .prose .prism-code .token.deleted,
-  .prose .prism-code .token.section {
-    color: hsl(0 72% 60%) !important;
+  .code-block .token.number,
+  .code-block .token.constant,
+  .code-block .token.entity,
+  .code-block .token.regex {
+    color: hsl(var(--code-number));
   }
-  .prose .prism-code .token.inserted {
-    color: hsl(114 50% 65%) !important;
+  .code-block .token.comment,
+  .code-block .token.prolog,
+  .code-block .token.doctype,
+  .code-block .token.cdata {
+    color: hsl(var(--code-muted));
+    font-style: italic;
   }
-  .prose .prism-code .token.important,
-  .prose .prism-code .token.bold {
-    font-weight: 700 !important;
-    color: hsl(60 9% 98%) !important;
+  .code-block .token.punctuation {
+    color: hsl(var(--code-punctuation));
   }
-  .prose .prism-code .token.italic {
-    font-style: italic !important;
+  .code-block .token.tag,
+  .code-block .token.selector,
+  .code-block .token.deleted,
+  .code-block .token.section {
+    color: hsl(var(--code-tag));
   }
-
-  /* SyntaxHighlighter wrapper must have dark bg */
-  .prose div[class*="language-"] {
-    @apply bg-[#1e1e1e];
+  .code-block .token.namespace {
+    opacity: 0.8;
+  }
+  .code-block .token.important,
+  .code-block .token.bold {
+    font-weight: 700;
+  }
+  .code-block .token.italic {
+    font-style: italic;
   }
 
   /* Link hover effect */

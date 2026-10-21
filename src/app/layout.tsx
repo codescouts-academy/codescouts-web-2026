@@ -9,7 +9,12 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Technical coaching, consultoría de software y formación técnica para equipos de desarrollo. Mejora la calidad de tu software con CodeScouts.",
+    "Technical coaching, consultoría de software y cursos para equipos de desarrollo.",
+  // Only rendered when the env var is set (Search Console HTML-tag method).
+  // Not needed if the domain is already verified via DNS.
+  ...(process.env.GOOGLE_SITE_VERIFICATION && {
+    verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
+  }),
   robots: {
     index: true,
     follow: true,

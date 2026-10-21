@@ -2,6 +2,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { routing } from "@/i18n/routing";
 import { organizationSchema, websiteSchema } from "@/lib/meta";
 import { JsonLd } from "@/components/JsonLd";
@@ -54,6 +55,8 @@ export default async function LocaleLayout({ children, params }: Props) {
             {children}
           </NextIntlClientProvider>
         </ThemeProvider>
+        {/* Cookieless, so no consent banner is needed under GDPR. */}
+        <Analytics />
       </body>
     </html>
   );

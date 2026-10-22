@@ -242,7 +242,7 @@
     border-color: hsl(var(--code-border));
     color: hsl(var(--code-muted));
   }
-  .code-block > div[class*="language-"] {
+  .code-block > .prismjs {
     background-color: hsl(var(--code-bg));
     color: hsl(var(--code-fg));
     font-family: theme("fontFamily.mono");

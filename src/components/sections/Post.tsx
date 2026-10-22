@@ -39,7 +39,7 @@ const Post = ({
             {/* Header */}
             <header className="mb-12">
               {post.coverImage && (
-                <div className="relative aspect-video rounded-2xl overflow-hidden">
+                <div className="relative aspect-video rounded-2xl overflow-hidden mb-8">
                   {/* Above the fold: this is the page's LCP image. */}
                   <Image
                     src={post.coverImage}

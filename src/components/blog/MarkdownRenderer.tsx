@@ -174,6 +174,9 @@ const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
                 useInlineStyles={false}
                 language={match[1]}
                 PreTag="div"
+                // Overrides the default codeTagProps, which inject Prism's light
+                // theme inline (black text + white text-shadow) even without inline styles.
+                codeTagProps={{ className: `language-${match[1]}` }}
                 customStyle={{
                   margin: 0,
                   borderRadius: 0,
